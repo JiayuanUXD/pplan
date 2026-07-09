@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>商办写字楼租赁平台 — 网站开发报价方案</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  /* soulou · 仅覆盖颜色令牌（金色主题）；结构/排版/间距全部继承 styles.css */
+  :root {
+    --accent:            #C8A96E;
+    --accent-rgb:        200,169,110;
+    --night:             #1A1A2E;
+    --steel:             #1A1A2E;
+    --ink:               #0A0A0A;
+    --ink-rgb:           10,10,10;
+    --paper:             #F7F5F2;
+    --mid:               #6B6B6B;
+    --white:             #FFFFFF;
+    --border:            rgba(10,10,10,0.12);
+    --surface-alt:       #EFEDE9;
+    --surface-alt-hover: #E8E5E0;
+    --surface-hover:     #FAFAF8;
+    --text-body:         #3A3A3A;
+    --text-body-2:       #4A4A4A;
+    --tint:              #FBF8F2;
+    --risk-m-text:       #B08B40;
+  }
+  </style>
+</head>
+<body>
+
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="brand-mark">
+        <span class="brand-mark-inner">SL</span>
+      </div>
+      <div class="brand-text">
+        <span class="brand-name">开发报价方案</span>
+        <span class="brand-sub">soolou.com</span>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+      <a href="#overview" class="nav-item active">
+        <span class="nav-num">00</span>
+        <span class="nav-label">项目概述</span>
+      </a>
+      <a href="#background" class="nav-item">
+        <span class="nav-num">01</span>
+        <span class="nav-label">项目背景</span>
+      </a>
+      <a href="#modules" class="nav-item">
+        <span class="nav-num">02</span>
+        <span class="nav-label">功能模块</span>
+      </a>
+      <a href="#tech" class="nav-item">
+        <span class="nav-num">03</span>
+        <span class="nav-label">技术选型</span>
+      </a>
+      <a href="#team" class="nav-item">
+        <span class="nav-num">04</span>
+        <span class="nav-label">团队配置</span>
+      </a>
+      <a href="#schedule" class="nav-item">
+        <span class="nav-num">05</span>
+        <span class="nav-label">开发排期</span>
+      </a>
+      <a href="#pricing" class="nav-item">
+        <span class="nav-num">06</span>
+        <span class="nav-label">报价明细</span>
+      </a>
+      <a href="#ops" class="nav-item">
+        <span class="nav-num">07</span>
+        <span class="nav-label">运维保障</span>
+      </a>
+      <a href="#delivery" class="nav-item">
+        <span class="nav-num">08</span>
+        <span class="nav-label">交付物</span>
+      </a>
+      <a href="#payment" class="nav-item">
+        <span class="nav-num">09</span>
+        <span class="nav-label">付款方式</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-validity">
+      <div class="validity-label">报价有效期</div>
+      <div class="validity-date">2026年10月08日</div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main">
+
+    <!-- OVERVIEW / HERO -->
+    <section class="hero" id="overview">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="hero-content">
+        <div class="hero-left">
+          <p class="hero-eyebrow">COMMERCIAL OFFICE LEASING PLATFORM</p>
+          <h1 class="hero-title">商办写字楼<br>租赁平台<br><em>开发报价方案</em></h1>
+          <div class="hero-meta">
+            <div class="hero-meta-row">
+              <span class="meta-k">参考产品</span>
+              <span class="meta-v">搜楼网 soolou.com</span>
+            </div>
+            <div class="hero-meta-row">
+              <span class="meta-k">设计标杆</span>
+              <span class="meta-v">Industrious Office</span>
+            </div>
+            <div class="hero-meta-row">
+              <span class="meta-k">报价日期</span>
+              <span class="meta-v">2026年07月08日</span>
+            </div>
+            <div class="hero-meta-row">
+              <span class="meta-k">有效期至</span>
+              <span class="meta-v">2026年10月08日</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-right">
+          <div class="kpi-stack">
+            <div class="kpi-item">
+              <span class="kpi-num" data-target="2470">0</span>
+              <span class="kpi-unit">工时</span>
+              <span class="kpi-desc">总开发工时</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-num" data-target="25">0</span>
+              <span class="kpi-unit">周</span>
+              <span class="kpi-desc">项目周期</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-num" data-target="11">0</span>
+              <span class="kpi-unit">个</span>
+              <span class="kpi-desc">核心功能模块</span>
+            </div>
+            <div class="kpi-divider"></div>
+            <div class="kpi-item">
+              <span class="kpi-prefix">¥</span>
+              <span class="kpi-num" data-target="146">0</span>
+              <span class="kpi-unit">万</span>
+              <span class="kpi-desc">开发总报价</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BACKGROUND -->
+    <section class="section" id="background">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">PROJECT BACKGROUND</span>
+          <h2 class="section-title">项目背景与目标</h2>
+        </header>
+        <div class="bg-grid">
+          <div class="bg-text reveal">
+            <p>本方案以<strong>搜楼网（soolou.com）</strong>的产品功能体系为蓝本，以<strong>Industrious</strong>的高端设计质量为视觉标准，为甲方定制开发一套专注商办写字楼租赁的垂直信息平台。</p>
+            <p>搜楼网覆盖上海、杭州、苏州等核心城市，提供110万+真实写字楼房源，具备找办公室、找楼盘、共享办公、地图找房、委托找房、房源投放等完整功能链路。</p>
+            <p>Industrious 作为全球顶级灵活办公空间品牌，其网站以高质量空间摄影、克制的排版体系、流畅的交互体验著称，是商办类网站设计的行业标杆。</p>
+          </div>
+          <div class="bg-cards reveal">
+            <div class="ref-card">
+              <div class="ref-card-tag">功能参考</div>
+              <div class="ref-card-title">搜楼网</div>
+              <div class="ref-card-url">soolou.com/sh</div>
+              <ul class="ref-list">
+                <li>110万+ 真实房源数据库</li>
+                <li>多城市垂直写字楼平台</li>
+                <li>地图找房 + 委托选址服务</li>
+                <li>B端房源投放变现体系</li>
+              </ul>
+            </div>
+            <div class="ref-card ref-card-accent">
+              <div class="ref-card-tag">设计标杆</div>
+              <div class="ref-card-title">Industrious</div>
+              <div class="ref-card-url">industriousoffice.com</div>
+              <ul class="ref-list">
+                <li>全球250+ 高端灵活办公空间</li>
+                <li>精致摄影 + 克制排版体系</li>
+                <li>高端品牌视觉与交互体验</li>
+                <li>CBRE 旗下顶级办公品牌</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODULES -->
+    <section class="section section-alt" id="modules">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">FUNCTIONAL MODULES</span>
+          <h2 class="section-title">功能模块拆解</h2>
+          <p class="section-sub">11 个核心模块，覆盖用户端、B端与后台管理全链路</p>
+        </header>
+        <div class="modules-grid">
+
+          <div class="module-card reveal">
+            <div class="module-id">01</div>
+            <div class="module-body">
+              <h3>首页 & 品牌展示</h3>
+              <p>全屏高质量空间摄影 Hero 区域，快速搜索入口，精选房源轮播，六大服务类型导航，合作品牌展示，资讯中心入口。参考 Industrious 首页视觉质感。</p>
+              <div class="module-tags">
+                <span>品牌视觉</span>
+                <span>快速搜索</span>
+                <span>精选展示</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">02</div>
+            <div class="module-body">
+              <h3>找办公室（房源搜索）</h3>
+              <p>多维度筛选（城市/区域/价格/面积/类型），列表视图与地图视图切换，房源卡片展示，排序功能，无限滚动加载。</p>
+              <div class="module-tags">
+                <span>智能搜索</span>
+                <span>多维筛选</span>
+                <span>双视图</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">03</div>
+            <div class="module-body">
+              <h3>房源详情页</h3>
+              <p>高清图片轮播，基本信息与价格展示，地图嵌入与周边配套，在线预约看房，联系经纪人，相似房源推荐。</p>
+              <div class="module-tags">
+                <span>图片轮播</span>
+                <span>地图集成</span>
+                <span>在线预约</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">04</div>
+            <div class="module-body">
+              <h3>找楼盘（写字楼品牌库）</h3>
+              <p>楼盘品牌展示页，楼盘详情（开发商/物业/认证等级/LEED认证），楼盘内可租房源列表。</p>
+              <div class="module-tags">
+                <span>楼盘品牌</span>
+                <span>甲级认证</span>
+                <span>LEED</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">05</div>
+            <div class="module-body">
+              <h3>共享办公专区</h3>
+              <p>联合办公品牌列表，工位类型（固定/灵活/独立/会议室），按月/天/小时计价展示，在线预约功能。</p>
+              <div class="module-tags">
+                <span>联合办公</span>
+                <span>灵活计价</span>
+                <span>在线预约</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">06</div>
+            <div class="module-body">
+              <h3>地图找房</h3>
+              <p>全屏地图模式（高德API），价格气泡标注，左侧筛选面板与地图联动，地铁线路叠加，点击弹出房源简卡。</p>
+              <div class="module-tags">
+                <span>高德地图</span>
+                <span>价格气泡</span>
+                <span>地铁叠加</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">07</div>
+            <div class="module-body">
+              <h3>委托找房</h3>
+              <p>用户需求表单提交，专属顾问分配，顾问跟进状态追踪，后台顾问管理与需求分配系统。</p>
+              <div class="module-tags">
+                <span>需求表单</span>
+                <span>顾问分配</span>
+                <span>进度追踪</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">08</div>
+            <div class="module-body">
+              <h3>房源投放（B端）</h3>
+              <p>房源发布表单，图片上传，价格设置，房源管理后台（上架/下架/数据统计），付费推广套餐，发票申请。</p>
+              <div class="module-tags">
+                <span>B端入口</span>
+                <span>付费推广</span>
+                <span>数据统计</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">09</div>
+            <div class="module-body">
+              <h3>资讯中心</h3>
+              <p>楼市动态文章列表，文章详情页（富文本），标签分类与搜索，相关文章推荐，SEO优化结构。</p>
+              <div class="module-tags">
+                <span>富文本</span>
+                <span>SEO优化</span>
+                <span>标签分类</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">10</div>
+            <div class="module-body">
+              <h3>用户系统</h3>
+              <p>手机号验证码注册/登录，微信授权，个人中心（收藏/预约/委托记录），消息通知系统。</p>
+              <div class="module-tags">
+                <span>微信授权</span>
+                <span>个人中心</span>
+                <span>消息通知</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="module-card reveal">
+            <div class="module-id">11</div>
+            <div class="module-body">
+              <h3>后台管理系统（CMS）</h3>
+              <p>房源审核管理，用户与权限管理，委托需求分配，资讯发布，数据统计看板（PV/UV/转化），广告位管理，系统配置。</p>
+              <div class="module-tags">
+                <span>权限管理</span>
+                <span>数据看板</span>
+                <span>广告管理</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH -->
+    <section class="section" id="tech">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">TECHNOLOGY STACK</span>
+          <h2 class="section-title">技术选型</h2>
+        </header>
+        <div class="tech-grid">
+
+          <div class="tech-block reveal">
+            <div class="tech-block-head">
+              <span class="tech-icon">◉</span>
+              <h3>核心前端</h3>
+            </div>
+            <div class="tech-list">
+              <div class="tech-row">
+                <span class="tech-label">框架</span>
+                <span class="tech-value">Next.js 14（App Router，SSR/SSG）</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">样式</span>
+                <span class="tech-value">Tailwind CSS + 自定义设计系统</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">状态管理</span>
+                <span class="tech-value">Zustand</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">地图</span>
+                <span class="tech-value">高德地图 JS API（商业版）</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">图片优化</span>
+                <span class="tech-value">Next.js Image + 阿里云 OSS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-block reveal">
+            <div class="tech-block-head">
+              <span class="tech-icon">◉</span>
+              <h3>核心后端</h3>
+            </div>
+            <div class="tech-list">
+              <div class="tech-row">
+                <span class="tech-label">框架</span>
+                <span class="tech-value">Node.js / NestJS</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">主数据库</span>
+                <span class="tech-value">MySQL 8.0</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">缓存</span>
+                <span class="tech-value">Redis 7.0</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">搜索引擎</span>
+                <span class="tech-value">Elasticsearch 8.x</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">文件存储</span>
+                <span class="tech-value">阿里云 OSS</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-block reveal">
+            <div class="tech-block-head">
+              <span class="tech-icon">◉</span>
+              <h3>基础设施</h3>
+            </div>
+            <div class="tech-list">
+              <div class="tech-row">
+                <span class="tech-label">云服务</span>
+                <span class="tech-value">阿里云 ECS + SLB + CDN</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">数据库</span>
+                <span class="tech-value">阿里云 RDS MySQL</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">容器化</span>
+                <span class="tech-value">Docker + Docker Compose</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">CI/CD</span>
+                <span class="tech-value">GitHub Actions</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">监控</span>
+                <span class="tech-value">阿里云 ARMS + 云监控</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="tech-block reveal">
+            <div class="tech-block-head">
+              <span class="tech-icon">◉</span>
+              <h3>第三方集成</h3>
+            </div>
+            <div class="tech-list">
+              <div class="tech-row">
+                <span class="tech-label">地图服务</span>
+                <span class="tech-value">高德地图 API（商业版）</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">短信</span>
+                <span class="tech-value">阿里云短信</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">支付</span>
+                <span class="tech-value">微信支付（付费推广）</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">社交登录</span>
+                <span class="tech-value">微信开放平台 OAuth2.0</span>
+              </div>
+              <div class="tech-row">
+                <span class="tech-label">数据统计</span>
+                <span class="tech-value">百度统计</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- TEAM -->
+    <section class="section section-dark" id="team">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag section-tag-light">TEAM CONFIGURATION</span>
+          <h2 class="section-title section-title-light">团队配置</h2>
+        </header>
+        <div class="table-wrap reveal">
+          <table class="team-table">
+            <thead>
+              <tr>
+                <th>角色</th>
+                <th class="text-center" style="width: 80px;">人数</th>
+                <th>职责描述</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="role-badge">产品经理/项目经理</span></td>
+                <td class="text-center num-highlight">1</td>
+                <td>负责需求分析、进度把控、跨团队协调及质量管理。</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">UI/UX 设计师</span></td>
+                <td class="text-center num-highlight">2</td>
+                <td>负责视觉设计、交互设计、设计系统建立与标注输出。</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">前端开发工程师</span></td>
+                <td class="text-center num-highlight">2</td>
+                <td>负责 PC 与移动端响应式研发、高德地图交互深度定制。</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">后端开发工程师</span></td>
+                <td class="text-center num-highlight">2</td>
+                <td>负责核心业务接口研发、数据库设计与性能调优。</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">测试工程师</span></td>
+                <td class="text-center num-highlight">1</td>
+                <td>负责功能闭环测试、并发压力测试与多端兼容适配。</td>
+              </tr>
+              <tr>
+                <td><span class="role-badge">运维安全工程师</span></td>
+                <td class="text-center num-highlight">1</td>
+                <td>负责阿里云环境部署、安全防护与自动化发布。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE -->
+    <section class="section" id="schedule">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">DEVELOPMENT SCHEDULE</span>
+          <h2 class="section-title">开发排期</h2>
+        </header>
+        <div class="schedule-list reveal">
+
+          <div class="schedule-item">
+            <div class="schedule-meta">
+              <span class="schedule-phase">Phase 01</span>
+              <div class="schedule-info">
+                <strong>规划与设计阶段 (W1-W5)</strong>
+                <span class="schedule-dur">5 周</span>
+              </div>
+            </div>
+            <div class="schedule-bar-wrap">
+              <div class="schedule-bar" style="--w: 20%;"></div>
+            </div>
+            <div class="schedule-tasks">
+              <span>需求分析与原型设计</span>
+              <span>UI 视觉设计确认</span>
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-meta">
+              <span class="schedule-phase">Phase 02</span>
+              <div class="schedule-info">
+                <strong>前端开发阶段 (W6-W11)</strong>
+                <span class="schedule-dur">6 周</span>
+              </div>
+            </div>
+            <div class="schedule-bar-wrap">
+              <div class="schedule-bar" style="--w: 44%;"></div>
+            </div>
+            <div class="schedule-tasks">
+              <span>多端适配与响应式开发</span>
+              <span>地图交互与大图动效</span>
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-meta">
+              <span class="schedule-phase">Phase 03</span>
+              <div class="schedule-info">
+                <strong>后端服务研发 (W12-W18)</strong>
+                <span class="schedule-dur">7 周</span>
+              </div>
+            </div>
+            <div class="schedule-bar-wrap">
+              <div class="schedule-bar" style="--w: 72%;"></div>
+            </div>
+            <div class="schedule-tasks">
+              <span>数据库结构设计</span>
+              <span>API 编写与接口联调</span>
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-meta">
+              <span class="schedule-phase">Phase 04</span>
+              <div class="schedule-info">
+                <strong>系统集成测试 (W19-W22)</strong>
+                <span class="schedule-dur">4 周</span>
+              </div>
+            </div>
+            <div class="schedule-bar-wrap">
+              <div class="schedule-bar" style="--w: 88%;"></div>
+            </div>
+            <div class="schedule-tasks">
+              <span>业务逻辑前后端对接</span>
+              <span>并发压力测试与修复</span>
+            </div>
+          </div>
+
+          <div class="schedule-item">
+            <div class="schedule-meta">
+              <span class="schedule-phase">Phase 05</span>
+              <div class="schedule-info">
+                <strong>部署与上线准备 (W23-W25)</strong>
+                <span class="schedule-dur">3 周</span>
+              </div>
+            </div>
+            <div class="schedule-bar-wrap">
+              <div class="schedule-bar" style="--w: 100%;"></div>
+            </div>
+            <div class="schedule-tasks">
+              <span>云环境迁移与灰度发布</span>
+              <span>操作培训与日常运维移交</span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="schedule-summary reveal">
+          <div class="sum-item">
+            <span class="sum-label">项目周期</span>
+            <span class="sum-val">25 周</span>
+          </div>
+          <div class="sum-item">
+            <span class="sum-label">总开发工时</span>
+            <span class="sum-val">2470 工时</span>
+          </div>
+          <div class="sum-item">
+            <span class="sum-label">项目人数</span>
+            <span class="sum-val">9 人</span>
+          </div>
+          <div class="sum-item">
+            <span class="sum-label">交付成果</span>
+            <span class="sum-val">9 项</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section section-alt" id="pricing">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">PRICING BREAKDOWN</span>
+          <h2 class="section-title">报价明细</h2>
+        </header>
+
+        <p class="section-sub" style="margin-bottom:2rem;">勾选功能模块或切换预设方案，右侧总价实时更新。金额为估算中位数，最终以确认需求后的详细清单为准。</p>
+
+        <!-- CONFIGURATOR -->
+        <div class="configurator reveal">
+          <div class="config-top">
+            <div class="preset-group">
+              <button class="preset-btn" data-preset="lite">精简启动版</button>
+              <button class="preset-btn active" data-preset="full">正式运营版（推荐）</button>
+              <button class="preset-btn" data-preset="flag">旗舰对标版</button>
+            </div>
+            <div class="config-unit">单位：人民币 万元</div>
+          </div>
+
+          <div class="config-body">
+            <div class="config-modules">
+              <div class="config-group-title">A · 产品开发</div>
+              <div class="config-row checked" data-id="home" data-price="12"><div class="toggle"></div><div class="rlabel">首页 & 导航系统<small>品牌视觉、商圈导航、精选展示</small></div><div class="rprice">12万</div></div>
+              <div class="config-row checked" data-id="search" data-price="16"><div class="toggle"></div><div class="rlabel">房源搜索与筛选<small>多维交叉筛选、地图找房、POI</small></div><div class="rprice">16万</div></div>
+              <div class="config-row checked" data-id="detail" data-price="12"><div class="toggle"></div><div class="rlabel">房源详情页<small>图片轮播、地图集成、在线预约</small></div><div class="rprice">12万</div></div>
+              <div class="config-row checked" data-id="coworking" data-price="10"><div class="toggle"></div><div class="rlabel">共享办公专区<small>联合办公、工位计价、品牌展示</small></div><div class="rprice">10万</div></div>
+              <div class="config-row checked" data-id="content" data-price="9"><div class="toggle"></div><div class="rlabel">资讯 + 找房指南<small>富文本、SEO、内链优化</small></div><div class="rprice">9万</div></div>
+              <div class="config-row checked" data-id="crm" data-price="10"><div class="toggle"></div><div class="rlabel">委托找房 + 线索 CRM<small>需求表单、顾问分配、跟进管理</small></div><div class="rprice">10万</div></div>
+              <div class="config-row checked" data-id="biz" data-price="11"><div class="toggle"></div><div class="rlabel">房源投放（B端）<small>房源管理、付费推广、数据统计</small></div><div class="rprice">11万</div></div>
+              <div class="config-row checked" data-id="user" data-price="7"><div class="toggle"></div><div class="rlabel">用户系统<small>微信授权、个人中心、消息通知</small></div><div class="rprice">7万</div></div>
+              <div class="config-row checked" data-id="cms" data-price="15"><div class="toggle"></div><div class="rlabel">后台管理系统（CMS）<small>权限管理、数据看板、SEO 配置</small></div><div class="rprice">15万</div></div>
+              <div class="config-row checked" data-id="qa" data-price="12"><div class="toggle"></div><div class="rlabel">测试 / 部署 / 运维<small>功能测试、压测、上线加固</small></div><div class="rprice">12万</div></div>
+              <div class="config-row" data-id="mini" data-price="16"><div class="toggle"></div><div class="rlabel">微信小程序（可选）<small>复用后端的小程序端</small></div><div class="rprice">16万</div></div>
+
+              <div class="config-group-title">B · 设计与内容</div>
+              <div class="config-row checked" data-id="ui" data-price="18"><div class="toggle"></div><div class="rlabel">UI / UX 设计系统<small>原型、视觉设计、组件库</small></div><div class="rprice">18万</div></div>
+              <div class="config-row checked" data-id="brand" data-price="6"><div class="toggle"></div><div class="rlabel">品牌视觉方向<small>Art direction、设计语言</small></div><div class="rprice">6万</div></div>
+              <div class="config-row checked" data-id="pm" data-price="8"><div class="toggle"></div><div class="rlabel">项目管理<small>进度、风险、里程碑交付</small></div><div class="rprice">8万</div></div>
+
+              <div class="config-group-title">C · 年度运营（首年）</div>
+              <div class="config-row checked" data-id="infra" data-price="7.8" data-group="ops"><div class="toggle"></div><div class="rlabel">阿里云基础设施<small>ECS/RDS/Redis/ES/OSS/CDN/SSL</small></div><div class="rprice">7.8万</div></div>
+              <div class="config-row checked" data-id="api" data-price="2.13" data-group="ops"><div class="toggle"></div><div class="rlabel">第三方 API<small>高德地图、短信、微信认证</small></div><div class="rprice">2.13万</div></div>
+              <div class="config-row" data-id="maint" data-price="18" data-group="ops"><div class="toggle"></div><div class="rlabel">年度维保包（可选）<small>首年免费，次年起适用</small></div><div class="rprice">18万</div></div>
+            </div>
+
+            <div class="config-summary">
+              <div class="csum-block">
+                <div class="csum-label">一次性开发投入</div>
+                <div class="csum-value"><span class="cs-cny">¥</span><span id="cf-build">0</span><small>万元</small></div>
+                <div class="csum-note">含产品开发（A）与设计管理（B），含税 13%。</div>
+              </div>
+              <div class="csum-block">
+                <div class="csum-label">首年运营投入</div>
+                <div class="csum-value"><span class="cs-cny">¥</span><span id="cf-ops">0</span><small>万元 / 年</small></div>
+                <div class="csum-note">基础设施与第三方 API，按量部分以实际发生为准。</div>
+              </div>
+              <div class="csum-block">
+                <div class="csum-label">首年项目总计</div>
+                <div class="csum-value"><span class="cs-cny">¥</span><span id="cf-total">0</span><small>万元</small></div>
+                <div class="csum-note" id="cf-count">已选 — 项模块</div>
+              </div>
+              <button class="csum-cta" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">查看付款方式 →</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- OPS -->
+    <section class="section" id="ops">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">OPERATIONS & MAINTENANCE</span>
+          <h2 class="section-title">运维保障方案</h2>
+        </header>
+        <div class="ops-grid">
+
+          <div class="ops-card reveal">
+            <div class="ops-card-top">
+              <h3>标准运维服务</h3>
+              <span class="ops-badge ops-free">首年免费</span>
+            </div>
+            <ul class="ops-items">
+              <li>7×24 小时系统监控告警</li>
+              <li>每月安全漏洞扫描与修复</li>
+              <li>每季度性能优化报告</li>
+              <li>数据库每日自动备份（保留30天）</li>
+              <li>重大故障 4 小时内响应，24 小时内恢复</li>
+            </ul>
+          </div>
+
+          <div class="ops-card reveal">
+            <div class="ops-card-top">
+              <h3>月度维保包</h3>
+              <span class="ops-price">¥ 20,000 / 月</span>
+            </div>
+            <ul class="ops-items">
+              <li>40 小时开发工时（需求迭代/功能优化）</li>
+              <li>全量运维服务覆盖</li>
+              <li>每月数据分析报告</li>
+              <li>优先响应通道（2小时内）</li>
+              <li>专属技术顾问支持</li>
+            </ul>
+          </div>
+
+          <div class="ops-card reveal">
+            <div class="ops-card-top">
+              <h3>季度维保包</h3>
+              <span class="ops-price">¥ 55,000 / 季</span>
+            </div>
+            <ul class="ops-items">
+              <li>120 小时开发工时（享9折优惠）</li>
+              <li>全量运维服务覆盖</li>
+              <li>季度产品迭代规划</li>
+              <li>优先响应通道（2小时内）</li>
+              <li>专属技术顾问支持</li>
+            </ul>
+          </div>
+
+          <div class="ops-card reveal">
+            <div class="ops-card-top">
+              <h3>按需迭代</h3>
+              <span class="ops-price">¥ 800–1,200 / 小时</span>
+            </div>
+            <ul class="ops-items">
+              <li>按实际工时计费，灵活弹性</li>
+              <li>需求变更单制度，透明计费</li>
+              <li>超出10%工作量额外计费</li>
+              <li>工时报告月度汇总</li>
+              <li>适合低频迭代场景</li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="risk-section reveal">
+          <h3 class="risk-title">风险说明与应对措施</h3>
+          <div class="table-wrap">
+            <table class="risk-table">
+              <thead>
+                <tr>
+                  <th>风险类型</th>
+                  <th>描述</th>
+                  <th>应对措施</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="risk-tag risk-m">需求变更</span></td>
+                  <td>开发过程中需求调整影响工期</td>
+                  <td>变更需求单制度，超出10%工作量额外计费，变更需双方确认</td>
+                </tr>
+                <tr>
+                  <td><span class="risk-tag risk-l">第三方API</span></td>
+                  <td>地图API调用限制或服务变更</td>
+                  <td>预留腾讯地图备用方案，申请商业授权，监控API配额</td>
+                </tr>
+                <tr>
+                  <td><span class="risk-tag risk-h">数据安全</span></td>
+                  <td>用户数据泄露或隐私合规风险</td>
+                  <td>HTTPS全站加密、数据脱敏、定期安全审计、符合等保2.0</td>
+                </tr>
+                <tr>
+                  <td><span class="risk-tag risk-m">进度延误</span></td>
+                  <td>关键节点延误影响上线计划</td>
+                  <td>每周进度汇报，里程碑节点验收，预留10%缓冲工时</td>
+                </tr>
+                <tr>
+                  <td><span class="risk-tag risk-l">性能瓶颈</span></td>
+                  <td>高并发场景下系统性能问题</td>
+                  <td>压力测试（目标1000并发），弹性扩容预案，CDN加速</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERY -->
+    <section class="section section-alt" id="delivery">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">DELIVERABLES</span>
+          <h2 class="section-title">交付物清单</h2>
+        </header>
+        <div class="delivery-grid">
+          <div class="delivery-item reveal">
+            <span class="d-num">01</span>
+            <div>
+              <h4>产品需求文档（PRD）</h4>
+              <p>完整功能需求说明、用户故事、业务流程图</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">02</span>
+            <div>
+              <h4>UI 设计稿</h4>
+              <p>Figma 源文件 + 设计规范文档 + 标注输出</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">03</span>
+            <div>
+              <h4>前端源代码</h4>
+              <p>含移动端适配、组件库、代码注释</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">04</span>
+            <div>
+              <h4>后端源代码</h4>
+              <p>含 API 接口文档（Swagger）、数据库脚本</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">05</span>
+            <div>
+              <h4>后台管理系统</h4>
+              <p>含权限管理、数据看板、操作手册</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">06</span>
+            <div>
+              <h4>数据库设计文档</h4>
+              <p>ER图、表结构说明、索引设计</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">07</span>
+            <div>
+              <h4>部署文档 + 运维手册</h4>
+              <p>服务器配置、CI/CD流程、监控告警说明</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">08</span>
+            <div>
+              <h4>测试报告</h4>
+              <p>功能测试用例、性能测试报告、安全测试报告</p>
+            </div>
+          </div>
+          <div class="delivery-item reveal">
+            <span class="d-num">09</span>
+            <div>
+              <h4>用户操作手册</h4>
+              <p>C端用户手册、B端房东手册、后台管理员手册</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PAYMENT -->
+    <section class="section" id="payment">
+      <div class="section-wrap">
+        <header class="section-head">
+          <span class="section-tag">PAYMENT SCHEDULE</span>
+          <h2 class="section-title">付款方式</h2>
+        </header>
+        <div class="table-wrap reveal">
+          <table class="payment-table">
+            <thead>
+              <tr>
+                <th>付款阶段</th>
+                <th class="text-right">比例</th>
+                <th class="text-right">金额（元）</th>
+                <th>触发条件</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>合同签订款</td>
+                <td class="text-right">30%</td>
+                <td class="text-right num-highlight">438,000</td>
+                <td>合同生效后 3 个工作日内</td>
+              </tr>
+              <tr>
+                <td>设计确认款</td>
+                <td class="text-right">20%</td>
+                <td class="text-right num-highlight">292,000</td>
+                <td>UI 设计稿验收通过</td>
+              </tr>
+              <tr>
+                <td>开发完成款</td>
+                <td class="text-right">30%</td>
+                <td class="text-right num-highlight">438,000</td>
+                <td>功能开发完成，测试通过</td>
+              </tr>
+              <tr>
+                <td>正式上线款</td>
+                <td class="text-right">15%</td>
+                <td class="text-right num-highlight">219,000</td>
+                <td>网站正式上线验收通过</td>
+              </tr>
+              <tr>
+                <td>质保期满款</td>
+                <td class="text-right">5%</td>
+                <td class="text-right num-highlight">73,000</td>
+                <td>上线后 3 个月质保期满</td>
+              </tr>
+              <tr class="total-row">
+                <td><strong>合计</strong></td>
+                <td class="text-right"><strong>100%</strong></td>
+                <td class="text-right num-highlight"><strong>1,460,000</strong></td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="payment-note">基础设施费及第三方服务费按实际发生额另行结算。报价有效期 90 天，逾期需重新确认。</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-block reveal">
+          <div class="cta-left">
+            <p class="cta-eyebrow">READY TO BUILD</p>
+            <h2 class="cta-title">从今天开始，<br>构建您的商办选址平台</h2>
+            <p class="cta-sub">报价有效期至 2026 年 10 月 08 日</p>
+          </div>
+          <div class="cta-right">
+            <div class="cta-contact-item">
+              <span class="cta-contact-label">项目咨询</span>
+              <span class="cta-contact-val">400-XXX-XXXX</span>
+            </div>
+            <div class="cta-contact-item">
+              <span class="cta-contact-label">邮件联系</span>
+              <span class="cta-contact-val">bd@yourcompany.com</span>
+            </div>
+            <div class="cta-contact-item">
+              <span class="cta-contact-label">工作时间</span>
+              <span class="cta-contact-val">周一至周五 09:00–18:00</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-inner">
+        <div class="footer-l">
+          <span class="footer-mark">SL</span>
+          <span class="footer-text">商办写字楼租赁平台开发报价方案</span>
+        </div>
+        <div class="footer-r">
+          <span>本报价方案仅供参考，最终以合同为准</span>
+          <span>© 2026 保密文件，请勿外传</span>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+// Design Contract: Swiss International Typographic Style × Architectural Blueprint
+// Interactions: scroll-spy, count-up, reveal, schedule bars, pricing configurator
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ===== SCROLL SPY =====
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = document.querySelectorAll('section[id]');
+
+  const spyObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href') === `#${id}`) {
+            item.classList.add('active');
+          }
+        });
+      }
+    });
+  }, { rootMargin: '-15% 0px -75% 0px' });
+
+  sections.forEach(s => spyObserver.observe(s));
+
+  // ===== SMOOTH SCROLL =====
+  navItems.forEach(item => {
+    item.addEventListener('click', e => {
+      e.preventDefault();
+      const id = item.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // ===== REVEAL ON SCROLL =====
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        // Stagger siblings
+        const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+        const idx = siblings.indexOf(entry.target);
+        const delay = Math.min(idx * 70, 350);
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -50px 0px' });
+
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ===== COUNT-UP =====
+  function countUp(el, target, duration = 1000) {
+    const start = performance.now();
+    function tick(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const ease = 1 - Math.pow(1 - t, 3);
+      el.textContent = Math.round(ease * target).toLocaleString('zh-CN');
+      if (t < 1) requestAnimationFrame(tick);
+      else el.textContent = target.toLocaleString('zh-CN');
+    }
+    requestAnimationFrame(tick);
+  }
+
+  const countEls = document.querySelectorAll('[data-target]');
+  const countObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target, parseInt(entry.target.dataset.target));
+        countObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  countEls.forEach(el => countObserver.observe(el));
+
+  // ===== SCHEDULE BARS =====
+  const bars = document.querySelectorAll('.schedule-bar');
+  const barObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const bar = entry.target;
+        const w = getComputedStyle(bar).getPropertyValue('--w').trim();
+        bar.style.width = '0%';
+        requestAnimationFrame(() => {
+          setTimeout(() => { bar.style.width = w; }, 100);
+        });
+        barObserver.unobserve(bar);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  bars.forEach(b => barObserver.observe(b));
+
+  // ===== CONFIGURATOR =====
+  const cfgRows = document.querySelectorAll('.config-row[data-id]');
+  const cfgPresetBtns = document.querySelectorAll('.preset-btn');
+
+  const cfgPresets = {
+    lite: ['home','search','detail','content','user','cms','qa','ui','pm'],
+    full: ['home','search','detail','coworking','content','crm','biz','user','cms','qa','ui','brand','pm'],
+    flag: ['home','search','detail','coworking','content','crm','biz','user','cms','qa','mini','ui','brand','pm']
+  };
+  const cfgPresetOps = {
+    lite: ['infra','api'],
+    full: ['infra','api'],
+    flag: ['infra','api','maint']
+  };
+
+  function cfgSetChecked(id, on) {
+    const row = document.querySelector('.config-row[data-id="' + id + '"]');
+    if (row) row.classList.toggle('checked', on);
+  }
+
+  function cfgApplyPreset(name) {
+    const buildIds = ['home','search','detail','coworking','content','crm','biz','user','cms','qa','mini','ui','brand','pm'];
+    buildIds.forEach(id => cfgSetChecked(id, cfgPresets[name].includes(id)));
+    ['infra','api','maint'].forEach(id => cfgSetChecked(id, cfgPresetOps[name].includes(id)));
+    cfgPresetBtns.forEach(b => b.classList.toggle('active', b.dataset.preset === name));
+    cfgRecalc();
+  }
+
+  function cfgFmt(n) {
+    return Number.isInteger(n) ? n.toString() : n.toFixed(2);
+  }
+
+  function cfgRecalc() {
+    let build = 0, ops = 0, count = 0;
+    cfgRows.forEach(row => {
+      if (row.classList.contains('checked')) {
+        const price = parseFloat(row.dataset.price);
+        if (row.dataset.group === 'ops') ops += price; else build += price;
+        count++;
+      }
+    });
+    const buildEl = document.getElementById('cf-build');
+    const opsEl = document.getElementById('cf-ops');
+    const totalEl = document.getElementById('cf-total');
+    const countEl = document.getElementById('cf-count');
+    if (buildEl) buildEl.textContent = cfgFmt(build);
+    if (opsEl) opsEl.textContent = cfgFmt(ops);
+    if (totalEl) totalEl.textContent = cfgFmt(Math.round((build + ops) * 100) / 100);
+    if (countEl) countEl.textContent = '已选 ' + count + ' 项模块';
+  }
+
+  cfgRows.forEach(row => {
+    row.addEventListener('click', () => {
+      row.classList.toggle('checked');
+      cfgPresetBtns.forEach(b => b.classList.remove('active'));
+      cfgRecalc();
+    });
+  });
+
+  cfgPresetBtns.forEach(btn => {
+    btn.addEventListener('click', e => { e.stopPropagation(); cfgApplyPreset(btn.dataset.preset); });
+  });
+
+  if (cfgRows.length) cfgApplyPreset('full');
+
+});
+
+</script>
+</body>
+</html>

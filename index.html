@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>网站开发报价方案 · 方案导航</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--night:#0F1923;--blue:#2E7DD1;--gold:#C8A96E;--paper:#F0F2F5;--ink:#1A2332;--mid:#8A9BB0;--white:#fff}
+    html{scroll-behavior:smooth}
+    body{background:var(--night);color:var(--white);font-family:'Inter','Noto Sans SC',sans-serif;min-height:100vh;
+      display:flex;flex-direction:column;justify-content:center;align-items:center;padding:4rem 1.5rem;position:relative;overflow-x:hidden}
+    .grid-bg{position:fixed;inset:0;background-image:linear-gradient(rgba(46,125,209,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(46,125,209,.05) 1px,transparent 1px);background-size:48px 48px;pointer-events:none}
+    .wrap{position:relative;z-index:1;max-width:1000px;width:100%}
+    .eyebrow{font-size:10px;letter-spacing:.25em;text-transform:uppercase;color:var(--blue);margin-bottom:1.25rem}
+    h1{font-family:'Playfair Display','Noto Serif SC',serif;font-weight:400;font-size:clamp(2rem,4vw,3.25rem);
+      line-height:1.15;letter-spacing:-.02em;margin-bottom:1rem}
+    h1 em{font-style:italic;color:var(--blue)}
+    .lede{color:rgba(255,255,255,.55);font-size:15px;max-width:560px;line-height:1.7;margin-bottom:3.5rem}
+    .cards{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+    @media(max-width:720px){.cards{grid-template-columns:1fr}}
+    .card{display:block;text-decoration:none;color:inherit;background:rgba(255,255,255,.02);
+      border:1px solid rgba(255,255,255,.1);padding:2rem;transition:all .2s ease;position:relative;overflow:hidden}
+    .card::before{content:"";position:absolute;top:0;left:0;width:3px;height:100%;background:var(--accent,var(--blue));transform:scaleY(0);transform-origin:top;transition:transform .25s ease}
+    .card:hover{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.2);transform:translateY(-3px)}
+    .card:hover::before{transform:scaleY(1)}
+    .card.gold{--accent:var(--gold)}
+    .card-tag{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--accent,var(--blue));margin-bottom:.75rem}
+    .card h2{font-family:'Noto Serif SC',serif;font-size:1.15rem;font-weight:700;margin-bottom:.4rem}
+    .card .site{font-family:'Inter',monospace;font-size:11px;color:var(--mid);margin-bottom:1.5rem}
+    .kpis{display:flex;gap:1.5rem;border-top:1px solid rgba(255,255,255,.08);padding-top:1.25rem}
+    .kpi .n{font-family:'Playfair Display',serif;font-size:1.5rem;line-height:1;color:var(--white)}
+    .kpi .n em{font-style:normal;color:var(--accent,var(--blue));font-size:.9rem}
+    .kpi .l{font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--mid);margin-top:.35rem}
+    .go{margin-top:1.5rem;font-size:12px;letter-spacing:.05em;color:var(--accent,var(--blue))}
+    footer{position:relative;z-index:1;margin-top:4rem;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.05em;text-align:center}
+  </style>
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <div class="wrap">
+    <p class="eyebrow">PROPOSAL INDEX · 2026</p>
+    <h1>网站开发<em>报价方案</em></h1>
+    <p class="lede">两套面向商办写字楼租赁平台的定制开发方案，共用同一套设计系统，仅在配色与内容上有所区别。选择下方任一方案查看完整报价。</p>
+    <div class="cards">
+      <a class="card" href="chooffice.html">
+        <p class="card-tag">Blueprint · 蓝色主题</p>
+        <h2>上海找办公室平台</h2>
+        <p class="site">chooffice.com</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">1,950<em> 工时</em></div><div class="l">总开发工时</div></div>
+          <div class="kpi"><div class="n">20<em> 周</em></div><div class="l">项目周期</div></div>
+          <div class="kpi"><div class="n">¥107<em> 万</em></div><div class="l">开发总报价</div></div>
+        </div>
+        <p class="go">查看方案 →</p>
+      </a>
+      <a class="card gold" href="soolou.html">
+        <p class="card-tag">Editorial · 金色主题</p>
+        <h2>商办写字楼租赁平台</h2>
+        <p class="site">soolou.com</p>
+        <div class="kpis">
+          <div class="kpi"><div class="n">2,470<em> 工时</em></div><div class="l">总开发工时</div></div>
+          <div class="kpi"><div class="n">25<em> 周</em></div><div class="l">项目周期</div></div>
+          <div class="kpi"><div class="n">¥146<em> 万</em></div><div class="l">开发总报价</div></div>
+        </div>
+        <p class="go">查看方案 →</p>
+      </a>
+    </div>
+  </div>
+  <footer>本报价方案仅供参考，最终以合同为准 · © 2026 保密文件，请勿外传</footer>
+</body>
+</html>

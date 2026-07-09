@@ -1,0 +1,11 @@
+# OS
+.DS_Store
+
+# Editor / tooling
+.claude/
+.vercel/
+
+# Backups & superseded drafts (kept locally, not published)
+*.bak
+chooffice-建设报价方案-claude.html
+上海找办公室平台_—_网站开发报价方案.html
