@@ -399,7 +399,6 @@ body {
 .ref-card {
   background: var(--white);
   border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
 }
 
 .ref-card-title {
