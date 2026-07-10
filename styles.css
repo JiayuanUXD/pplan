@@ -280,6 +280,7 @@ body {
   flex: 1;
   padding: 0 2rem;
   position: relative;
+  white-space: nowrap;
 }
 
 .kpi-divider {
