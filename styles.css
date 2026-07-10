@@ -397,31 +397,10 @@ body {
 }
 
 .ref-card {
-  padding: 1.5rem;
   background: var(--white);
   border: 1px solid var(--border);
-  border-left: 3px solid transparent;
-  transition: border-left-color 0.2s;
+  border-left: 3px solid var(--accent);
 }
-
-.ref-card:hover { border-left-color: var(--mid); }
-
-.ref-card-accent {
-  border-left-color: var(--accent);
-  background: linear-gradient(135deg, var(--tint) 0%, var(--white) 100%);
-}
-
-.ref-card-accent:hover { border-left-color: var(--accent); }
-
-.ref-card-tag {
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mid);
-  margin-bottom: 0.4rem;
-}
-
-.ref-card-accent .ref-card-tag { color: var(--accent); }
 
 .ref-card-title {
   font-family: 'Playfair Display', serif;
@@ -460,11 +439,10 @@ body {
   font-size: 10px;
 }
 
-/* 参考对标 Tab 切换 */
+/* 参考对标 Tab 切换（内嵌卡片） */
 .ref-tabs {
   display: flex;
   border-bottom: 1px solid var(--border);
-  margin-bottom: 1rem;
 }
 
 .ref-tab {
@@ -496,9 +474,11 @@ body {
   outline-offset: 2px;
 }
 
-.ref-card[hidden] { display: none; }
+.ref-panel { padding: 1.5rem; }
 
-.ref-card[role="tabpanel"] { animation: refFade 0.25s ease; }
+.ref-panel[hidden] { display: none; }
+
+.ref-panel { animation: refFade 0.25s ease; }
 
 @keyframes refFade {
   from { opacity: 0; transform: translateY(4px); }
@@ -506,7 +486,7 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ref-card[role="tabpanel"] { animation: none; }
+  .ref-panel { animation: none; }
 }
 
 /* ===== MODULES ===== */
