@@ -171,6 +171,46 @@ body {
   letter-spacing: 0.03em;
 }
 
+/* 跨方案跳转入口 */
+.sidebar-switch {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(var(--accent-rgb),0.2);
+}
+.switch-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.6rem;
+}
+.switch-link {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid rgba(var(--accent-rgb),0.25);
+  border-radius: 6px;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.switch-link:hover {
+  border-color: rgba(var(--accent-rgb),0.6);
+  background: rgba(var(--accent-rgb),0.08);
+}
+.switch-arrow {
+  font-size: 1rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+.switch-text { display: flex; flex-direction: column; line-height: 1.35; }
+.switch-name { font-size: 12.5px; color: rgba(255,255,255,0.85); }
+.switch-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.02em;
+}
+
 /* ===== MAIN ===== */
 .main {
   margin-left: var(--sidebar-w);
