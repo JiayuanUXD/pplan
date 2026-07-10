@@ -610,8 +610,8 @@
         <div class="configurator reveal">
           <div class="config-top">
             <div class="preset-group">
-              <button class="preset-btn" data-preset="lite">精简启动版</button>
-              <button class="preset-btn active" data-preset="full">正式运营版（推荐）</button>
+              <button class="preset-btn active" data-preset="lite">精简启动版（推荐）</button>
+              <button class="preset-btn" data-preset="full">正式运营版</button>
               <button class="preset-btn" data-preset="flag">旗舰对标版</button>
             </div>
             <div class="config-unit">单位：人民币 万元</div>
@@ -646,7 +646,7 @@
               <div class="csum-block">
                 <div class="csum-label">一次性开发投入</div>
                 <div class="csum-value"><span class="cs-cny">¥</span><span id="cf-build">0</span><small>万元</small></div>
-                <div class="csum-note">含产品开发（A）与设计管理（B），含税 13%。</div>
+                <div class="csum-note">含产品开发（A）与设计管理（B）。上方为价税合计，已含 13% 增值税专用发票。</div>
               </div>
               <div class="csum-block">
                 <div class="csum-label">首年运营投入</div>
@@ -661,6 +661,60 @@
               <button class="csum-cta" onclick="document.getElementById('payment').scrollIntoView({behavior:'smooth'})">查看付款方式 →</button>
             </div>
           </div>
+        </div>
+
+        <!-- 3年 TCO -->
+        <div class="tco-block reveal">
+          <h3 class="section-sub" style="color:var(--ink);font-size:1.05rem;margin-bottom:0.5rem;">三年总持有成本（TCO）</h3>
+          <p class="tco-intro">除一次性开发外，平台每年还有云资源、第三方 API 与维保投入。下表以「正式运营版 107 万」为基准，帮助您预判三年内的整体预算（单位：万元）。</p>
+          <div class="table-wrap">
+            <table class="tco-table">
+              <thead>
+                <tr><th>成本项</th><th class="text-right">首年</th><th class="text-right">次年</th><th class="text-right">第三年</th><th class="text-right">三年累计</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>一次性开发（价税合计）</td><td class="text-right">107.00</td><td class="text-right">—</td><td class="text-right">—</td><td class="text-right">107.00</td></tr>
+                <tr><td>云基础设施 + 第三方 API</td><td class="text-right">8.28</td><td class="text-right">8.28</td><td class="text-right">8.28</td><td class="text-right">24.84</td></tr>
+                <tr><td>年度维保包（首年免费，次年起）</td><td class="text-right">0.00</td><td class="text-right">14.00</td><td class="text-right">14.00</td><td class="text-right">28.00</td></tr>
+                <tr class="tco-total"><td>年度合计</td><td class="text-right">115.28</td><td class="text-right">22.28</td><td class="text-right">22.28</td><td class="text-right">—</td></tr>
+                <tr class="tco-cum"><td>三年累计投入</td><td class="text-right">—</td><td class="text-right">—</td><td class="text-right">—</td><td class="text-right">159.84</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="payment-note">维保为可选项，也可按「月度维保包 ¥1.5 万/月」或「按需迭代 ¥800–1,200/小时」灵活替代。云与 API 按量部分以实际发生为准。</p>
+        </div>
+
+        <!-- ROI 回本测算 -->
+        <div class="roi-block reveal" data-roi>
+          <div class="roi-head">
+            <h3>投资回报测算</h3>
+            <p>平台的价值在于持续获客与成交。填入您自己的经营假设，估算大致回本周期。开发投入自动取上方配置器所选金额。</p>
+          </div>
+          <div class="roi-body">
+            <div class="roi-inputs">
+              <div class="roi-field">
+                <label>平台每月新增有效线索（条）</label>
+                <input type="number" id="roi-leads" value="50" min="0" step="5">
+                <span class="roi-hint">搜索、委托表单、电话咨询等渠道合计</span>
+              </div>
+              <div class="roi-field">
+                <label>线索到成交转化率（%）</label>
+                <input type="number" id="roi-conv" value="8" min="0" max="100" step="1">
+                <span class="roi-hint">中介行业常见 5%–12%</span>
+              </div>
+              <div class="roi-field">
+                <label>单笔成交平均佣金（万元）</label>
+                <input type="number" id="roi-fee" value="2" min="0" step="0.5">
+                <span class="roi-hint">按租赁成交的居间佣金估算</span>
+              </div>
+            </div>
+            <div class="roi-out">
+              <div class="roi-metric"><div class="roi-mlabel">预计月成交</div><div class="roi-mval"><span id="roi-deals">0</span><span class="roi-unit">单 / 月</span></div></div>
+              <div class="roi-metric"><div class="roi-mlabel">预计月佣金收入</div><div class="roi-mval"><span class="cs-cny" style="color:var(--accent)">¥</span><span id="roi-rev">0</span><span class="roi-unit">万 / 月</span></div></div>
+              <div class="roi-metric roi-hero"><div class="roi-mlabel">开发投入回本周期</div><div class="roi-mval"><span id="roi-payback">0</span><span class="roi-unit">个月</span></div></div>
+            </div>
+          </div>
+          <p class="roi-note">测算为估算，仅含开发投入回本，未计入云/维保等运营成本与获客成本；实际以经营情况为准。默认假设仅供参考，请按贵司真实数据调整。</p>
         </div>
 
       </div>
@@ -808,15 +862,15 @@
               <tr><th>付款阶段</th><th class="text-right">比例</th><th class="text-right">金额（元）</th><th>触发条件</th></tr>
             </thead>
             <tbody>
-              <tr><td>合同签订款</td><td class="text-right">30%</td><td class="text-right num-highlight">321,000</td><td>合同生效后 3 个工作日内</td></tr>
-              <tr><td>设计确认款</td><td class="text-right">20%</td><td class="text-right num-highlight">214,000</td><td>UI 设计稿验收通过</td></tr>
-              <tr><td>开发完成款</td><td class="text-right">30%</td><td class="text-right num-highlight">321,000</td><td>功能开发完成，测试通过</td></tr>
-              <tr><td>正式上线款</td><td class="text-right">15%</td><td class="text-right num-highlight">160,500</td><td>网站正式上线验收通过</td></tr>
-              <tr><td>质保期满款</td><td class="text-right">5%</td><td class="text-right num-highlight">53,500</td><td>上线后 3 个月质保期满</td></tr>
-              <tr class="total-row"><td><strong>合计</strong></td><td class="text-right"><strong>100%</strong></td><td class="text-right num-highlight"><strong>1,070,000</strong></td><td>—</td></tr>
+              <tr><td>合同签订款</td><td class="text-right">30%</td><td class="text-right num-highlight" data-pay-pct="30">321,000</td><td>合同生效后 3 个工作日内</td></tr>
+              <tr><td>设计确认款</td><td class="text-right">20%</td><td class="text-right num-highlight" data-pay-pct="20">214,000</td><td>UI 设计稿验收通过</td></tr>
+              <tr><td>开发完成款</td><td class="text-right">30%</td><td class="text-right num-highlight" data-pay-pct="30">321,000</td><td>功能开发完成，测试通过</td></tr>
+              <tr><td>正式上线款</td><td class="text-right">15%</td><td class="text-right num-highlight" data-pay-pct="15">160,500</td><td>网站正式上线验收通过</td></tr>
+              <tr><td>质保期满款</td><td class="text-right">5%</td><td class="text-right num-highlight" data-pay-pct="5">53,500</td><td>上线后 3 个月质保期满</td></tr>
+              <tr class="total-row"><td><strong>合计</strong></td><td class="text-right"><strong>100%</strong></td><td class="text-right num-highlight"><strong id="pay-total">1,070,000</strong></td><td>—</td></tr>
             </tbody>
           </table>
-          <p class="payment-note">基础设施费及第三方服务费按实际发生额另行结算。本报价有效期 90 天，逾期需重新确认。</p>
+          <p class="payment-note">上表金额为价税合计，随「报价明细」所选方案实时联动（当前 <strong id="pay-build-label">正式运营版 107 万</strong>：税前 <span id="pay-pretax">94.69</span> 万 + 13% 增值税 <span id="pay-vat">12.31</span> 万）。基础设施费及第三方服务费按实际发生额另行结算。本报价有效期 90 天，逾期需重新确认。</p>
         </div>
 
         <!-- CTA -->
@@ -961,6 +1015,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ===== CONFIGURATOR =====
   const cfgRows = document.querySelectorAll('.config-row[data-id]');
   const cfgPresetBtns = document.querySelectorAll('.preset-btn');
+  let cfgBuildValue = 0;
 
   const cfgPresets = {
     lite: ['home','search','detail','content','user','cms','qa','ui','pm'],
@@ -1007,6 +1062,26 @@ document.addEventListener('DOMContentLoaded', () => {
     if (opsEl) opsEl.textContent = cfgFmt(ops);
     if (totalEl) totalEl.textContent = cfgFmt(Math.round((build + ops) * 100) / 100);
     if (countEl) countEl.textContent = '已选 ' + count + ' 项模块';
+    cfgBuildValue = build;
+    if (typeof roiRecalc === 'function') roiRecalc();
+    payRecalc(build);
+  }
+
+  // 付款方式随所选方案联动（build 单位：万元）
+  function payRecalc(buildWan) {
+    const totalYuan = Math.round(buildWan * 10000);
+    document.querySelectorAll('[data-pay-pct]').forEach(cell => {
+      const pct = parseFloat(cell.dataset.payPct) || 0;
+      cell.textContent = Math.round(totalYuan * pct / 100).toLocaleString('en-US');
+    });
+    const totalEl = document.getElementById('pay-total');
+    if (totalEl) totalEl.textContent = totalYuan.toLocaleString('en-US');
+    const label = document.getElementById('pay-build-label');
+    if (label) label.textContent = '所选方案 ' + cfgFmt(buildWan) + ' 万';
+    const pretax = document.getElementById('pay-pretax');
+    const vat = document.getElementById('pay-vat');
+    if (pretax) pretax.textContent = (buildWan / 1.13).toFixed(2);
+    if (vat) vat.textContent = (buildWan - buildWan / 1.13).toFixed(2);
   }
 
   cfgRows.forEach(row => {
@@ -1021,7 +1096,28 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', e => { e.stopPropagation(); cfgApplyPreset(btn.dataset.preset); });
   });
 
-  if (cfgRows.length) cfgApplyPreset('full');
+  if (cfgRows.length) cfgApplyPreset('lite');
+
+  // ===== ROI 回本测算 =====
+  function roiRecalc() {
+    if (!document.getElementById('roi-payback')) return;
+    const leads = parseFloat(document.getElementById('roi-leads').value) || 0;
+    const conv = parseFloat(document.getElementById('roi-conv').value) || 0;
+    const fee = parseFloat(document.getElementById('roi-fee').value) || 0;
+    const deals = leads * conv / 100;
+    const revMonthly = deals * fee; // 万元/月
+    const build = cfgBuildValue || 0; // 万元
+    document.getElementById('roi-deals').textContent = deals.toFixed(1);
+    document.getElementById('roi-rev').textContent = revMonthly.toFixed(1);
+    const paybackEl = document.getElementById('roi-payback');
+    if (revMonthly <= 0) { paybackEl.textContent = '—'; }
+    else { paybackEl.textContent = Math.ceil(build / revMonthly); }
+  }
+  if (document.querySelector('[data-roi]')) {
+    ['roi-leads','roi-conv','roi-fee'].forEach(id =>
+      document.getElementById(id).addEventListener('input', roiRecalc));
+    roiRecalc();
+  }
 
   // 参考对标 Tab 切换
   document.querySelectorAll('[data-ref-tabs]').forEach(group => {

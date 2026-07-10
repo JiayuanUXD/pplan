@@ -853,6 +853,8 @@ body {
 @media (max-width: 900px) {
   .config-body { grid-template-columns: 1fr; }
   .config-modules { border-right: none; border-bottom: 1px solid var(--border); }
+  .roi-body { grid-template-columns: 1fr; }
+  .roi-inputs { border-bottom: 1px solid var(--border); }
 }
 
 /* ===== OPS ===== */
@@ -1197,6 +1199,48 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ===== 3年 TCO + ROI ===== */
+.tco-block { margin-top: 2.5rem; }
+.tco-intro { font-size: 12.5px; color: var(--mid); margin-bottom: 1rem; line-height: 1.7; }
+.tco-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tco-table th {
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mid); padding: 0.65rem 1rem; border-bottom: 1px solid var(--border); font-weight: 400;
+}
+.tco-table th.text-right, .tco-table td.text-right { text-align: right; }
+.tco-table td {
+  padding: 0.85rem 1rem; border-bottom: 1px solid rgba(0,0,0,0.05);
+  color: var(--text-body); font-variant-numeric: tabular-nums;
+}
+.tco-table tbody tr:hover td { background: rgba(var(--accent-rgb),0.03); }
+.tco-table .tco-total td {
+  border-top: 1px solid var(--accent); border-bottom: none;
+  padding-top: 1rem; color: var(--ink); font-weight: 600;
+}
+.tco-table .tco-cum td { color: var(--accent); font-weight: 600; }
+
+.roi-block { margin-top: 2.5rem; border: 1px solid var(--border); background: var(--white); }
+.roi-head { padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--border); }
+.roi-head h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--ink); margin: 0 0 0.3rem; }
+.roi-head p { font-size: 12px; color: var(--mid); margin: 0; line-height: 1.6; }
+.roi-body { display: grid; grid-template-columns: 1.4fr 1fr; }
+.roi-inputs { padding: 1.5rem; display: flex; flex-direction: column; gap: 1.1rem; }
+.roi-field { display: flex; flex-direction: column; gap: 0.4rem; }
+.roi-field label { font-size: 11px; letter-spacing: 0.06em; color: var(--text-body); }
+.roi-field .roi-hint { font-size: 10.5px; color: var(--mid); }
+.roi-field input {
+  appearance: none; border: 1px solid var(--border); background: var(--tint);
+  padding: 0.6rem 0.75rem; font-size: 14px; color: var(--ink);
+  font-family: 'Inter', 'Noto Sans SC', sans-serif; border-radius: 2px;
+}
+.roi-field input:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: transparent; }
+.roi-out { padding: 1.5rem; background: var(--tint); display: flex; flex-direction: column; justify-content: center; gap: 1.1rem; }
+.roi-metric .roi-mlabel { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.35rem; }
+.roi-metric .roi-mval { font-family: 'Playfair Display', serif; font-size: 1.7rem; color: var(--ink); line-height: 1; }
+.roi-metric .roi-mval .roi-unit { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--mid); margin-left: 0.3rem; }
+.roi-metric.roi-hero .roi-mval { color: var(--accent); font-size: 2.1rem; }
+.roi-note { font-size: 11px; color: var(--mid); padding: 0.75rem 1.5rem 1.25rem; line-height: 1.6; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1024px) {
