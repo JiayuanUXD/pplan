@@ -167,9 +167,12 @@
             <p>搜楼网覆盖上海、杭州、苏州等核心城市，提供110万+真实写字楼房源，具备找办公室、找楼盘、共享办公、地图找房、委托找房、房源投放等完整功能链路。</p>
             <p>Industrious 作为全球顶级灵活办公空间品牌，其网站以高质量空间摄影、克制的排版体系、流畅的交互体验著称，是商办类网站设计的行业标杆。</p>
           </div>
-          <div class="bg-cards reveal">
-            <div class="ref-card">
-              <div class="ref-card-tag">功能参考</div>
+          <div class="bg-cards reveal" data-ref-tabs>
+            <div class="ref-tabs" role="tablist" aria-label="参考对标">
+              <button class="ref-tab is-active" role="tab" id="ref-tab-fn" aria-controls="ref-panel-fn" aria-selected="true">功能参考</button>
+              <button class="ref-tab" role="tab" id="ref-tab-design" aria-controls="ref-panel-design" aria-selected="false" tabindex="-1">设计标杆</button>
+            </div>
+            <div class="ref-card" role="tabpanel" id="ref-panel-fn" aria-labelledby="ref-tab-fn">
               <div class="ref-card-title">搜楼网</div>
               <div class="ref-card-url">soolou.com/sh</div>
               <ul class="ref-list">
@@ -179,8 +182,7 @@
                 <li>B端房源投放变现体系</li>
               </ul>
             </div>
-            <div class="ref-card ref-card-accent">
-              <div class="ref-card-tag">设计标杆</div>
+            <div class="ref-card ref-card-accent" role="tabpanel" id="ref-panel-design" aria-labelledby="ref-tab-design" hidden>
               <div class="ref-card-title">Industrious</div>
               <div class="ref-card-url">industriousoffice.com</div>
               <ul class="ref-list">
@@ -1170,6 +1172,31 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   if (cfgRows.length) cfgApplyPreset('full');
+
+  // 参考对标 Tab 切换
+  document.querySelectorAll('[data-ref-tabs]').forEach(group => {
+    const tabs = [...group.querySelectorAll('.ref-tab')];
+    const panels = tabs.map(t => group.querySelector('#' + t.getAttribute('aria-controls')));
+    function activate(i) {
+      tabs.forEach((t, j) => {
+        const on = j === i;
+        t.classList.toggle('is-active', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        panels[j].hidden = !on;
+      });
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => activate(i));
+      tab.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        e.preventDefault();
+        const next = (i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length;
+        activate(next);
+        tabs[next].focus();
+      });
+    });
+  });
 
 });
 

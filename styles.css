@@ -460,6 +460,55 @@ body {
   font-size: 10px;
 }
 
+/* 参考对标 Tab 切换 */
+.ref-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+}
+
+.ref-tab {
+  flex: 1;
+  appearance: none;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.65rem 0.5rem;
+  font-family: 'Inter', 'Noto Sans SC', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.ref-tab:hover { color: var(--ink); }
+
+.ref-tab.is-active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+.ref-tab:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.ref-card[hidden] { display: none; }
+
+.ref-card[role="tabpanel"] { animation: refFade 0.25s ease; }
+
+@keyframes refFade {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ref-card[role="tabpanel"] { animation: none; }
+}
+
 /* ===== MODULES ===== */
 .modules-grid {
   display: grid;
