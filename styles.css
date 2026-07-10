@@ -259,6 +259,7 @@ body {
 .meta-v {
   color: rgba(255,255,255,0.75);
   font-size: 13px;
+  white-space: nowrap;
 }
 
 .hero-right {
@@ -280,8 +281,6 @@ body {
   padding: 0 2rem;
   position: relative;
 }
-
-.kpi-item:first-child { padding-left: 0; }
 
 .kpi-divider {
   width: 1px;
@@ -1192,6 +1191,7 @@ body {
   .main { margin-left: 0; }
   .section { padding: 3rem 1.5rem; }
   .hero { padding: 3rem 1.5rem; min-height: auto; }
+  .hero-meta { grid-template-columns: repeat(2, 1fr); }
   .kpi-stack { flex-direction: column; }
   .kpi-divider { width: 100%; height: 1px; }
   .delivery-grid { grid-template-columns: 1fr; }
