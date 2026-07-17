@@ -61,7 +61,7 @@
 
 ## 10. 状态与业务规则
 
-房源前台活跃的必要条件为：`review_status=审核通过`、`publication_status=已上架`、所属楼盘启用、商户可发布、无有效暂停且租赁房源可租；`publication_status=已出租` 自动排除。`publication_status` 仅为草稿/已上架/已下架/已出租，`review_status` 仅为未提交/待审核/审核通过/已驳回，二者不得混用。线索统一使用 `新建 → 待分配 → 跟进中 → 有效商机 → 带看 → 谈判 → 已转化/已流失`，公海仅是归属位置；已转化、已流失为终态。阶段、归属和人员资格均按事件发生时的历史快照归因，当前存量按查询时刻的当前状态归因。对合并链先解析到最终目标：来源 `merge_status=已合并` 不计入任何指标，目标只计一次；`effective_created_at=MIN(目标及全部原始来源的 created_at)`。`OP-04` 以该字段筛选新增 cohort；有效商机、带看、已转化和已流失仍分别使用目标保留的首次有效阶段、带看或终态事件时间，绝不以 `effective_created_at` 覆盖业务事件时间。
+房源前台活跃的必要条件为：`review_status=审核通过`、`publication_status=已上架`、所属楼盘启用、商户可发布、无有效暂停且租赁房源可租；`publication_status=已出租` 自动排除。`publication_status` 仅为草稿/已上架/已下架/已出租，`review_status` 仅为未提交/待审核/审核通过/已驳回，二者不得混用。线索统一使用 `新建 → 待分配 → 跟进中 → 有效商机 → 带看 → 谈判 → 已转化/已流失`，公海仅是归属位置；已转化、已流失为终态。阶段、归属和人员资格均按事件发生时的历史快照归因，当前存量按查询时刻的当前状态归因。对合并链先解析到最终目标：来源 `merge_status=已合并` 不计入任何指标，目标只计一次；`effective_created_at=MIN(目标及全部原始来源的 created_at)`。`OP-04` 以该字段筛选新增 cohort；有效商机、带看、已转化和已流失仍分别使用目标保留的首次有效阶段、带看或终态事件时间，绝不以 `effective_created_at` 覆盖业务事件时间。`OP-05` 的首次有效商机须同时具需求确认快照/证据和当前有效版本的阶段事件，时间字段为 `first_valid_opportunity_at`。
 
 ## 11. 异常与边界
 
@@ -81,7 +81,7 @@
 | OP-02 活跃房源数 | 查询时刻满足前台活跃必要条件的具体房源数。 | 分子：活跃 `listing_id` 数；分母：不适用。 | `listing_id` | 含 `review_status=审核通过`、`publication_status=已上架`、楼盘启用、商户可发布、未暂停，租赁还须可租；排除 `review_status` 为未提交/待审核/已驳回、`publication_status` 为草稿/已下架/已出租及暂停。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商圈、商户、经纪人、租售类型、装修、标签。 | 每 5 分钟；发布/审核/暂停事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-02`、`query_snapshot_id`、`resolved_listing_ids`；证据为状态、楼盘/商户资格、暂停及可租快照。 |
 | OP-03 新增房源数 | 周期内首次创建的房源供给量，不代表已发布。 | 分子：周期内创建且未被合并的房源数；分母：不适用。 | `listing_id` | 含 `publication_status` 为草稿/已上架/已下架/已出租的全部非删除记录，不以 `review_status` 限制创建量；排除逻辑删除、重复合并源记录。 | `listing.created_at` | 北京时间（UTC+8） | 城市、商户、楼盘、租售类型、创建人。 | 每 5 分钟；创建/合并事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-03`、`query_snapshot_id`、`resolved_listing_ids` 和精确谓词 `listing.created_at BETWEEN period_start AND period_end`；证据为创建事件、合并关系和排除原因。 |
 | OP-04 新增线索数 | 周期内接入校验通过的新需求量。 | 分子：`effective_created_at` 落入周期的合并目标 Lead 数；分母：不适用。 | 合并目标 `lead_id` | 含新建至终态所有已接入阶段；排除接入拒绝、逻辑删除及 `merge_status=已合并` 的来源线索，目标只计一次。 | `effective_created_at` | 北京时间（UTC+8） | 城市、来源、商户、团队、经纪人、意向楼盘/房源、租售意向。 | 每 5 分钟；创建/合并后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-04`、`query_snapshot_id`、`resolved_lead_ids` 和精确谓词 `effective_created_at BETWEEN period_start AND period_end`；证据为目标 ID、来源 ID、各原始 `created_at`、解析值和接入校验。 |
-| OP-05 有效商机数 | 周期内首次进入有效商机的线索量。 | 分子：首次有效商机事件数；分母：不适用。 | `lead_id` | 含阶段变为有效商机的非合并目标；排除无效接入、已合并源及无阶段证据记录。 | `lead_stage_history.occurred_at` | 北京时间（UTC+8） | 城市、来源、团队、经纪人、意向楼盘/房源。 | 每 5 分钟；阶段事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-05`、`query_snapshot_id`、`resolved_lead_ids`；证据为首次有效商机阶段事件及 `occurred_at`。 |
+| OP-05 有效商机数 | 所选周期内首次进入有效商机的线索量，不以新增线索 cohort 限定。 | 分子：`first_valid_opportunity_at BETWEEN period_start AND period_end` 的合并目标 `lead_id` 数；分母：不适用。 | 合并目标 `lead_id` | 含具需求确认快照/证据且首次有效商机事件为当前有效版本、并满足 `first_valid_opportunity_at BETWEEN period_start AND period_end` 的记录；排除无效接入、被合并源、无需求确认快照/证据、撤回/更正无效事件及首次事件不在所选周期的记录。 | `first_valid_opportunity_at`，即目标保留的最早有效商机阶段事件时间。 | 北京时间（UTC+8） | 来源、城市、团队、经纪人、楼盘、房源、租售意向。 | 每 5 分钟；阶段/合并事件后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=OP-05`、`query_snapshot_id`、`resolved_lead_ids` 和精确谓词 `first_valid_opportunity_at BETWEEN period_start AND period_end`；证据为首次有效商机事件、其 `first_valid_opportunity_at`、需求确认快照/证据、当前有效版本和集合命中。 |
 | OP-06 带看线索数 | 周期内首次有有效带看事实的线索量。 | 分子：首次带看成功记录 Lead 数；分母：不适用。 | `lead_id` | 含阶段进入带看且存在成功带看记录；排除取消、无效、测试及被合并源记录。 | `viewing_record.completed_at` | 北京时间（UTC+8） | 城市、来源、团队、经纪人、楼盘、房源。 | 每 5 分钟；带看保存/更正事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-06`、`query_snapshot_id`、`resolved_lead_ids`；证据为成功带看记录、阶段证据及 `completed_at`。 |
 | OP-07 转化数 | 周期内首次进入已转化终态的线索量，仅表示转化事实。 | 分子：首次转化事件 Lead 数；分母：不适用。 | `lead_id` | 含已转化；排除已流失、无效接入、被合并源及合同/支付推断事件。 | `lead_stage_history.occurred_at`（`converted_at`） | 北京时间（UTC+8） | 城市、来源、商户、团队、经纪人、楼盘、房源。 | 每 5 分钟；转化/合并事件后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=OP-07`、`query_snapshot_id`、`resolved_lead_ids` 和精确谓词 `converted_at BETWEEN period_start AND period_end`；证据为首次已转化终态事件及 `converted_at`，不以创建时间代替。 |
 | OP-08 终态转化率 | 周期内已转化在已转化和已流失终态中的占比。 | 分子：OP-07 的已转化 `lead_id` 数；分母：同周期首次已转化 `lead_id` 数 + 首次已流失 `lead_id` 数；分母为 0 显示 `--`。 | `lead_id` | 含已转化、已流失首次终态事件；排除非终态、无效接入、被合并源。 | `lead_stage_history.occurred_at` | 北京时间（UTC+8） | 城市、来源、团队、经纪人、楼盘、房源。 | 每 5 分钟；终态/合并事件后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=OP-08`、`query_snapshot_id`、分子/分母 `resolved_lead_ids`；证据为首次 `converted_at` 或 `lost_at` 终态事件及集合角色。 |
@@ -102,7 +102,7 @@
 | 正常 | 排行按 OP-07 降序、同值按 `team_id` 升序；切换城市、商户、团队后所有卡片同步重算。 |
 | 权限 | 销售主管只能看到本团队，运营人员不能查看未授权城市；无指标权限组件不显示且导出无对应行。 |
 | 异常 | OP-08 或 OP-11 分母为 0 显示 `--`；聚合延迟时显示最近成功时间并可重试，不显示伪造的 0。 |
-| 数据 | `OP-04` 以合并链最早原始创建时间的 `effective_created_at` 入 cohort，来源 `merge_status=已合并` 排除且目标只计一次；阶段和终态仍按各自业务事件时间。所有 OP 指标下钻均返回 `metric_id`、查询快照、解析 ID 集合和逐行证据，`OP-03` 使用 `listing.created_at`、`OP-07` 使用 `converted_at`，不依赖业务页泛化筛选。 |
+| 数据 | `OP-04` 以合并链最早原始创建时间的 `effective_created_at` 入 cohort，来源 `merge_status=已合并` 排除且目标只计一次；阶段和终态仍按各自业务事件时间。`OP-05` 仅统计具需求确认快照/证据、当前有效版本且 `first_valid_opportunity_at BETWEEN period_start AND period_end` 的首次有效商机，撤回/更正无效事件、被合并源和首次事件不在周期者均排除。所有 OP 指标下钻均返回 `metric_id`、查询快照、解析 ID 集合和逐行证据，`OP-03` 使用 `listing.created_at`、`OP-05` 使用 `first_valid_opportunity_at`、`OP-07` 使用 `converted_at`，不依赖业务页泛化筛选。 |
 
 ## 15. 依赖与风险
 
