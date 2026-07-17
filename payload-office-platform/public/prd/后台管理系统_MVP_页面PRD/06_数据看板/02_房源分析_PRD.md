@@ -5,8 +5,8 @@
 | 项目 | 内容 |
 |---|---|
 | 编号 | 06-02 |
-| 版本 | V1.0 |
-| 状态 | 待评审 |
+| 版本 | V1.1 |
+| 状态 | 评审修订 |
 | 所属模块 | 数据看板 / 房源分析 |
 | 负责人角色 | 平台管理员、运营人员、销售主管 |
 | 更新时间 | 2026-07-17 |
@@ -51,7 +51,7 @@
 
 ## 8. 详情及表单
 
-本页无新增或编辑表单。指标说明抽屉展示完整字典、状态范围、标准化版本、事件覆盖率、查询快照和下钻链接。目标业务页没有等价筛选时，本页使用分析明细抽屉/表格承接，接口必须接收 `metric_id`、`query_snapshot_id` 和服务端解析的 `listing_id` 或事件 ID 集合；表格逐行展示命中规则与证据时间，再链接单条房源、审核任务或事件记录，不把分析派生字段伪装成目标页筛选。滞销行可打开房源只读侧栏并跳转编辑、审核或举报处理，仍由原页面权限控制。导出支持当前聚合表或滞销明细；导出继承筛选、权限与脱敏规则，前台事件导出不得带访客识别字段。
+本页无新增或编辑表单。指标说明抽屉展示完整字典、状态范围、标准化版本、事件覆盖率、查询快照和下钻链接。第 12 节的每个指标均先进入本页分析明细表，不能仅依赖目标业务页的通用筛选：接口必须接收 `metric_id`、`query_snapshot_id`、服务端解析的 `resolved_building_ids`、`resolved_listing_ids`、`resolved_review_ids` 或 `resolved_event_ids`，以及本指标的精确时间谓词；表格逐行展示分子/分母命中、`evidence_type`、`evidence_id`、`evidence_at`、状态/价格标准化快照和桶边界，再链接单条房源、审核任务或事件记录。业务页链接仅打开该行对象，不把分析派生字段伪装成目标页筛选。滞销行可打开房源只读侧栏并跳转编辑、审核或举报处理，仍由原页面权限控制。导出支持当前聚合表或滞销明细；导出继承筛选、权限与脱敏规则，前台事件导出不得带访客识别字段。
 
 ## 9. 核心操作与流程
 
@@ -80,19 +80,19 @@ Listing `publication_status` 仅为草稿/已上架/已下架/已出租，Listin
 
 | 指标 | 业务定义 | 计算公式（分子/分母） | 去重键 | 状态范围（含/排除） | 时间字段 | 时区 | 维度 | 刷新频率 | 下钻 |
 |---|---|---|---|---|---|---|---|---|---|
-| LI-01 楼盘供给数 | 查询时点在授权范围内的楼盘存量。 | 分子：满足筛选的楼盘数；分母：不适用。 | `building_id` | 含启用和停用的非删除楼盘，用筛选决定；排除逻辑删除。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘类型、商户。 | 每 5 分钟；楼盘事件后 60 秒内失效。 | 楼盘列表：当前范围与状态。 |
-| LI-02 房源供给数 | 查询时点在授权范围内的具体房源存量。 | 分子：满足筛选的房源数；分母：不适用。 | `listing_id` | 含筛选所选的 `publication_status`（草稿/已上架/已下架/已出租）与 `review_status`（未提交/待审核/审核通过/已驳回）；排除逻辑删除和被合并重复源。 | `snapshot_at` | 北京时间（UTC+8） | 城市、楼盘、商户、租售、类型、装修、标签。 | 每 5 分钟；房源事件后 60 秒内失效。 | 房源列表：携带两个独立状态字段、当前范围及其他筛选。 |
-| LI-03 发布率 | 已满足前台活跃条件的房源在可发布候选房源中的比例。 | 分子：`review_status=审核通过`、`publication_status=已上架` 且满足全部活跃约束的 `listing_id` 数；分母：`review_status=审核通过`、`publication_status` 为已上架或已下架、楼盘启用、商户可发布且非逻辑删除的 `listing_id` 数；分母为 0 显示 `--`。 | `listing_id` | 分子另含未暂停，租赁可租且可用；分母排除 `publication_status` 为草稿/已出租、`review_status` 为未提交/待审核/已驳回及停用楼盘/商户；分子另排除已下架和暂停。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商户、楼盘、租售、类型。 | 每 5 分钟；审核/发布/暂停事件后 60 秒内失效。 | 房源列表：分别携带分子或分母的 `publication_status`、`review_status` 与活跃约束。 |
-| LI-04 审核通过率 | 周期内已完成且形成审核通过或已驳回结论的审核任务中，审核通过任务的比例。 | 分子：`review_task_status=已完成` 且任务不可变结论对应 `review_status=审核通过` 的 `review_id` 数；分母：`review_task_status=已完成` 且任务不可变结论对应 `review_status` 为审核通过或已驳回的 `review_id` 数；分母为 0 显示 `--`。 | `review_id` | 含已完成任务的审核通过/已驳回结论，包括后续另建纠正复核任务时保留的历史任务；排除 `review_task_status` 为待领取/审核中/已退回/已撤回。 | `review.completed_at` | 北京时间（UTC+8） | 城市、审核类型、商户、提交人、租售类型。 | 每 5 分钟；审核结论后 60 秒内失效，日终 01:00 回算。 | 房源审核：携带 `review_task_status=已完成`、结论对应 `review_status` 与 `completed_at=当前周期`。 |
-| LI-05 可用面积 | 查询时点可对外供给的租赁房源面积总和。 | 分子：活跃且可租的 `listing.area_sqm` 原始值之和；分母：不适用。 | `listing_id` | 含租赁、`review_status=审核通过`、`publication_status=已上架`、未暂停、楼盘启用、商户可发布、可租且可用日期未结束；排除出售、`publication_status` 为草稿/已下架/已出租、`review_status` 为未提交/待审核/已驳回及面积缺失。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘、商户、装修、标签。 | 每 5 分钟；可用性/发布事件后 60 秒内失效。 | 房源列表：携带两个独立状态字段及其他活跃租赁条件；显示面积原始值。 |
-| LI-06 新增发布房源数 | 周期内首次发布为已上架的房源量。 | 分子：首次产生 `publication_status=已上架` 事件的房源数；分母：不适用。 | `listing_id` | 含首次上架时 `review_status=审核通过`；排除仅修改已上架记录、撤回、已合并源及逻辑删除。 | `listing_publish_event.occurred_at` | 北京时间（UTC+8） | 城市、商户、楼盘、租售、创建人。 | 每 5 分钟；发布事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-06`、查询快照与解析后的 `listing_id`；逐行链接房源详情。 |
-| LI-07 价格分布 | 指定价格字典桶内的房源数、面积及占比。 | 分子：落入桶内的 `listing_id` 数或面积和；分母：当前可比较价格记录总数或面积总和；分母为 0 显示 `--`。 | `listing_id` | 含所选状态的非删除房源且价格数值、币种、周期、单位完整；排除缺价和不可标准化记录，后者单列“未标准化”。 | `snapshot_at` | 北京时间（UTC+8） | 租售、城市、商圈、楼盘、类型、装修、价格桶。 | 每 5 分钟；价格/状态事件后 60 秒内失效。 | 房源列表：价格桶边界、租售和当前状态；“未标准化”单独下钻。 |
-| LI-08 装修与类型分布 | 选定装修或楼盘/房源类型中的供给结构。 | 分子：维度成员内 `listing_id` 数或面积和；分母：当前筛选内有该维度值的总数或面积；分母为 0 显示 `--`。 | `listing_id` | 含所选非删除房源状态；排除装修/类型缺失，缺失单列“未知”。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商圈、商户、租售、装修、楼盘类型、房源类型。 | 每 5 分钟；属性或状态事件后 60 秒内失效。 | 房源列表：所选装修/类型值与当前条件。 |
-| LI-09 标签分布 | 各有效标签覆盖的房源量；多标签房源可在多个标签中出现。 | 分子：拥有该标签的 `listing_id` 数；分母：当前筛选内至少有一个有效标签的 `listing_id` 数；分母为 0 显示 `--`。 | `listing_id + tag_id`，占比按 `listing_id` | 含启用标签与所选非删除房源；排除停用标签当前展示、标签缺失和逻辑删除。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商户、租售、标签分类、标签。 | 每 5 分钟；标签关系/状态事件后 60 秒内失效。 | 房源列表：`tag_id=所选标签` 与当前条件。 |
-| LI-10 位置分布 | 城市、区域、商圈或楼盘维度下的房源供给结构。 | 分子：位置成员内 `listing_id` 数或面积和；分母：当前筛选内已归属有效位置的总数或面积；分母为 0 显示 `--`。 | `listing_id` | 含已关联城市的非删除房源；排除无城市归属，区域/商圈缺失单列“未知位置”。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘、商户、租售。 | 每 5 分钟；位置关系/状态事件后 60 秒内失效。 | 楼盘或房源列表：位置 ID 与当前条件。 |
-| LI-11 滞销房源数 | 已上架但超过 30 个北京时间自然日未发生有效业务维护的房源数。 | 分子：`DATE(snapshot_at AT TIME ZONE 'Asia/Shanghai') - DATE(last_effective_maintained_at AT TIME ZONE 'Asia/Shanghai') > 30` 的房源数；分母：不适用。 | `listing_id` | 含 `review_status=审核通过`、`publication_status=已上架`、非暂停且非删除；排除 `publication_status` 为草稿/已下架/已出租、`review_status` 为未提交/待审核/已驳回；批量迁移非有效维护。 | `listing.last_effective_maintained_at` 与 `snapshot_at` 先转换为 Asia/Shanghai 日历日期 | Asia/Shanghai（UTC+8） | 城市、商户、楼盘、经纪人、租售、滞销自然日数桶。 | 每日 00:10 扫描；有效维护或状态事件后 60 秒内失效。 | 本页滞销明细表：`metric_id=LI-11`、查询快照与解析后的 `listing_id`；显示自然日差并逐行链接房源详情。 |
-| LI-12 前台曝光量（可选） | 周期内前台对可见房源产生的有效曝光次数；未接入事件时不适用。 | 分子：有效 `listing_exposure` 事件数；分母：不适用。 | `exposure_event_id` | 含事件发生时房源前台可见、事件去重通过；排除机器人、测试流量、重复事件、不可见房源事件。 | `listing_exposure.occurred_at` | 北京时间（UTC+8） | 城市、楼盘、房源、商户、来源页面、终端、租售。 | 事件流每 15 分钟；延迟超过 30 分钟标记延迟。 | 本页事件明细表：`metric_id=LI-12`、查询快照与 `exposure_event_id`；逐行链接房源，未接入事件源时不提供下钻。 |
-| LI-13 前台咨询事件量及曝光咨询率（可选） | 周期内前台房源产生的有效咨询事件量，以及有效咨询事件相对有效曝光事件的比率。 | 分子：有效 `listing_inquiry` 的 `inquiry_event_id` 数；分母：LI-12 同周期、同维度范围内有效 `exposure_event_id` 数；分母为 0 显示 `--`。咨询事件量与比率分子使用同一事件集合。 | `inquiry_event_id`；分母按 `exposure_event_id` | 含事件发生时房源前台可见、咨询事件校验通过且成功接入；排除机器人、取消、接入拒绝、测试流量和重复事件。不计 `lead_id`，不作线索归因计数。 | `listing_inquiry.occurred_at`；分母为 `listing_exposure.occurred_at` | 北京时间（UTC+8） | 城市、楼盘、房源、商户、来源页面、咨询类型、终端。 | 事件流每 15 分钟；延迟超过 30 分钟标记延迟。 | 本页事件明细表：`metric_id=LI-13`、查询快照与 `inquiry_event_id`；逐行链接房源，未接入事件源时不提供下钻。 |
+| LI-01 楼盘供给数 | 查询时点在授权范围内的楼盘存量。 | 分子：满足筛选的楼盘数；分母：不适用。 | `building_id` | 含启用和停用的非删除楼盘，用筛选决定；排除逻辑删除。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘类型、商户。 | 每 5 分钟；楼盘事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-01`、`query_snapshot_id`、`resolved_building_ids`；证据为 `snapshot_at`、状态及范围快照。 |
+| LI-02 房源供给数 | 查询时点在授权范围内的具体房源存量。 | 分子：满足筛选的房源数；分母：不适用。 | `listing_id` | 含筛选所选的 `publication_status`（草稿/已上架/已下架/已出租）与 `review_status`（未提交/待审核/审核通过/已驳回）；排除逻辑删除和被合并重复源。 | `snapshot_at` | 北京时间（UTC+8） | 城市、楼盘、商户、租售、类型、装修、标签。 | 每 5 分钟；房源事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-02`、`query_snapshot_id`、`resolved_listing_ids`；证据为两个状态字段及范围快照。 |
+| LI-03 发布率 | 已满足前台活跃条件的房源在可发布候选房源中的比例。 | 分子：`review_status=审核通过`、`publication_status=已上架` 且满足全部活跃约束的 `listing_id` 数；分母：`review_status=审核通过`、`publication_status` 为已上架或已下架、楼盘启用、商户可发布且非逻辑删除的 `listing_id` 数；分母为 0 显示 `--`。 | `listing_id` | 分子另含未暂停，租赁可租且可用；分母排除 `publication_status` 为草稿/已出租、`review_status` 为未提交/待审核/已驳回及停用楼盘/商户；分子另排除已下架和暂停。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商户、楼盘、租售、类型。 | 每 5 分钟；审核/发布/暂停事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-03`、`query_snapshot_id`、分子/分母 `resolved_listing_ids`；证据为各集合状态、资格、暂停与可租快照。 |
+| LI-04 审核通过率 | 周期内已完成且形成审核通过或已驳回结论的审核任务中，审核通过任务的比例。 | 分子：`review_task_status=已完成` 且任务不可变结论对应 `review_status=审核通过` 的 `review_id` 数；分母：`review_task_status=已完成` 且任务不可变结论对应 `review_status` 为审核通过或已驳回的 `review_id` 数；分母为 0 显示 `--`。 | `review_id` | 含已完成任务的审核通过/已驳回结论，包括后续另建纠正复核任务时保留的历史任务；排除 `review_task_status` 为待领取/审核中/已退回/已撤回。 | `review.completed_at` | 北京时间（UTC+8） | 城市、审核类型、商户、提交人、租售类型。 | 每 5 分钟；审核结论后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=LI-04`、`query_snapshot_id`、分子/分母 `resolved_review_ids` 和 `review.completed_at` 谓词；证据为不可变结论及完成时间。 |
+| LI-05 可用面积 | 查询时点可对外供给的租赁房源面积总和。 | 分子：活跃且可租的 `listing.area_sqm` 原始值之和；分母：不适用。 | `listing_id` | 含租赁、`review_status=审核通过`、`publication_status=已上架`、未暂停、楼盘启用、商户可发布、可租且可用日期未结束；排除出售、`publication_status` 为草稿/已下架/已出租、`review_status` 为未提交/待审核/已驳回及面积缺失。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘、商户、装修、标签。 | 每 5 分钟；可用性/发布事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-05`、`query_snapshot_id`、`resolved_listing_ids`；证据为面积原始值及活跃租赁快照。 |
+| LI-06 新增发布房源数 | 周期内首次发布为已上架的房源量。 | 分子：首次产生 `publication_status=已上架` 事件的房源数；分母：不适用。 | `listing_id` | 含首次上架时 `review_status=审核通过`；排除仅修改已上架记录、撤回、已合并源及逻辑删除。 | `listing_publish_event.occurred_at` | 北京时间（UTC+8） | 城市、商户、楼盘、租售、创建人。 | 每 5 分钟；发布事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-06`、`query_snapshot_id`、`resolved_listing_ids` 和首次上架 `occurred_at` 谓词；证据为发布事件及审核状态。 |
+| LI-07 价格分布 | 指定价格字典桶内的房源数、面积及占比。 | 分子：落入桶内的 `listing_id` 数或面积和；分母：当前可比较价格记录总数或面积总和；分母为 0 显示 `--`。 | `listing_id` | 含所选状态的非删除房源且价格数值、币种、周期、单位完整；排除缺价和不可标准化记录，后者单列“未标准化”。 | `snapshot_at` | 北京时间（UTC+8） | 租售、城市、商圈、楼盘、类型、装修、价格桶。 | 每 5 分钟；价格/状态事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-07`、`query_snapshot_id`、分子/分母 `resolved_listing_ids`；证据为桶边界、价格原始值、标准化结果和状态快照。 |
+| LI-08 装修与类型分布 | 选定装修或楼盘/房源类型中的供给结构。 | 分子：维度成员内 `listing_id` 数或面积和；分母：当前筛选内有该维度值的总数或面积；分母为 0 显示 `--`。 | `listing_id` | 含所选非删除房源状态；排除装修/类型缺失，缺失单列“未知”。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商圈、商户、租售、装修、楼盘类型、房源类型。 | 每 5 分钟；属性或状态事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-08`、`query_snapshot_id`、分子/分母 `resolved_listing_ids`；证据为装修/类型值和状态快照。 |
+| LI-09 标签分布 | 各有效标签覆盖的房源量；多标签房源可在多个标签中出现。 | 分子：拥有该标签的 `listing_id` 数；分母：当前筛选内至少有一个有效标签的 `listing_id` 数；分母为 0 显示 `--`。 | `listing_id + tag_id`，占比按 `listing_id` | 含启用标签与所选非删除房源；排除停用标签当前展示、标签缺失和逻辑删除。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商户、租售、标签分类、标签。 | 每 5 分钟；标签关系/状态事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-09`、`query_snapshot_id`、分子/分母 `resolved_listing_ids`；证据为 `tag_id`、标签启用状态及快照。 |
+| LI-10 位置分布 | 城市、区域、商圈或楼盘维度下的房源供给结构。 | 分子：位置成员内 `listing_id` 数或面积和；分母：当前筛选内已归属有效位置的总数或面积；分母为 0 显示 `--`。 | `listing_id` | 含已关联城市的非删除房源；排除无城市归属，区域/商圈缺失单列“未知位置”。 | `snapshot_at` | 北京时间（UTC+8） | 城市、区域、商圈、楼盘、商户、租售。 | 每 5 分钟；位置关系/状态事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-10`、`query_snapshot_id`、分子/分母 `resolved_listing_ids`；证据为位置 ID、未知桶原因和快照。 |
+| LI-11 滞销房源数 | 已上架但超过 30 个北京时间自然日未发生有效业务维护的房源数。 | 分子：`DATE(snapshot_at AT TIME ZONE 'Asia/Shanghai') - DATE(last_effective_maintained_at AT TIME ZONE 'Asia/Shanghai') > 30` 的房源数；分母：不适用。 | `listing_id` | 含 `review_status=审核通过`、`publication_status=已上架`、非暂停且非删除；排除 `publication_status` 为草稿/已下架/已出租、`review_status` 为未提交/待审核/已驳回；批量迁移非有效维护。 | `listing.last_effective_maintained_at` 与 `snapshot_at` 先转换为 Asia/Shanghai 日历日期 | Asia/Shanghai（UTC+8） | 城市、商户、楼盘、经纪人、租售、滞销自然日数桶。 | 每日 00:10 扫描；有效维护或状态事件后 60 秒内失效。 | 本页分析明细表：`metric_id=LI-11`、`query_snapshot_id`、`resolved_listing_ids`；证据为两个 Shanghai 日期、自然日差、有效维护事件和状态快照。 |
+| LI-12 前台曝光量（可选） | 周期内前台对可见房源产生的有效曝光次数；未接入事件时不适用。 | 分子：有效 `listing_exposure` 事件数；分母：不适用。 | `exposure_event_id` | 含事件发生时房源前台可见、事件去重通过；排除机器人、测试流量、重复事件、不可见房源事件。 | `listing_exposure.occurred_at` | 北京时间（UTC+8） | 城市、楼盘、房源、商户、来源页面、终端、租售。 | 事件流每 15 分钟；延迟超过 30 分钟标记延迟。 | 本页分析明细表：`metric_id=LI-12`、`query_snapshot_id`、`resolved_event_ids` 和 `occurred_at` 谓词；证据为曝光事件、去重结果和事件时可见性。 |
+| LI-13 前台咨询事件量及曝光咨询率（可选） | 周期内前台房源产生的有效咨询事件量，以及有效咨询事件相对有效曝光事件的比率。 | 分子：有效 `listing_inquiry` 的 `inquiry_event_id` 数；分母：LI-12 同周期、同维度范围内有效 `exposure_event_id` 数；分母为 0 显示 `--`。咨询事件量与比率分子使用同一事件集合。 | `inquiry_event_id`；分母按 `exposure_event_id` | 含事件发生时房源前台可见、咨询事件校验通过且成功接入；排除机器人、取消、接入拒绝、测试流量和重复事件。不计 `lead_id`，不作线索归因计数。 | `listing_inquiry.occurred_at`；分母为 `listing_exposure.occurred_at` | 北京时间（UTC+8） | 城市、楼盘、房源、商户、来源页面、咨询类型、终端。 | 事件流每 15 分钟；延迟超过 30 分钟标记延迟。 | 本页分析明细表：`metric_id=LI-13`、`query_snapshot_id`、分子/分母 `resolved_event_ids` 和各自 `occurred_at` 谓词；证据为咨询/曝光事件、校验、去重和事件时可见性。 |
 
 ## 13. 埋点、通知与审计
 
@@ -106,7 +106,7 @@ Listing `publication_status` 仅为草稿/已上架/已下架/已出租，Listin
 | 正常 | 租赁和出售价格桶独立展示；缺少价格单位的记录进入“未标准化”并可下钻。 |
 | 权限 | 销售主管只能看到所属团队经纪人负责且位于授权城市的供给；无“前台事件分析”操作权限或无事件源时不展示 LI-12、LI-13，且不能通过导出获得事件明细。 |
 | 异常 | 楼盘停用或举报暂停后，存量立即按选择时点重算；前台事件延迟时显示延迟状态而非 0。 |
-| 数据 | LI-11 以 Asia/Shanghai 日历日期差计算且不将仅更新时间迁移视为有效维护；LI-13 仅以 `inquiry_event_id` 为分子并以 LI-12 的 `exposure_event_id` 为分母；一个物理单元的租赁/出售不同 `listing_id` 不合并统计。 |
+| 数据 | LI-11 以 Asia/Shanghai 日历日期差计算且不将仅更新时间迁移视为有效维护；LI-13 仅以 `inquiry_event_id` 为分子并以 LI-12 的 `exposure_event_id` 为分母；一个物理单元的租赁/出售不同 `listing_id` 不合并统计。所有 LI 指标下钻均返回 `metric_id`、查询快照、解析 ID 集合、精确时间谓词（适用时）和逐行证据，不依赖目标业务页的通用筛选。 |
 
 ## 15. 依赖与风险
 
