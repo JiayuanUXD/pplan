@@ -17,13 +17,13 @@
 
 ## 3. 用户与权限
 
-平台管理员在具备“数据看板-经营概览”菜单权限时可查看全平台并切换城市、商户、团队和经纪人；运营人员须具备该菜单权限且仅查看授权城市及其供给相关线索；销售主管须具备该菜单权限且仅查看所属团队及授权城市；经纪人、客服无本页菜单，分别使用工作台或其业务页面。聚合导出另需“经营概览导出”操作权限。数据范围取账号授权范围与当前筛选的交集，城市、商户、团队、经纪人均使用不可变 ID；无指标权限的组件不渲染，不以 `0` 替代。手机号、客户姓名和联系方式不进入图表、排行或导出。
+平台管理员在具备“数据看板-经营概览”菜单权限时可查看全平台并切换城市、商户、团队和经纪人；运营人员须具备该菜单权限且仅查看授权城市及其供给相关线索；销售主管须具备该菜单权限且仅查看所属团队及授权城市；经纪人、客服无本页菜单，分别使用工作台或其业务页面。聚合 KPI、趋势点、对比项和排行均只能先进入本页分析明细表；仅当明细中的单对象行通过权限校验后，才可打开对应业务详情。聚合导出另需“经营概览导出”操作权限。数据范围取账号授权范围与当前筛选的交集，城市、商户、团队、经纪人均使用不可变 ID；无指标权限的组件不渲染，不以 `0` 替代。手机号、客户姓名和联系方式不进入图表、排行或导出。
 
 ## 4. 页面入口与关联
 
 - 菜单入口：`数据看板 > 经营概览`；工作台数据概览的“查看经营分析”可带入周期和数据范围。
 - 上游：楼盘、房源、审核、商户、经纪人、团队、线索、跟进、带看记录、阶段历史及权限服务。
-- 下游：点击 KPI、趋势点、对比项或排行进入房源列表、线索池、我的客户、经纪人管理或团队管理，并携带本页日期、范围、状态和维度筛选。
+- 下游：点击 KPI、趋势点、对比项或排行一律先进入本页分析明细表，并携带指标、查询快照、日期、范围、状态、维度和实际时间谓词；仅分析明细中的单对象行可再打开房源列表、线索池、我的客户、经纪人管理或团队管理的对应业务详情。
 - 返回：下钻返回后恢复 URL 中的筛选、对比周期、排序和图表缩放状态。
 
 ## 5. 页面结构
@@ -48,7 +48,7 @@
 
 ## 8. 详情及表单
 
-本页无新增或编辑表单。点击指标说明、趋势点或排行行打开只读口径抽屉，显示指标字典条目、当前筛选、分子/分母、最近刷新批次、数据延迟与下钻条件；点击“查看明细”执行第 12 节对应下钻。第 12 节的每个指标均先进入本页分析明细表，不能仅依赖目标业务页的通用筛选：请求必须包含 `metric_id`、`query_snapshot_id`、服务端解析的 `resolved_building_ids`、`resolved_listing_ids`、`resolved_lead_ids`、`resolved_broker_ids` 或 `resolved_team_ids`，以及指标实际使用的时间谓词；每行展示分子/分母命中、`evidence_type`、`evidence_id`、`evidence_at`、合并目标和来源 ID（适用时）及状态快照。业务页链接仅打开该行对象，不承载派生筛选。导出仅导出当前图表聚合结果和已授权维度，不导出客户或联系方式；异步导出保存条件、行数、操作者和秒级时间。
+本页无新增或编辑表单。点击指标说明、任一聚合 KPI、趋势点、对比项或排行行均先打开只读口径抽屉并进入本页分析明细表，不能直接进入业务页；抽屉显示指标字典条目、当前筛选、分子/分母、最近刷新批次、数据延迟与下钻条件。第 12 节的每个指标请求必须包含 `metric_id`、`query_snapshot_id`、服务端解析的 `resolved_building_ids`、`resolved_listing_ids`、`resolved_lead_ids`、`resolved_broker_ids` 或 `resolved_team_ids`，以及指标实际使用的时间谓词；每行展示分子/分母命中、`evidence_type`、`evidence_id`、`evidence_at`、合并目标和来源 ID（适用时）及状态快照。只有分析明细中的单对象行可打开对应业务详情，业务页链接仅承载该对象 ID，不承载聚合派生筛选。导出仅导出当前图表聚合结果和已授权维度，不导出客户或联系方式；异步导出保存条件、行数、操作者和秒级时间。
 
 ## 9. 核心操作与流程
 
@@ -86,8 +86,8 @@
 | OP-07 转化数 | 周期内首次进入已转化终态的线索量，仅表示转化事实。 | 分子：首次转化事件 Lead 数；分母：不适用。 | `lead_id` | 含已转化；排除已流失、无效接入、被合并源及合同/支付推断事件。 | `lead_stage_history.occurred_at`（`converted_at`） | 北京时间（UTC+8） | 城市、来源、商户、团队、经纪人、楼盘、房源。 | 每 5 分钟；转化/合并事件后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=OP-07`、`query_snapshot_id`、`resolved_lead_ids` 和精确谓词 `converted_at BETWEEN period_start AND period_end`；证据为首次已转化终态事件及 `converted_at`，不以创建时间代替。 |
 | OP-08 终态转化率 | 周期内已转化在已转化和已流失终态中的占比。 | 分子：OP-07 的已转化 `lead_id` 数；分母：同周期首次已转化 `lead_id` 数 + 首次已流失 `lead_id` 数；分母为 0 显示 `--`。 | `lead_id` | 含已转化、已流失首次终态事件；排除非终态、无效接入、被合并源。 | `lead_stage_history.occurred_at` | 北京时间（UTC+8） | 城市、来源、团队、经纪人、楼盘、房源。 | 每 5 分钟；终态/合并事件后 60 秒内失效，日终 01:00 回算。 | 本页分析明细表：`metric_id=OP-08`、`query_snapshot_id`、分子/分母 `resolved_lead_ids`；证据为首次 `converted_at` 或 `lost_at` 终态事件及集合角色。 |
 | OP-09 活跃商户数 | 查询时刻拥有至少一条活跃房源的合格商户数。 | 分子：存在 OP-02 房源的商户数；分母：不适用。 | `merchant_id` | 含商户启用、资质通过且有效、可发布且有活跃房源；排除停用、资质过期、无活跃房源。 | `snapshot_at` | 北京时间（UTC+8） | 城市、商户类型、服务城市。 | 每 5 分钟；商户资格或房源事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-09`、`query_snapshot_id`、`resolved_merchant_ids`；证据为商户资格快照及至少一条 OP-02 命中房源。 |
-| OP-10 活跃经纪人数 | 周期内完成有效跟进或成功带看的合格经纪人数。 | 分子：有至少一条有效跟进或成功带看的合格经纪人数；分母：不适用。 | `broker_id` | 含事件时经纪人启用、双核验有效、主团队启用；排除停用、资格失效、测试和无效更正记录。 | `follow_up_record.created_at`，无跟进时 `viewing_record.completed_at` | 北京时间（UTC+8） | 城市、商户、团队、经纪人。 | 每 5 分钟；跟进/带看/资格事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-10`、`query_snapshot_id`、`resolved_broker_ids`；证据为有效跟进或成功带看事件、时间和事件时资格。 |
-| OP-11 经纪人活动率 | 可承接经纪人中周期内有有效客户活动者的比例。 | 分子：OP-10 中可承接经纪人数；分母：周期内任一时点具分配资格的经纪人数；分母为 0 显示 `--`。 | `broker_id` | 分子含有效跟进/成功带看；分母含启用、双核验有效、团队启用、服务范围有效、容量大于 0；排除停用或资格失效。 | 分子 `follow_up_record.created_at`/`viewing_record.completed_at`；分母 `broker_eligibility_snapshot.snapshot_at` | 北京时间（UTC+8） | 城市、商户、团队。 | 每 5 分钟；资格/活动事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-11`、`query_snapshot_id`、分子/分母 `resolved_broker_ids`；证据为活动事件或资格快照及集合角色。 |
+| OP-10 活跃经纪人数 | 周期内完成有效跟进或成功带看的合格经纪人数。 | 分子：稳定集合 `active_broker_set`，即满足 `(有效跟进 AND follow_up_record.created_at BETWEEN period_start AND period_end) OR (成功带看 AND viewing_record.completed_at BETWEEN period_start AND period_end)` 的经纪人并集，按 `broker_id` 去重；分母：不适用。 | `broker_id` | 含事件时经纪人启用、双核验有效、主团队启用，且有效跟进/成功带看为当前有效版本；排除停用、资格失效、测试和无效更正记录。 | 有效跟进使用 `follow_up_record.created_at`；成功带看使用 `viewing_record.completed_at`；两个谓词均独立落入所选周期。 | 北京时间（UTC+8） | 城市、商户、团队、经纪人。 | 每 5 分钟；跟进/带看/资格事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-10`、`query_snapshot_id`、`resolved_broker_ids` 和上述精确并集时间谓词；证据为有效跟进或成功带看事件、事件时间、事件时资格及并集命中，按 `broker_id` 去重。 |
+| OP-11 经纪人活动率 | 可承接经纪人中周期内有有效客户活动者的比例。 | 分子：复用 OP-10 已固化的 `active_broker_set`，与 `eligible_broker_set` 取交集，不得按其他活动谓词重新计算；分母：周期内任一时点具分配资格的 `eligible_broker_set` 经纪人数；分母为 0 显示 `--`。 | `broker_id` | 分子复用 OP-10 的有效跟进/成功带看并集；分母含启用、双核验有效、团队启用、服务范围有效、容量大于 0；排除停用或资格失效。 | 分子复用 OP-10 的 `follow_up_record.created_at BETWEEN period_start AND period_end` 或 `viewing_record.completed_at BETWEEN period_start AND period_end` 并集；分母使用 `broker_eligibility_snapshot.snapshot_at`。 | 北京时间（UTC+8） | 城市、商户、团队。 | 每 5 分钟；资格/活动事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-11`、`query_snapshot_id`、分子/分母 `resolved_broker_ids`；证据为复用的 `active_broker_set` 事件、资格快照及 `active_broker_set`/`eligible_broker_set`/交集角色。 |
 | OP-12 团队转化排行 | 当前范围内团队按周期转化数排序的前 10 名。 | 分子：团队 OP-07 转化 `lead_id` 数；分母：不适用；同值按 `team_id` 升序。 | `team_id + lead_id` | 含转化事件时归属团队；排除无团队、已合并源、无权限团队。 | `lead_stage_history.occurred_at`（`converted_at`） | 北京时间（UTC+8） | 城市、商户、团队。 | 每 5 分钟；转化或归属历史事件后 60 秒内失效。 | 本页分析明细表：`metric_id=OP-12`、`query_snapshot_id`、`resolved_team_ids` 与 `resolved_lead_ids`；证据为 `converted_at`、终态事件时团队归属和排行序号。 |
 
 ## 13. 埋点、通知与审计
