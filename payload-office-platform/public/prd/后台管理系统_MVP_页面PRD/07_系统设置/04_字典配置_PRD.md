@@ -86,7 +86,7 @@
 | 注册属性（固定字段） | 非字典项。Building `registration_capability` 的固定枚举为 `REGISTRABLE`（可注册）、`NOT_REGISTRABLE`（不可注册）、`PENDING_CONFIRMATION`（待确认）；房源只读继承楼盘值。 |
 | 直租/直售声明（固定字段） | 非字典项。Listing 必填 `is_direct_listing` 布尔字段，与 `listing_type` 计算 `NONE`、`DIRECT_RENT`、`DIRECT_SALE`；不得由标签或字典决定。 |
 | 认证状态（固定字段） | 非字典项。Building `building_verification_status` 固定为 `UNVERIFIED`、`VERIFIED`、`EXPIRED`，并以证据编号和有效期校验；不得由标签或字典决定。 |
-| 商户类型（固定字典分类） | `MERCHANT_TYPE` 是只读发布基线，候选固定为 `OWNER`（业主）、`AGENCY`（代理商）、`FLEX_OFFICE_BRAND`（联合办公品牌）；商户管理只能选择，不能在本页新增、编辑、启停或排序。 |
+| 商户类型（固定字典分类） | `MERCHANT_TYPE` 是只读发布基线，候选固定为 `OWNER`（业主）、`AGENCY`（代理商）、`FLEX_OFFICE_BRAND`（联合办公品牌）、`CHANNEL`（渠道方）；商户管理只能选择，不能在本页新增、编辑、启停或排序。 |
 | 线索来源 | 线索池：前台表单、电话咨询、委托找房、导入、客服等。 |
 | 线索阶段 | 线索页：新建、待分配、跟进中、有效商机、带看、谈判、已转化、已流失；编码、标签、顺序和启停状态均属于发布基线，本页完全只读，不可新增、编辑、删除、启用、停用或排序。 |
 | 流失原因 | 线索阶段转为已流失时必填。 |
@@ -139,7 +139,7 @@
 - 线索阶段的编码、标签、顺序和启停状态必须与发布基线一致，本页任何表单、操作或接口均不得变更；驳回原因等其他状态机所需分类仍必须由业务流程校验，不能通过任意停用绕过必填原因规则。
 - `LISTING_DISPLAY_TAG` 仅控制展示和筛选，绝不得作为房源发布、审核、商户有效性、注册能力、直租/直售声明或认证状态的输入；这些结论只能读取固定机器字段、证据和既定状态机。
 - `registration_capability` 仅接受 `REGISTRABLE`、`NOT_REGISTRABLE`、`PENDING_CONFIRMATION`；`is_direct_listing` 与 `listing_type` 计算直租/直售声明；`building_verification_status` 仅接受 `UNVERIFIED`、`VERIFIED`、`EXPIRED`。这些字段不占用可维护字典编码。
-- `MERCHANT_TYPE` 仅接受 `OWNER`、`AGENCY`、`FLEX_OFFICE_BRAND`；候选由只读固定字典分类提供，商户有效性另由商户业务状态、资质有效期和服务城市判断。
+- `MERCHANT_TYPE` 仅接受 `OWNER`、`AGENCY`、`FLEX_OFFICE_BRAND`、`CHANNEL`；候选由只读固定字典分类提供，商户有效性另由商户业务状态、资质有效期和服务城市判断。
 
 ## 11. 异常与边界
 
