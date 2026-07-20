@@ -144,6 +144,7 @@
 | 首次有效跟进时限 | 4 小时 | `first_valid_follow_up_due_seconds=14400` |
 | 认领保护期 | 24 小时 | `claim_protection_seconds=86400` |
 | 无有效跟进回收时限 | 72 小时 | `no_valid_follow_up_recovery_seconds=259200` |
+| 线索手机号去重窗口 | 30 天 | `lead_dedup_window_seconds=2592000`；客户档案仍按规范化手机号查询全部历史，只有重复线索判定使用该窗口。 |
 | 每日成功认领上限 | 20 条 | `daily_claim_limit=20` |
 | 活跃自有线索上限 | 100 条 | `active_owned_lead_limit=100` |
 | 跟进纠错窗口 | 24 小时 | `follow_up_correction_seconds=86400` |
