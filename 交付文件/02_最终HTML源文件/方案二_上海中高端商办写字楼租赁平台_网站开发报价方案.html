@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>方案二_中高端商务办公租赁平台 · 网站开发报价方案</title>
+<style>
+:root{
+  --ink:#18212B;
+  --muted:#66717E;
+  --line:#D9DEE5;
+  --paper:#FFFFFF;
+  --soft:#F4F6F8;
+  --tint:#EEF3F7;
+  --gold:#A98243;
+  --gold-2:#D7BE86;
+  --navy:#102033;
+  --green:#2F5E4E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4;margin:15mm 14mm 16mm 14mm}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  background:#fff;
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  font-size:10.2px;
+  line-height:1.62;
+}
+a{color:inherit;text-decoration:none}
+a.ref{color:inherit;border-bottom:1px solid rgba(215,190,134,.75)}
+h1,h2,h3,h4{line-height:1.25;color:var(--ink)}
+p{color:#364352}
+strong{color:var(--ink)}
+table{border-collapse:collapse;width:100%}
+.page{page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+.avoid{page-break-inside:avoid}
+.text-right{text-align:right}
+.text-center{text-align:center}
+.muted{color:var(--muted)}
+.small{font-size:8.2px;color:var(--muted)}
+.cover{
+  height:265mm;
+  padding:26mm 8mm 0;
+  background:
+    linear-gradient(135deg,rgba(16,32,51,.96),rgba(24,33,43,.92)),
+    radial-gradient(circle at 82% 16%,rgba(215,190,134,.42),transparent 35%);
+  color:#fff;
+  overflow:hidden;
+}
+.cover:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22mm 22mm;
+  opacity:.46;
+}
+.cover-inner{position:relative;z-index:1}
+.brand-row{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.24);padding-bottom:12px}
+.mark{font-size:10px;letter-spacing:.22em;color:var(--gold-2);font-weight:700}
+.conf{font-size:8.5px;color:rgba(255,255,255,.66);text-align:right}
+.cover h1{font-size:28px;color:#fff;margin-top:44mm;letter-spacing:.02em;font-weight:700;max-width:15em}
+.cover h1 span{display:block;color:var(--gold-2);font-weight:500;margin-top:7px}
+.cover .subtitle{margin-top:16px;color:rgba(255,255,255,.78);font-size:11px;max-width:42em}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin-top:36mm;border-top:1px solid rgba(255,255,255,.22);padding-top:18px;max-width:135mm}
+.cover-meta .k{font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.48);text-transform:uppercase}
+.cover-meta .v{font-size:11px;color:#fff;margin-top:3px;font-weight:600}
+.cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:19mm}
+.cover-kpis .kpi{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);padding:10px 11px;min-height:25mm}
+.cover-kpis .num{font-size:18px;color:var(--gold-2);font-weight:700}
+.cover-kpis .label{font-size:8.5px;color:rgba(255,255,255,.72);margin-top:3px}
+.doc-footer{position:absolute;left:8mm;right:8mm;bottom:0;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.2);padding-top:8px;font-size:8px;color:rgba(255,255,255,.54)}
+.content{padding:0 1mm}
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px}
+.head .eyebrow{font-size:7.8px;letter-spacing:.22em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.head h2{font-size:18px;margin-top:4px}
+.head .page-no{font-size:8px;color:var(--muted)}
+.section{margin-top:16px}
+.shead{margin:15px 0 8px}
+.shead .tag{font-size:7.6px;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.shead h3{font-size:13.2px;margin-top:3px;border-left:3px solid var(--gold);padding-left:7px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{border:1px solid var(--line);background:#fff;padding:8px 9px}
+.card.tint{background:var(--tint)}
+.card h4{font-size:10px;margin-bottom:4px;color:var(--navy)}
+.card p,.card li{font-size:8.7px;color:#3C4956}
+.card ul{list-style:none}
+.card li{padding:2px 0;border-top:1px dotted var(--line)}
+.card li:first-child{border-top:0}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.metric{border:1px solid var(--line);background:var(--soft);padding:9px}
+.metric .n{font-size:17px;color:var(--gold);font-weight:800}
+.metric .l{font-size:8.5px;color:var(--muted);margin-top:2px}
+.tbl th{background:var(--navy);color:#fff;padding:6px 7px;font-size:8.4px;text-align:left;font-weight:600}
+.tbl td{border-bottom:1px solid var(--line);padding:5.6px 7px;font-size:8.7px;vertical-align:top}
+.tbl tr:nth-child(even) td{background:#F8FAFC}
+.tbl .total td{background:#EEF1F4;border-top:1.4px solid var(--navy);font-weight:700;color:var(--ink)}
+.tbl .sub td{background:#FBF7EC;color:#684D20;font-weight:700}
+.badge{display:inline-block;border-radius:999px;padding:1px 6px;font-size:7.5px;font-weight:700}
+.badge.gold{background:#F4E8CE;color:#765624}
+.badge.green{background:#E8F2EE;color:var(--green)}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.tier{border:1px solid var(--line);background:#fff}
+.tier.rec{border:1.6px solid var(--gold)}
+.tier .top{background:var(--navy);color:#fff;padding:9px}
+.tier.rec .top{background:linear-gradient(135deg,var(--navy),#263F58)}
+.tier .name{font-size:10.5px;font-weight:700;color:#fff}
+.tier .price{font-size:18px;font-weight:800;color:var(--gold-2);margin-top:5px}
+.tier .body{padding:8px 9px}
+.tier .li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted var(--line);padding:2.6px 0;font-size:8.1px;color:#3D4A57}
+.tier .off{color:#A2AAB4;text-decoration:line-through}
+.note{font-size:8.2px;color:var(--muted);line-height:1.55;margin-top:6px}
+.module-name{font-weight:700;color:var(--ink)}
+.money{font-weight:800;color:var(--navy)}
+.phase{font-weight:700;color:var(--gold)}
+.terms td:first-child{width:25mm;font-weight:700;color:var(--navy)}
+.signature{display:grid;grid-template-columns:1fr 1fr;gap:20mm;margin-top:18mm}
+.sigbox{border-top:1px solid var(--ink);padding-top:7px;color:var(--muted);font-size:8.5px}
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="cover-inner">
+    <div class="brand-row">
+      <div>
+        <div class="mark">COMMERCIAL PROPOSAL</div>
+        <div style="margin-top:7px;font-size:11px;color:rgba(255,255,255,.8)">网站开发商务报价方案</div>
+      </div>
+      <div class="conf">CONFIDENTIAL<br>仅供商务评估使用</div>
+    </div>
+    <h1>中高端商务办公租赁平台<span>方案二：商办平台增强版网站开发报价方案</span></h1>
+    <p class="subtitle">目标用户为上海中高端企业客户与办公选址决策人；功能体系参考 <a class="ref" href="https://www.soolou.com/sh">soolou.com/sh</a>，视觉体验参考 <a class="ref" href="https://www.industriousoffice.com">Industrious Office</a> 的高端、克制、专业化表达。</p>
+    <div class="cover-meta">
+      <div><div class="k">Target Market</div><div class="v">上海中高端商办租赁市场</div></div>
+      <div><div class="k">Reference</div><div class="v"><a class="ref" href="https://www.soolou.com/sh">soolou.com/sh</a> / <a class="ref" href="https://www.industriousoffice.com">Industrious Office</a></div></div>
+      <div><div class="k">Quote Date</div><div class="v">2026 年 07 月 15 日</div></div>
+      <div><div class="k">Validity</div><div class="v">有效期至 2026 年 10 月 13 日</div></div>
+    </div>
+    <div class="cover-kpis">
+      <div class="kpi"><div class="num">166 万</div><div class="label">推荐版开发报价<br>价税合计</div></div>
+      <div class="kpi"><div class="num">25 周</div><div class="label">项目周期<br>约 6 个月</div></div>
+      <div class="kpi"><div class="num">20 项</div><div class="label">核心计费模块<br>含小程序版本</div></div>
+      <div class="kpi"><div class="num">9 人</div><div class="label">建议项目团队<br>产品/设计/研发/测试</div></div>
+    </div>
+  </div>
+  <div class="doc-footer"><span>方案二：中高端商务办公租赁平台</span><span>Website Development Proposal</span></div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">EXECUTIVE SUMMARY</div><h2>项目理解与报价摘要</h2></div><div class="page-no">01</div></div>
+  <div class="grid2 avoid">
+    <div class="card tint">
+      <h4>项目定位</h4>
+      <p>建设面向上海中高端企业客户的商办写字楼租赁平台，承载多城市房源搜索、找楼盘、共享办公、地图找房、委托找房、房源投放、资讯指南与后台运营能力，形成“展示获客 + 地图选址 + 线索转化 + 运营管理”的完整闭环。</p>
+    </div>
+    <div class="card tint">
+      <h4>设计方向</h4>
+      <p>视觉参考 <a class="ref" href="https://www.industriousoffice.com">Industrious Office</a>：高质量空间影像、留白充足、克制配色、精细排版和顺滑交互。整体风格偏高端商务，不做低价房源站的密集促销感。</p>
+    </div>
+  </div>
+  <div class="metric-row avoid">
+    <div class="metric"><div class="n">¥166 万</div><div class="l">推荐版一次性开发投入</div></div>
+    <div class="metric"><div class="n">¥12.8 万</div><div class="l">首年云与第三方服务预算</div></div>
+    <div class="metric"><div class="n">3 个月</div><div class="l">上线后免费质保期</div></div>
+    <div class="metric"><div class="n">13%</div><div class="l">含增值税专用发票</div></div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Audience & Goals</div><h3>目标用户与建设目标</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:30mm"><strong>核心用户</strong></td><td>上海中高端企业主、行政负责人、HR/办公室负责人、外企与成长型公司选址决策人。</td></tr>
+        <tr><td><strong>服务场景</strong></td><td>传统写字楼租赁、找楼盘、共享办公/灵活办公筛选、地图找房、重点商圈比较、预约看房、委托顾问找房。</td></tr>
+        <tr><td><strong>业务目标</strong></td><td>提升自然搜索获客能力，强化高端品牌信任，沉淀房源与线索数据，支撑顾问团队持续跟进和转化。</td></tr>
+        <tr><td><strong>体验原则</strong></td><td>信息真实、筛选高效、视觉高级、移动端顺畅、咨询路径明确、后台运营可持续。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Scope</div><h3>本次建设范围</h3></div>
+    <div class="grid3">
+      <div class="card"><h4>C 端前台</h4><ul><li>首页与品牌内容</li><li>找办公室/找楼盘</li><li>共享办公专区</li><li>地图/区域/地铁找房</li><li>委托找房与预约咨询</li></ul></div>
+      <div class="card"><h4>运营后台</h4><ul><li>房源与楼盘管理</li><li>内容 CMS</li><li>线索与顾问跟进</li><li>用户与权限管理</li><li>数据统计与配置</li></ul></div>
+      <div class="card"><h4>基础能力</h4><ul><li>响应式适配</li><li>SEO 基础架构</li><li>安全加固</li><li>测试与部署</li><li>交付培训与文档</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">FUNCTION MODULES</div><h2>功能模块与计费清单</h2></div><div class="page-no">02</div></div>
+  <p class="note" style="margin-bottom:8px">以下为“高端商务版”推荐范围。模块报价为价税合计，已含 13% 增值税专用发票；最终实施以确认后的 PRD、原型图与 UI 设计稿为准。</p>
+  <table class="tbl">
+    <thead><tr><th style="width:24mm">类别</th><th>功能模块</th><th>包含内容</th><th class="text-right" style="width:18mm">报价</th></tr></thead>
+    <tbody>
+      <tr class="sub"><td colspan="4">A. 共通基础模块（与方案一同类模块保持同价）</td></tr>
+      <tr><td>产品</td><td class="module-name">需求梳理与信息架构</td><td>业务访谈、功能边界、用户路径、站点结构、关键页面原型、PRD 输出。</td><td class="text-right money">6 万</td></tr>
+      <tr><td>设计</td><td class="module-name">UI/UX 设计系统</td><td>高端商务视觉方向、PC/H5 核心页面设计、组件规范、Figma 源文件与标注。</td><td class="text-right money">16 万</td></tr>
+      <tr class="sub"><td colspan="4">B. C 端前台共通功能</td></tr>
+      <tr><td>前台</td><td class="module-name">首页与品牌展示</td><td>品牌首屏、快速搜索、精选房源、服务类型导航、合作品牌、资讯入口。</td><td class="text-right money">9 万</td></tr>
+      <tr><td>前台</td><td class="module-name">找办公室房源搜索</td><td>城市/区域/商圈、价格、面积、类型筛选，列表视图、排序、分页、SEO URL。</td><td class="text-right money">13 万</td></tr>
+      <tr><td>前台</td><td class="module-name">房源详情页</td><td>高清图集、价格面积、楼盘参数、地图位置、周边配套、预约看房、相似推荐。</td><td class="text-right money">9 万</td></tr>
+      <tr><td>前台</td><td class="module-name">共享办公专区</td><td>联合办公品牌、工位类型、计价展示、区域筛选、品牌详情、预约咨询。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>前台</td><td class="module-name">区域 / 商圈 / 地铁专题</td><td>重点区域、商圈、地铁线路聚合页，推荐房源、资讯内容、SEO 配置。</td><td class="text-right money">10 万</td></tr>
+      <tr><td>前台</td><td class="module-name">地图找房基础能力</td><td>高德地图集成、房源点位、区域缩放、地图卡片、筛选联动基础能力。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>转化</td><td class="module-name">委托找房与预约线索</td><td>需求表单、预算面积、入驻时间、联系方式、预约看房、线索分配规则。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>内容</td><td class="module-name">资讯中心与 SEO 基础</td><td>楼市动态、找房指南、标签分类、内链、站点地图、TDK 配置、结构化数据。</td><td class="text-right money">7 万</td></tr>
+      <tr><td>用户</td><td class="module-name">用户系统</td><td>手机号登录、微信授权、收藏、预约记录、委托记录、消息通知。</td><td class="text-right money">6 万</td></tr>
+      <tr class="sub"><td colspan="4">C. 后台、测试与项目管理共通功能</td></tr>
+      <tr><td>后台</td><td class="module-name">后台 CMS 与权限管理</td><td>房源、楼盘、图片、内容、用户、顾问、配置项、广告位、角色权限。</td><td class="text-right money">15 万</td></tr>
+      <tr><td>运营</td><td class="module-name">线索 CRM 与数据统计</td><td>线索状态、顾问跟进、回访记录、来源统计、PV/UV、转化率、热门房源。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>交付</td><td class="module-name">测试、部署与安全加固</td><td>功能测试、兼容测试、基础压测、线上部署、备份策略、HTTPS 与基础安全加固。</td><td class="text-right money">9 万</td></tr>
+      <tr><td>管理</td><td class="module-name">项目管理与交付协同</td><td>排期、周会、风险控制、需求变更管理、阶段验收、交付培训。</td><td class="text-right money">8 万</td></tr>
+      <tr class="sub"><td colspan="4">D. 方案二专属增强模块（形成与方案一的报价差异）</td></tr>
+      <tr><td>增强</td><td class="module-name">房源投放与 B 端管理</td><td>房源发布、资料提交、审核、上下架、置顶/精选推广位预留。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>增强</td><td class="module-name">找楼盘与楼盘库</td><td>写字楼品牌库、楼盘详情、开发商/物业/认证等级、楼盘内可租房源列表。</td><td class="text-right money">10 万</td></tr>
+      <tr><td>增强</td><td class="module-name">多城市与地图找房增强</td><td>多城市配置、价格气泡、左侧筛选面板、地图与列表深度联动、地铁线路叠加。</td><td class="text-right money">8 万</td></tr>
+      <tr><td>小程序</td><td class="module-name">微信小程序端基础版</td><td>与方案一小程序同价，覆盖首页、搜索、详情、收藏、预约、委托找房、个人中心。</td><td class="text-right money">18 万</td></tr>
+      <tr><td>小程序</td><td class="module-name">小程序楼盘库与地图增强</td><td>小程序端增加找楼盘、楼盘详情和地图找房增强交互适配。</td><td class="text-right money">2 万</td></tr>
+      <tr class="total"><td colspan="3">推荐版一次性开发投入合计（网站版：共通基础 140 万 + 增强 26 万）</td><td class="text-right">166 万</td></tr>
+      <tr class="total"><td colspan="3">微信小程序增长版合计（网站版 166 万 + 小程序 20 万）</td><td class="text-right">186 万</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">PACKAGE OPTIONS</div><h2>套餐方案与成本口径</h2></div><div class="page-no">03</div></div>
+  <div class="tiers avoid">
+    <div class="tier">
+      <div class="top"><div class="name">标准运营版</div><div class="price">¥128 万</div></div>
+      <div class="body">
+        <div class="li"><span>首页/搜索/详情</span><span>包含</span></div>
+        <div class="li"><span>共享办公专区</span><span>包含</span></div>
+        <div class="li"><span>区域/地铁专题</span><span>基础</span></div>
+        <div class="li off"><span>地图找房</span><span>不含</span></div>
+        <div class="li"><span>委托找房</span><span>基础</span></div>
+        <div class="li off"><span>房东投放</span><span>不含</span></div>
+        <div class="li"><span>后台 CMS</span><span>标准</span></div>
+        <div class="li"><span>适用场景</span><span>快速上线</span></div>
+      </div>
+    </div>
+    <div class="tier rec">
+      <div class="top"><div class="name">高端商务版 <span class="badge gold">推荐</span></div><div class="price">¥166 万</div></div>
+      <div class="body">
+        <div class="li"><span>首页/搜索/详情</span><span>包含</span></div>
+        <div class="li"><span>共享办公专区</span><span>包含</span></div>
+        <div class="li"><span>区域/地铁专题</span><span>完整</span></div>
+        <div class="li"><span>地图找房</span><span>包含</span></div>
+        <div class="li"><span>委托找房</span><span>完整</span></div>
+        <div class="li"><span>房东投放</span><span>包含</span></div>
+        <div class="li"><span>后台 CMS</span><span>完整</span></div>
+        <div class="li"><span>适用场景</span><span>正式运营</span></div>
+      </div>
+    </div>
+    <div class="tier">
+      <div class="top"><div class="name">微信小程序增长版</div><div class="price">¥186 万</div></div>
+      <div class="body">
+        <div class="li"><span>高端商务版全部功能</span><span>包含</span></div>
+        <div class="li"><span>微信小程序端</span><span>包含</span></div>
+        <div class="li"><span>小程序首页/搜索/详情</span><span>包含</span></div>
+        <div class="li"><span>收藏/预约/委托找房</span><span>包含</span></div>
+        <div class="li"><span>用户中心</span><span>包含</span></div>
+        <div class="li"><span>后台数据复用</span><span>包含</span></div>
+        <div class="li"><span>适用场景</span><span>微信生态获客</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Cost Structure</div><h3>首年投入与三年成本测算</h3></div>
+    <table class="tbl">
+      <thead><tr><th>成本项</th><th class="text-right">首年</th><th class="text-right">次年</th><th class="text-right">第三年</th><th class="text-right">三年累计</th></tr></thead>
+      <tbody>
+        <tr><td>一次性开发投入（推荐版，价税合计）</td><td class="text-right">166.00</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">166.00</td></tr>
+        <tr><td>微信小程序增长版投入（可选版本，替代推荐版）</td><td class="text-right">186.00</td><td class="text-right">-</td><td class="text-right">-</td><td class="text-right">186.00</td></tr>
+        <tr><td>云基础设施与第三方服务预算</td><td class="text-right">12.80</td><td class="text-right">12.80</td><td class="text-right">12.80</td><td class="text-right">38.40</td></tr>
+        <tr><td>年度维保服务（首年质保后可选）</td><td class="text-right">0.00</td><td class="text-right">18.00</td><td class="text-right">18.00</td><td class="text-right">36.00</td></tr>
+        <tr class="total"><td>年度合计</td><td class="text-right">178.80</td><td class="text-right">30.80</td><td class="text-right">30.80</td><td class="text-right">240.40</td></tr>
+      </tbody>
+    </table>
+    <p class="note">单位：人民币万元。云基础设施与第三方服务包括云服务器、数据库、对象存储、CDN、SSL、短信、地图、微信认证等预算项，按实际账单结算。年度维保可替换为按需迭代，参考 ¥800-1,200/小时。</p>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Tax</div><h3>推荐版金额拆分</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td>一次性开发投入价税合计</td><td class="text-right money">1,660,000 元</td></tr>
+        <tr><td>不含税金额</td><td class="text-right">1,469,026.55 元</td></tr>
+        <tr><td>13% 增值税</td><td class="text-right">190,973.45 元</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">TECH & DELIVERY PLAN</div><h2>技术方案与实施排期</h2></div><div class="page-no">04</div></div>
+  <div class="grid2 avoid">
+    <div class="card"><h4>前端与体验</h4><ul><li>Next.js / React，支持 SSR/SSG 与 SEO</li><li>响应式 PC + H5，重点优化移动端咨询路径</li><li>图片优化、懒加载、组件化设计系统</li><li>地图、筛选、表单、收藏等核心交互</li></ul></div>
+    <div class="card"><h4>后端与数据</h4><ul><li>Node.js / NestJS 或同等级企业级后端框架</li><li>MySQL / PostgreSQL，Redis 缓存</li><li>房源、楼盘、用户、线索、内容、配置数据模型</li><li>RESTful API / Swagger 接口文档</li></ul></div>
+    <div class="card"><h4>基础设施</h4><ul><li>阿里云 ECS / RDS / OSS / CDN / SSL</li><li>Docker 化部署，测试与生产环境分离</li><li>日志、监控、备份、告警基础配置</li><li>域名、备案、证书根据客户方主体配合完成</li></ul></div>
+    <div class="card"><h4>第三方服务</h4><ul><li>高德地图商业服务</li><li>短信验证码服务</li><li>微信登录/公众号/小程序接口预留</li><li>统计分析、错误监控、邮件或企业微信通知</li></ul></div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Schedule</div><h3>实施排期</h3></div>
+    <table class="tbl">
+      <thead><tr><th style="width:22mm">阶段</th><th>工作内容</th><th class="text-center" style="width:22mm">周期</th><th>阶段成果</th></tr></thead>
+      <tbody>
+        <tr><td class="phase">Phase 01</td><td>需求访谈、竞品拆解、信息架构、核心流程、PRD 与原型。</td><td class="text-center">W1-W3</td><td>PRD、站点结构、核心页面原型。</td></tr>
+        <tr><td class="phase">Phase 02</td><td>视觉方向、首页/列表/详情/后台关键页 UI、设计系统与标注。</td><td class="text-center">W4-W6</td><td>Figma 设计稿、组件规范、设计确认单。</td></tr>
+        <tr><td class="phase">Phase 03</td><td>前端开发、响应式适配、筛选、地图、表单、内容页面。</td><td class="text-center">W7-W12</td><td>前台可演示版本。</td></tr>
+        <tr><td class="phase">Phase 04</td><td>后端 API、数据库、后台 CMS、用户、线索、权限、统计。</td><td class="text-center">W9-W16</td><td>后台与接口联调版本。</td></tr>
+        <tr><td class="phase">Phase 05</td><td>系统联调、测试修复、性能优化、安全加固、内容初始化。</td><td class="text-center">W17-W20</td><td>测试报告、上线候选版本。</td></tr>
+        <tr><td class="phase">Phase 06</td><td>部署上线、内容初始化、操作培训、验收移交、质保启动。</td><td class="text-center">W21-W25</td><td>正式站点、交付文档、培训记录。</td></tr>
+        <tr class="total"><td colspan="2">合计</td><td class="text-center">25 周</td><td>约 6 个月，具体起始时间以合同与资料到位时间为准。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Team</div><h3>建议团队配置</h3></div>
+    <table class="tbl">
+      <thead><tr><th>角色</th><th class="text-center">人数</th><th>职责</th></tr></thead>
+      <tbody>
+        <tr><td>项目经理 / 产品经理</td><td class="text-center">1</td><td>需求、排期、风险、沟通、验收。</td></tr>
+        <tr><td>UI/UX 设计师</td><td class="text-center">1</td><td>视觉设计、交互设计、设计系统。</td></tr>
+        <tr><td>前端工程师</td><td class="text-center">2</td><td>PC/H5、SEO、地图交互、性能优化。</td></tr>
+        <tr><td>后端工程师</td><td class="text-center">2</td><td>API、数据库、后台、第三方服务集成。</td></tr>
+        <tr><td>微信小程序工程师</td><td class="text-center">1</td><td>小程序端页面、微信登录、预约委托流程与后端联调。</td></tr>
+        <tr><td>测试 / 运维工程师</td><td class="text-center">1</td><td>测试、部署、安全、监控、备份。</td></tr>
+        <tr><td>内容与 SEO 顾问</td><td class="text-center">1</td><td>页面结构、TDK、专题内容结构建议。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">DELIVERABLES & SERVICE</div><h2>交付物、运维与风险控制</h2></div><div class="page-no">05</div></div>
+  <div class="grid3 avoid">
+    <div class="card"><h4>产品与设计</h4><ul><li>PRD 需求文档</li><li>页面原型图</li><li>Figma UI 源文件</li><li>设计规范与标注</li></ul></div>
+    <div class="card"><h4>系统源码</h4><ul><li>前端源代码</li><li>后端源代码</li><li>数据库脚本</li><li>API 文档</li></ul></div>
+    <div class="card"><h4>上线资料</h4><ul><li>部署文档</li><li>运维手册</li><li>测试报告</li><li>操作培训文档</li></ul></div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Maintenance</div><h3>质保与运维服务</h3></div>
+    <table class="tbl">
+      <thead><tr><th>服务项</th><th>服务内容</th><th class="text-right">费用</th></tr></thead>
+      <tbody>
+        <tr><td><span class="badge green">首期包含</span> 上线质保</td><td>正式上线后 3 个月内，修复非需求变更类功能缺陷；重大问题 4 小时响应，24 小时内给出处理方案。</td><td class="text-right">已含</td></tr>
+        <tr><td>年度维保包</td><td>监控巡检、备份检查、安全补丁、每月问题汇总、少量优化支持，不含新增大型功能。</td><td class="text-right">15 万/年</td></tr>
+        <tr><td>月度维保包</td><td>适合持续迭代期，含 30 小时/月需求优化工时、优先响应与月度报告。</td><td class="text-right">1.8 万/月</td></tr>
+        <tr><td>按需迭代</td><td>按确认后的需求变更单执行，工时透明记录，月度结算。</td><td class="text-right">¥800-1,200/小时</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Risk Control</div><h3>主要风险与应对</h3></div>
+    <table class="tbl">
+      <thead><tr><th style="width:24mm">风险</th><th>说明</th><th>应对方式</th></tr></thead>
+      <tbody>
+        <tr><td>需求变更</td><td>开发过程中新增功能或调整流程影响工期与成本。</td><td>执行需求变更单；累计超过确认范围 10% 的工作量另行报价。</td></tr>
+        <tr><td>资料延迟</td><td>房源数据、品牌素材、第三方账号未及时提供。</td><td>排期顺延；项目启动时提供资料清单和账号清单。</td></tr>
+        <tr><td>第三方服务</td><td>地图、短信、微信、云服务存在限额、审核或价格变化。</td><td>按实际服务商政策执行，预留替代方案和接口封装。</td></tr>
+        <tr><td>数据安全</td><td>涉及用户联系方式、咨询记录、房源运营数据。</td><td>HTTPS、权限分级、日志审计、数据脱敏、备份策略；按等保 2.0 基础安全要求设计与加固。</td></tr>
+        <tr><td>SEO 见效周期</td><td>搜索排名受内容、外链、域名权重和持续运营影响。</td><td>提供技术 SEO 基础能力，内容运营与长期 SEO 服务可另行采购。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">PAYMENT & ACCEPTANCE</div><h2>付款方式与验收标准</h2></div><div class="page-no">06</div></div>
+  <div class="section avoid" style="margin-top:0">
+    <div class="shead"><div class="tag">Payment</div><h3>推荐版付款计划（网站版 166 万）</h3></div>
+    <table class="tbl">
+      <thead><tr><th>付款阶段</th><th class="text-center">比例</th><th class="text-right">金额</th><th>触发条件</th></tr></thead>
+      <tbody>
+        <tr><td>合同签订款</td><td class="text-center">30%</td><td class="text-right">498,000 元</td><td>合同签订并生效后 3 个工作日内。</td></tr>
+        <tr><td>设计确认款</td><td class="text-center">20%</td><td class="text-right">332,000 元</td><td>核心页面 UI 设计稿验收确认后。</td></tr>
+        <tr><td>开发完成款</td><td class="text-center">30%</td><td class="text-right">498,000 元</td><td>功能开发完成，进入联调测试版本后。</td></tr>
+        <tr><td>正式上线款</td><td class="text-center">15%</td><td class="text-right">249,000 元</td><td>网站正式部署上线并完成上线验收后。</td></tr>
+        <tr><td>质保尾款</td><td class="text-center">5%</td><td class="text-right">83,000 元</td><td>上线后 3 个月质保期满且无未关闭 P1/P2 缺陷。</td></tr>
+        <tr class="total"><td>合计</td><td class="text-center">100%</td><td class="text-right">1,660,000 元</td><td>-</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Acceptance</div><h3>验收标准</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:30mm"><strong>需求基准</strong></td><td>以双方确认的 PRD、原型图、UI 设计稿、接口清单和变更单作为验收基准。</td></tr>
+        <tr><td><strong>功能验收</strong></td><td>核心流程可完整闭环：房源录入、找办公室、找楼盘、地图找房、详情展示、预约咨询、委托找房、后台管理、线索跟进。</td></tr>
+        <tr><td><strong>兼容范围</strong></td><td>PC 端兼容 Chrome、Edge、Safari 当前主流版本；移动端兼容 iOS Safari、Android Chrome/微信内置浏览器主流版本。</td></tr>
+        <tr><td><strong>性能目标</strong></td><td>核心页面首屏体验完成基础优化；常规访问场景稳定；正式压测指标需结合服务器规格另行确认。</td></tr>
+        <tr><td><strong>缺陷处理</strong></td><td>P1 阻断类问题优先修复；P2 主要功能问题上线前关闭；P3/P4 体验问题进入优化清单。</td></tr>
+        <tr><td><strong>反馈周期</strong></td><td>阶段交付后，客户方应在 5 个工作日内提交书面验收意见；逾期未反馈视为该阶段无重大异议，项目继续推进。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Client Cooperation</div><h3>客户方配合事项</h3></div>
+    <div class="grid2">
+      <div class="card"><h4>资料与账号</h4><p>提供品牌资料、Logo、房源样例、图片素材、域名/云服务/短信/地图/微信等账号权限或授权。</p></div>
+      <div class="card"><h4>确认与反馈</h4><p>按阶段参加评审会议，及时确认需求、设计、测试问题和上线内容；因确认延迟导致的排期顺延由双方书面确认。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">BOUNDARY & TERMS</div><h2>报价边界与商务条款</h2></div><div class="page-no">07</div></div>
+  <div class="section" style="margin-top:0">
+    <div class="shead"><div class="tag">Exclusions</div><h3>报价不包含项</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:32mm"><strong>第三方费用</strong></td><td>域名注册、云服务器、短信、地图、CDN、SSL、微信认证、邮件、监控等第三方服务费用按实际发生额另行结算。</td></tr>
+        <tr><td><strong>内容与素材</strong></td><td>摄影、视频拍摄、3D 渲染、品牌 VI 重塑、专业文案撰写、批量房源数据采集与清洗不包含在本报价内。</td></tr>
+        <tr><td><strong>合规专项</strong></td><td>ICP备案代办、公安备案、等保测评、渗透测试、法律合规审查、隐私政策法务审校不包含在本报价内。</td></tr>
+        <tr><td><strong>外部系统</strong></td><td>第三方 CRM、ERP、财务、支付、IM、企业微信深度集成等未列明接口另行评估。</td></tr>
+        <tr><td><strong>新增需求</strong></td><td>超出已确认 PRD 与设计稿范围的新页面、新流程、新角色、新报表或复杂算法另行报价。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Terms</div><h3>商务条款</h3></div>
+    <table class="tbl terms">
+      <tbody>
+        <tr><td>报价有效期</td><td>本报价自 2026 年 07 月 15 日起 90 天内有效，有效期至 2026 年 10 月 13 日；逾期需重新确认。</td></tr>
+        <tr><td>发票税费</td><td>开发费用为价税合计，含 13% 增值税专用发票；第三方费用根据实际账单与服务性质开票。</td></tr>
+        <tr><td>知识产权</td><td>项目验收且客户方付清全部开发款后，定制开发部分源码与知识产权归客户方所有；开源组件与第三方服务遵循其原许可协议。</td></tr>
+        <tr><td>保密义务</td><td>双方对项目过程中知悉的商业、客户、技术、报价信息承担保密义务；本方案未经授权不得对外传播。</td></tr>
+        <tr><td>需求变更</td><td>需求变更须以书面变更单确认；影响工期或成本的，由双方确认后执行。</td></tr>
+        <tr><td>项目延期</td><td>因客户方资料、账号、内容、验收反馈延迟导致的工期顺延，不计入乙方延期责任。</td></tr>
+        <tr><td>合同优先</td><td>本方案用于商务报价与范围说明，最终权利义务以双方正式签署的合同及附件为准。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="signature">
+    <div class="sigbox">客户方确认：<br><br>日期：</div>
+    <div class="sigbox">乙方确认：<br><br>日期：</div>
+  </div>
+</section>
+
+</body>
+</html>

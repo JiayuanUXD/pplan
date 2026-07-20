@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>三套建设方案对比说明_方案一二三</title>
+<style>
+:root{
+  --ink:#18212B;
+  --muted:#66717E;
+  --line:#D9DEE5;
+  --soft:#F5F7FA;
+  --tint:#EEF3F7;
+  --gold:#A98243;
+  --gold-2:#D7BE86;
+  --navy:#102033;
+  --green:#315C50;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4;margin:15mm 14mm 16mm}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  font-size:10px;
+  line-height:1.58;
+  background:#fff;
+}
+a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(169,130,67,.55)}
+h1,h2,h3{line-height:1.25}
+table{border-collapse:collapse;width:100%}
+.page{page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+.cover{
+  height:265mm;
+  padding:22mm 8mm 0;
+  background:
+    linear-gradient(135deg,rgba(16,32,51,.97),rgba(24,33,43,.93)),
+    radial-gradient(circle at 82% 18%,rgba(215,190,134,.34),transparent 34%);
+  color:#fff;
+  overflow:hidden;
+}
+.cover:before{
+  content:"";
+  position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.055) 1px,transparent 1px);
+  background-size:22mm 22mm;
+  opacity:.45;
+}
+.inner{position:relative;z-index:1}
+.top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.24);padding-bottom:12px}
+.mark{font-size:10px;letter-spacing:.22em;color:var(--gold-2);font-weight:700}
+.conf{font-size:8.5px;color:rgba(255,255,255,.64);text-align:right}
+.cover h1{font-size:27px;color:#fff;margin-top:30mm;max-width:18em}
+.cover h1 span{display:block;color:var(--gold-2);font-weight:500;margin-top:7px}
+.lead{margin-top:15px;color:rgba(255,255,255,.78);font-size:11px;max-width:55em}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:18mm}
+.kpi{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);padding:10px;min-height:24mm}
+.kpi .n{font-size:17px;color:var(--gold-2);font-weight:800}
+.kpi .l{font-size:8.4px;color:rgba(255,255,255,.72);margin-top:3px}
+.choice{margin-top:14mm;display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.choice-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);padding:12px;min-height:32mm}
+.choice-card h3{font-size:11.5px;color:#fff;margin-bottom:5px}
+.choice-card p{font-size:8.8px;color:rgba(255,255,255,.72)}
+.footer{position:absolute;left:8mm;right:8mm;bottom:0;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.2);padding-top:8px;font-size:8px;color:rgba(255,255,255,.54)}
+.content{padding:0 1mm}
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:13px}
+.head .eyebrow{font-size:7.8px;letter-spacing:.22em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.head h2{font-size:18px;margin-top:4px}
+.page-no{font-size:8px;color:var(--muted)}
+.section{margin-top:14px}
+.shead{margin:13px 0 8px}
+.shead .tag{font-size:7.5px;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.shead h3{font-size:12.6px;margin-top:3px;border-left:3px solid var(--gold);padding-left:7px}
+.tbl th{background:var(--navy);color:#fff;padding:5.5px 6px;font-size:8.05px;text-align:left}
+.tbl td{border-bottom:1px solid var(--line);padding:5px 6px;font-size:8.15px;vertical-align:top}
+.tbl tr:nth-child(even) td{background:#F8FAFC}
+.tbl .total td{background:#EEF1F4;border-top:1.4px solid var(--navy);font-weight:700}
+.tag-pill{display:inline-block;border-radius:999px;background:#F4E8CE;color:#765624;padding:1px 6px;font-size:7.4px;font-weight:700}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{border:1px solid var(--line);background:#fff;padding:8px 9px}
+.card.tint{background:var(--tint)}
+.card.recommend{border:1.5px solid var(--gold);background:#FFFCF5}
+.card h4{font-size:10px;color:var(--navy);margin-bottom:4px}
+.card p,.card li{font-size:8.35px;color:#3C4956}
+.card ul{list-style:none}
+.card li{padding:2px 0;border-top:1px dotted var(--line)}
+.card li:first-child{border-top:0}
+.note{font-size:8.1px;color:var(--muted);line-height:1.5;margin-top:6px}
+.money{font-weight:800;color:var(--navy)}
+.muted{color:var(--muted)}
+.warn{color:#8A5D1F;font-weight:700}
+</style>
+</head>
+<body>
+
+<section class="page cover">
+  <div class="inner">
+    <div class="top">
+      <div>
+        <div class="mark">COMPARISON BRIEF</div>
+        <div style="margin-top:7px;font-size:11px;color:rgba(255,255,255,.8)">三套建设方案对比说明</div>
+      </div>
+      <div class="conf">CONFIDENTIAL<br>仅供商务决策使用</div>
+    </div>
+    <h1>中高端商务办公租赁平台<span>三套方案对比说明</span></h1>
+    <p class="lead">本说明用于对比三种建设口径：方案一与方案二为办公室/写字楼平台型方案，侧重获客、搜索筛选、线索转化和长期运营；方案三为轻量展示站，仅保留基础页面展示与 CMS 内容后台。三套方案不是同一复杂度产品的高低配，而是不同业务阶段与不同系统边界的选择。</p>
+    <div class="kpis">
+      <div class="kpi"><div class="n">140 万</div><div class="l">方案一 网站版<br>chooffice 参考</div></div>
+      <div class="kpi"><div class="n">166 万</div><div class="l">方案二 网站版<br>soolou 参考</div></div>
+      <div class="kpi"><div class="n">14 万</div><div class="l">方案三 基础展示站<br>lanapartments 参考</div></div>
+      <div class="kpi"><div class="n">首推</div><div class="l">方案一<br>次选方案二</div></div>
+    </div>
+    <div class="choice">
+      <div class="choice-card">
+        <h3>方案一：上海聚焦平台</h3>
+        <p>适合中高端办公室租赁业务，一期聚焦上海市场，建设完整获客与转化闭环。</p>
+      </div>
+      <div class="choice-card">
+        <h3>方案二：商办平台增强版</h3>
+        <p>适合作为次选增强方案，面向长期平台化运营，增加楼盘库、多城市、地图找房增强和 B 端投放能力。</p>
+      </div>
+      <div class="choice-card">
+        <h3>方案三：服务式公寓展示站</h3>
+        <p>仅适合作为轻量展示站，不建议作为本次平台化获客与运营建设的主选方案。</p>
+      </div>
+    </div>
+  </div>
+  <div class="footer"><span>三套建设方案对比说明</span><span>Website Development Proposal Comparison</span></div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">SIDE-BY-SIDE COMPARISON</div><h2>三套方案核心差异</h2></div><div class="page-no">01</div></div>
+  <table class="tbl">
+    <thead><tr><th style="width:24mm">对比项</th><th>方案一：chooffice 参考</th><th>方案二：soolou 参考</th><th>方案三：lanapartments 参考</th></tr></thead>
+    <tbody>
+      <tr><td>参考网站</td><td><a href="https://chooffice.com">chooffice.com</a></td><td><a href="https://www.soolou.com/sh">soolou.com/sh</a></td><td><a href="http://www.lanapartments.com/">lanapartments.com</a></td></tr>
+      <tr><td>业务定位</td><td>上海中高端办公室租赁平台</td><td>商办写字楼租赁平台增强版</td><td>服务式公寓基础展示站</td></tr>
+      <tr><td>适用阶段</td><td>首推方案：一期正式平台建设，先跑通上海获客闭环</td><td>次选方案：预算充足且明确长期平台化运营时采用</td><td>不推荐作为平台建设方案，仅适合临时展示与内容维护</td></tr>
+      <tr><td>网站建设费</td><td class="money">140 万</td><td class="money">166 万</td><td class="money">14 万</td></tr>
+      <tr><td>小程序版本</td><td class="money">158 万</td><td class="money">186 万</td><td>不包含小程序</td></tr>
+      <tr><td>首年云与第三方预算</td><td>10.8 万</td><td>12.8 万</td><td>1.8 万</td></tr>
+      <tr><td>年度运维</td><td>次年起 15 万/年</td><td>次年起 18 万/年</td><td>2.4 万/年</td></tr>
+      <tr><td>首年总投入口径</td><td class="money">150.8 万</td><td class="money">178.8 万</td><td class="money">18.2 万</td></tr>
+      <tr><td>建设周期</td><td>22 周，约 5.5 个月</td><td>25 周，约 6 个月</td><td>4 周，约 1 个月</td></tr>
+      <tr><td>团队配置</td><td>8 人</td><td>9 人</td><td>3 人</td></tr>
+      <tr><td>核心模块数量</td><td>16 项，含小程序版本</td><td>20 项，含小程序增强</td><td>6 项基础建设内容</td></tr>
+      <tr><td>产品复杂度</td><td>平台型，含搜索、详情、咨询、线索与后台运营</td><td>平台型增强，含楼盘库、多城市、地图增强、B 端投放</td><td>展示型，仅基础页面与 CMS 内容后台</td></tr>
+      <tr><td>报价可比性</td><td colspan="3">方案一与方案二属于同一平台型报价体系，同类模块尽量保持一致；方案三属于轻量展示站，功能边界明显收缩，不能直接与方案一/二按单价横向对比。</td></tr>
+      <tr class="total"><td>推荐判断</td><td>首推，适合优先建设上海市场获客平台。</td><td>次选，适合明确要做长期商办平台且预算更充足的情况。</td><td>不推荐作为本次平台建设方案，仅可作为展示站备选。</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Price Logic</div><h3>报价差异的核心原因</h3></div>
+    <div class="grid3">
+      <div class="card tint">
+        <h4>方案一：完整平台基础能力</h4>
+        <ul>
+          <li>高端 UI/UX 设计系统</li>
+          <li>房源搜索筛选与详情展示</li>
+          <li>预约咨询、委托找房与线索 CRM</li>
+          <li>后台 CMS、权限、统计和运营配置</li>
+          <li>支持 SEO 基础与小程序扩展</li>
+        </ul>
+      </div>
+      <div class="card tint">
+        <h4>方案二：在方案一基础上增强</h4>
+        <ul>
+          <li>共通基础模块与方案一同价</li>
+          <li>增加找楼盘与楼盘库</li>
+          <li>增加多城市信息架构</li>
+          <li>增加地图找房增强交互</li>
+          <li>增加 B 端房源投放能力</li>
+        </ul>
+      </div>
+      <div class="card tint">
+        <h4>方案三：轻量展示站</h4>
+        <ul>
+          <li>仅做基础视觉与模板落地</li>
+          <li>仅保留基础 CMS 内容后台</li>
+          <li>不做筛选、预约咨询和线索 CRM</li>
+          <li>不做 SEO 专项和小程序</li>
+          <li>服务器与运维按轻量站配置</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">FUNCTION SCOPE</div><h2>功能范围对比</h2></div><div class="page-no">02</div></div>
+  <table class="tbl">
+    <thead><tr><th style="width:30mm">功能模块</th><th>方案一</th><th>方案二</th><th>方案三</th></tr></thead>
+    <tbody>
+      <tr><td>高端视觉设计</td><td>完整 UI/UX 设计系统，16 万</td><td>完整 UI/UX 设计系统，16 万</td><td>基础页面视觉设计，2 万</td></tr>
+      <tr><td>PC/H5 响应式网站</td><td>包含</td><td>包含</td><td>包含基础适配</td></tr>
+      <tr><td>首页与品牌展示</td><td>高端首页、核心卖点、入口与转化路径</td><td>高端首页、多入口与平台化信息架构</td><td>基础品牌与公寓项目展示</td></tr>
+      <tr><td>搜索筛选</td><td>包含区域、商圈、租金、面积等筛选</td><td>包含，并与多城市和地图联动</td><td class="muted">不包含</td></tr>
+      <tr><td>详情页</td><td>办公室/共享办公详情，含咨询转化</td><td>房源详情与楼盘详情双体系</td><td>公寓项目、房型和图片基础展示</td></tr>
+      <tr><td>预约咨询</td><td>包含预约看房、在线咨询、委托找房</td><td>包含，并支持更完整顾问跟进</td><td class="muted">不包含</td></tr>
+      <tr><td>线索 CRM</td><td>包含线索管理与顾问跟进</td><td>包含更完整运营看板与流程</td><td class="muted">不包含</td></tr>
+      <tr><td>后台 CMS</td><td>房源、楼盘、内容、用户、权限、广告位</td><td>房源、楼盘、多城市、投放、内容和运营配置</td><td>页面、公寓内容、图片、文章和管理员账号</td></tr>
+      <tr><td>楼盘库</td><td>以房源详情和推荐房源为主</td><td>包含找楼盘、楼盘详情、认证与楼盘内房源</td><td class="muted">不包含</td></tr>
+      <tr><td>地图找房</td><td>标准地图筛选与点位展示</td><td>增强地图找房，含价格气泡与地铁叠加</td><td class="muted">不包含</td></tr>
+      <tr><td>B 端投放</td><td class="muted">不包含房东入驻与房源投放</td><td>包含房源投放、审核上下架、推广套餐等</td><td class="muted">不包含</td></tr>
+      <tr><td>SEO</td><td>SEO 基础能力</td><td>SEO 基础能力</td><td class="muted">不包含 SEO 专项，仅保留基础页面标题字段</td></tr>
+      <tr><td>微信小程序</td><td>可选增长版，18 万</td><td>可选增长版，20 万</td><td class="muted">不包含</td></tr>
+      <tr class="total"><td>功能边界结论</td><td>完整获客平台</td><td>平台增强与运营扩展</td><td>基础展示与内容维护</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Scope Notes</div><h3>报价边界说明</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:30mm"><strong>总价差异说明</strong></td><td>方案三的价格低，是因为去掉了搜索筛选、预约咨询、线索 CRM、地图找房、小程序和 SEO 专项，不是同等平台能力下的低价版本。</td></tr>
+        <tr><td><strong>同体系对比</strong></td><td>方案一与方案二属于同一平台型报价体系，同类模块保持接近或一致；方案二的增量主要来自楼盘库、多城市、地图增强和 B 端投放。</td></tr>
+        <tr><td><strong>展示站边界</strong></td><td>方案三只适合展示站建设。如果后续要增加找房、筛选、预约、CRM 或小程序，应作为二期平台化升级重新评估。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">DECISION GUIDE</div><h2>选择建议与实施路径</h2></div><div class="page-no">03</div></div>
+  <div class="grid3">
+    <div class="card recommend">
+      <h4>首推：方案一</h4>
+      <p>适合上海中高端办公室租赁业务，预算可覆盖平台级建设，并希望尽快上线获客、筛选、咨询和后台运营闭环。</p>
+    </div>
+    <div class="card recommend">
+      <h4>次选：方案二</h4>
+      <p>适合明确长期做商办平台、未来需要多城市、楼盘库、地图找房和 B 端房源投放的情况，整体投入高于方案一。</p>
+    </div>
+    <div class="card recommend">
+      <h4>不推荐作为平台方案：方案三</h4>
+      <p>方案三仅适合服务式公寓展示站，不具备平台获客、搜索筛选、预约咨询、线索 CRM 和小程序能力，不建议作为本次主方案。</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Recommended Roadmap</div><h3>分阶段建设建议</h3></div>
+    <table class="tbl">
+      <thead><tr><th style="width:24mm">阶段</th><th>建议动作</th><th>适用方案</th><th>目标</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag-pill">首选路径</span></td><td>直接建设完整网站平台，包含搜索、详情、咨询、线索和后台。</td><td>方案一</td><td>跑通上海市场获客与咨询转化闭环，投入和能力更均衡。</td></tr>
+        <tr><td><span class="tag-pill">次选路径</span></td><td>在完整平台基础上增加楼盘库、多城市、地图增强、B 端投放和小程序增强。</td><td>方案二</td><td>适合预算更充足、明确长期平台化运营的建设路径。</td></tr>
+        <tr><td><span class="tag-pill">不推荐路径</span></td><td>仅做基础展示站与 CMS 内容后台。</td><td>方案三</td><td>无法支撑平台获客、筛选、预约咨询和线索管理，不建议作为本次主建设方案。</td></tr>
+        <tr><td><span class="tag-pill">补充说明</span></td><td>如因预算原因短期选择方案三，后续升级到平台能力需重新评估产品结构、数据模型和开发工作量。</td><td>方案三升级</td><td>避免把展示站误认为平台一期，减少后续范围争议。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Decision Notes</div><h3>决策说明</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:32mm"><strong>建议选择顺序</strong></td><td>首推方案一，次选方案二；方案三不建议作为本次平台化建设主方案，仅作为轻量展示站备选。</td></tr>
+        <tr><td><strong>价格口径</strong></td><td>方案一与方案二的同类模块保持接近或一致；方案三因功能范围大幅收缩，价格不应与平台型方案直接横向比较。</td></tr>
+        <tr><td><strong>建设风险</strong></td><td>如果实际目标是持续获客和销售转化，不建议选择方案三；否则后续追加筛选、预约、CRM 和小程序时会形成二次建设成本。</td></tr>
+        <tr><td><strong>合同边界</strong></td><td>三套方案最终均应以确认后的 PRD、页面清单、字段清单、设计稿和合同附件为准。</td></tr>
+      </tbody>
+    </table>
+    <p class="note">参考网站仅用于功能范围与体验标准对标，不涉及复制其品牌、内容、图片、数据或专有资产。</p>
+  </div>
+</section>
+
+</body>
+</html>

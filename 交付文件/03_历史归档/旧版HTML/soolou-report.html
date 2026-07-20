@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<title>商办写字楼租赁平台 · 网站开发报价方案</title>
+<style>
+:root{
+  --accent:#C8A96E; --accent-rgb:200,169,110;
+  --night:#1A1A2E; --steel:#1A1A2E;
+  --ink:#0A0A0A; --paper:#FFFFFF; --mid:#6B6B6B;
+  --border:rgba(10,10,10,0.14); --surface:#EFEDE9; --tint:#FBF8F2;
+  --body:#3A3A3A; --risk-m:#B08B40;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+@page{ size:A4; margin:16mm 15mm 16mm 15mm; }
+html{ -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+body{
+  font-family:"PingFang SC","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+  color:var(--ink); font-size:10.2px; line-height:1.62; background:#fff;
+}
+h1,h2,h3,h4{ font-weight:700; line-height:1.25; }
+p{ color:var(--body); }
+strong{ color:var(--ink); }
+small{ font-size:0.85em; }
+.section{ page-break-inside:auto; padding-top:6px; }
+.pb{ page-break-before:always; }
+.avoid{ page-break-inside:avoid; }
+table{ border-collapse:collapse; width:100%; }
+.text-right{ text-align:right; }
+.text-center{ text-align:center; }
+
+/* ---- doc header / cover ---- */
+.dochead{ border-bottom:2px solid var(--ink); padding-bottom:14px; margin-bottom:16px; }
+.dochead .eyebrow{ font-size:8.5px; letter-spacing:.28em; color:var(--accent); font-weight:600; }
+.dochead h1{ font-size:23px; margin:6px 0 12px; letter-spacing:-.01em; }
+.docmeta{ display:flex; flex-wrap:wrap; gap:5px 26px; font-size:9px; }
+.docmeta .k{ color:var(--mid); margin-right:6px; }
+.docmeta .v{ color:var(--ink); font-weight:600; }
+.kpibar{ display:flex; gap:10px; margin-top:14px; }
+.kpibar .kpi{ flex:1; border:1px solid var(--border); padding:9px 11px; background:var(--tint); }
+.kpibar .n{ font-size:18px; font-weight:700; color:var(--accent); }
+.kpibar .u{ font-size:9px; color:var(--body); margin-top:2px; }
+
+/* ---- section head ---- */
+.shead{ margin:22px 0 10px; }
+.shead .tag{ font-size:8px; letter-spacing:.24em; color:var(--accent); font-weight:600; }
+.shead h2{ font-size:15.5px; margin-top:3px; border-left:3px solid var(--accent); padding-left:8px; }
+.shead .sub{ font-size:9px; color:var(--body); margin-top:4px; }
+
+/* ---- generic table ---- */
+.tbl th{ background:var(--ink); color:#fff; font-size:8.6px; letter-spacing:.04em; padding:6px 8px; text-align:left; font-weight:600; }
+.tbl td{ border-bottom:1px solid var(--border); padding:5px 8px; font-size:9px; vertical-align:top; }
+.tbl tr:nth-child(even) td{ background:var(--tint); }
+.tbl .total td{ background:var(--surface); font-weight:700; color:var(--ink); border-top:1.5px solid var(--ink); }
+
+/* ---- modules 2-col ---- */
+.mods{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.mod{ border:1px solid var(--border); padding:7px 9px; }
+.mod .id{ font-size:8px; color:var(--accent); font-weight:700; }
+.mod h4{ font-size:10px; margin:1px 0 3px; }
+.mod p{ font-size:8.4px; line-height:1.5; }
+
+/* ---- tech 2-col ---- */
+.tech{ display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+.tblk{ border:1px solid var(--border); padding:8px 10px; }
+.tblk h4{ font-size:10px; color:var(--accent); margin-bottom:4px; }
+.tblk .row{ display:flex; justify-content:space-between; font-size:8.6px; padding:2px 0; border-bottom:1px dotted var(--border); }
+.tblk .row .l{ color:var(--mid); }
+
+/* ---- three-tier pricing ---- */
+.tiers{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:9px; }
+.tier{ border:1px solid var(--border); }
+.tier.rec{ border:1.5px solid var(--accent); }
+.tier .top{ padding:9px 10px; background:var(--ink); color:#fff; }
+.tier.rec .top{ background:var(--accent); }
+.tier .nm{ font-size:11px; font-weight:700; }
+.tier .tot{ font-size:19px; font-weight:700; margin-top:5px; }
+.tier .tot small{ font-size:9px; font-weight:400; opacity:.85; }
+.tier .bd{ padding:8px 10px; }
+.tier .li{ font-size:8.4px; padding:2.5px 0; border-bottom:1px dotted var(--border); display:flex; justify-content:space-between; }
+.tier .li.off{ color:#B0B0B0; text-decoration:line-through; }
+.badge-rec{ display:inline-block; font-size:7.5px; background:#fff; color:var(--accent); padding:1px 6px; border-radius:8px; font-weight:700; margin-left:6px; vertical-align:middle; }
+
+/* ---- ops / delivery ---- */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+.card{ border:1px solid var(--border); padding:7px 9px; }
+.card h4{ font-size:9.6px; margin-bottom:3px; }
+.card .li{ font-size:8.3px; padding:1.5px 0; color:var(--body); }
+.pill{ display:inline-block; font-size:7.5px; padding:1px 6px; border-radius:8px; font-weight:600; }
+.pill.free{ background:rgba(200,169,110,.18); color:#8A6D2E; }
+.pill.price{ background:var(--surface); color:var(--ink); }
+.risk-tag{ font-size:8px; font-weight:600; padding:1px 6px; border-radius:3px; white-space:nowrap; }
+.risk-h{ background:#FCEBEB; color:#C0392B; }
+.risk-m{ background:#F5EDDD; color:var(--risk-m); }
+.risk-l{ background:#EAF7EE; color:#1E7D46; }
+
+.note{ font-size:8.2px; color:var(--mid); margin-top:6px; line-height:1.55; }
+.footer{ margin-top:20px; border-top:1px solid var(--border); padding-top:8px; font-size:8px; color:var(--mid); display:flex; justify-content:space-between; }
+</style>
+</head>
+<body>
+<!-- COVER / HEADER -->
+<div class="dochead">
+  <div class="eyebrow">COMMERCIAL OFFICE LEASING PLATFORM</div>
+  <h1>商办写字楼租赁平台 · 网站开发报价方案</h1>
+  <div class="docmeta">
+    <div><span class="k">参考产品</span><span class="v">搜楼网 soolou.com</span></div>
+    <div><span class="k">设计标杆</span><span class="v">Industrious Office</span></div>
+    <div><span class="k">报价日期</span><span class="v">2026年07月08日</span></div>
+    <div><span class="k">有效期至</span><span class="v">2026年10月08日（90天）</span></div>
+  </div>
+  <div class="kpibar">
+    <div class="kpi"><div class="n">2,470</div><div class="u">总开发工时</div></div>
+    <div class="kpi"><div class="n">25 <small style="font-size:10px">周</small></div><div class="u">项目周期（约6个月）</div></div>
+    <div class="kpi"><div class="n">11</div><div class="u">核心功能模块</div></div>
+    <div class="kpi"><div class="n">9</div><div class="u">项目团队人数</div></div>
+  </div>
+</div>
+
+<!-- BACKGROUND -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">PROJECT BACKGROUND</div><h2>项目背景与目标</h2></div>
+  <p>本方案以 <strong>搜楼网（soolou.com）</strong> 的产品功能体系为蓝本，以 <strong>Industrious</strong> 的高端设计质量为视觉标准，定制开发一套专注商办写字楼租赁的垂直信息平台。</p>
+  <p style="margin-top:5px">搜楼网覆盖上海、杭州、苏州等核心城市，提供 110 万+ 真实写字楼房源，具备找办公室、找楼盘、共享办公、地图找房、委托找房、房源投放等完整功能链路。Industrious 作为全球顶级灵活办公空间品牌（CBRE 旗下，全球 250+ 门店），以高质量空间摄影、克制精准的排版体系和流畅交互著称，是商办类网站设计的行业标杆。</p>
+</div>
+
+<!-- MODULES -->
+<div class="section">
+  <div class="shead"><div class="tag">FUNCTIONAL MODULES</div><h2>功能模块拆解</h2><div class="sub">11 个核心模块，覆盖用户端、B 端与后台管理全链路</div></div>
+  <div class="mods">
+    <div class="mod"><div class="id">01</div><h4>首页 & 品牌展示</h4><p>全屏高质量空间摄影 Hero 区，快速搜索入口，精选房源轮播，六大服务类型导航，合作品牌展示，资讯中心入口。</p></div>
+    <div class="mod"><div class="id">02</div><h4>找办公室（房源搜索）</h4><p>多维度筛选（城市/区域/价格/面积/类型），列表视图与地图视图切换，房源卡片展示，排序功能，无限滚动加载。</p></div>
+    <div class="mod"><div class="id">03</div><h4>房源详情页</h4><p>高清图片轮播，基本信息与价格展示，地图嵌入与周边配套，在线预约看房，联系经纪人，相似房源推荐。</p></div>
+    <div class="mod"><div class="id">04</div><h4>找楼盘（写字楼品牌库）</h4><p>楼盘品牌展示页，楼盘详情（开发商/物业/认证等级/LEED 认证），楼盘内可租房源列表。</p></div>
+    <div class="mod"><div class="id">05</div><h4>共享办公专区</h4><p>联合办公品牌列表，工位类型（固定/灵活/独立/会议室），按月/天/小时计价展示，在线预约功能。</p></div>
+    <div class="mod"><div class="id">06</div><h4>地图找房</h4><p>全屏地图模式（高德 API），价格气泡标注，左侧筛选面板与地图联动，地铁线路叠加，点击弹出房源简卡。</p></div>
+    <div class="mod"><div class="id">07</div><h4>委托找房</h4><p>用户需求表单提交，专属顾问分配，顾问跟进状态追踪，后台顾问管理与需求分配系统。</p></div>
+    <div class="mod"><div class="id">08</div><h4>房源投放（B 端）</h4><p>房源发布表单，图片上传，价格设置，房源管理后台（上下架/数据统计），付费推广套餐，发票申请。</p></div>
+    <div class="mod"><div class="id">09</div><h4>资讯中心</h4><p>楼市动态文章列表，富文本详情页，标签分类与搜索，相关文章推荐，SEO 优化结构。</p></div>
+    <div class="mod"><div class="id">10</div><h4>用户系统</h4><p>手机号验证码注册/登录，微信授权，个人中心（收藏/预约/委托记录），消息通知系统。</p></div>
+    <div class="mod"><div class="id">11</div><h4>后台管理系统（CMS）</h4><p>房源审核管理，用户与权限管理，委托需求分配，资讯发布，数据统计看板（PV/UV/转化），广告位管理，系统配置。</p></div>
+  </div>
+</div>
+<!-- TECH (new page) -->
+<div class="section pb">
+  <div class="shead"><div class="tag">TECHNOLOGY STACK</div><h2>技术选型</h2></div>
+  <div class="tech">
+    <div class="tblk"><h4>◉ 核心前端</h4>
+      <div class="row"><span class="l">框架</span><span>Next.js 14（App Router，SSR/SSG）</span></div>
+      <div class="row"><span class="l">样式</span><span>Tailwind CSS + 自定义设计系统</span></div>
+      <div class="row"><span class="l">状态管理</span><span>Zustand</span></div>
+      <div class="row"><span class="l">地图</span><span>高德地图 JS API（商业版）</span></div>
+      <div class="row"><span class="l">图片优化</span><span>Next.js Image + 阿里云 OSS</span></div>
+    </div>
+    <div class="tblk"><h4>◉ 核心后端</h4>
+      <div class="row"><span class="l">框架</span><span>Node.js / NestJS</span></div>
+      <div class="row"><span class="l">主数据库</span><span>MySQL 8.0</span></div>
+      <div class="row"><span class="l">缓存</span><span>Redis 7.0</span></div>
+      <div class="row"><span class="l">搜索引擎</span><span>Elasticsearch 8.x</span></div>
+      <div class="row"><span class="l">文件存储</span><span>阿里云 OSS</span></div>
+    </div>
+    <div class="tblk"><h4>◉ 基础设施</h4>
+      <div class="row"><span class="l">云服务</span><span>阿里云 ECS + SLB + CDN</span></div>
+      <div class="row"><span class="l">数据库</span><span>阿里云 RDS MySQL</span></div>
+      <div class="row"><span class="l">容器化</span><span>Docker + Docker Compose</span></div>
+      <div class="row"><span class="l">CI/CD</span><span>GitHub Actions</span></div>
+      <div class="row"><span class="l">监控</span><span>阿里云 ARMS + 云监控</span></div>
+    </div>
+    <div class="tblk"><h4>◉ 第三方集成</h4>
+      <div class="row"><span class="l">地图服务</span><span>高德地图 API（商业版）</span></div>
+      <div class="row"><span class="l">短信</span><span>阿里云短信</span></div>
+      <div class="row"><span class="l">支付</span><span>微信支付（付费推广）</span></div>
+      <div class="row"><span class="l">社交登录</span><span>微信开放平台 OAuth2.0</span></div>
+      <div class="row"><span class="l">数据统计</span><span>百度统计</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- TEAM -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">TEAM CONFIGURATION</div><h2>团队配置</h2></div>
+  <table class="tbl">
+    <thead><tr><th>角色</th><th class="text-center" style="width:56px">人数</th><th>职责描述</th></tr></thead>
+    <tbody>
+      <tr><td>产品经理 / 项目经理</td><td class="text-center">1</td><td>需求分析、进度把控、跨团队协调及质量管理</td></tr>
+      <tr><td>UI/UX 设计师</td><td class="text-center">2</td><td>视觉设计、交互设计、设计系统建立与标注输出</td></tr>
+      <tr><td>前端开发工程师</td><td class="text-center">2</td><td>PC 与移动端响应式研发、高德地图交互深度定制</td></tr>
+      <tr><td>后端开发工程师</td><td class="text-center">2</td><td>核心业务接口研发、数据库设计与性能调优</td></tr>
+      <tr><td>测试工程师</td><td class="text-center">1</td><td>功能闭环测试、并发压力测试与多端兼容适配</td></tr>
+      <tr><td>运维安全工程师</td><td class="text-center">1</td><td>阿里云环境部署、安全防护与自动化发布</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- SCHEDULE -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">DEVELOPMENT SCHEDULE</div><h2>开发排期</h2><div class="sub">五阶段交付，总周期 25 周（约 6 个月）</div></div>
+  <table class="tbl">
+    <thead><tr><th style="width:70px">阶段</th><th>内容</th><th class="text-center" style="width:70px">周次</th><th class="text-center" style="width:50px">工期</th></tr></thead>
+    <tbody>
+      <tr><td>Phase 01</td><td>规划与设计：需求分析、原型设计、UI 视觉设计确认</td><td class="text-center">W1–W5</td><td class="text-center">5 周</td></tr>
+      <tr><td>Phase 02</td><td>前端开发：多端适配与响应式开发、地图交互与大图动效</td><td class="text-center">W6–W11</td><td class="text-center">6 周</td></tr>
+      <tr><td>Phase 03</td><td>后端研发：数据库结构设计、API 编写与接口联调</td><td class="text-center">W12–W18</td><td class="text-center">7 周</td></tr>
+      <tr><td>Phase 04</td><td>系统集成测试：前后端对接、并发压力测试与修复</td><td class="text-center">W19–W22</td><td class="text-center">4 周</td></tr>
+      <tr><td>Phase 05</td><td>部署上线：云环境迁移、灰度发布、操作培训与运维移交</td><td class="text-center">W23–W25</td><td class="text-center">3 周</td></tr>
+      <tr class="total"><td>合计</td><td>9 人团队 · 2,470 工时 · 9 项交付成果</td><td class="text-center">—</td><td class="text-center">25 周</td></tr>
+    </tbody>
+  </table>
+</div>
+<!-- PRICING (new page) -->
+<div class="section pb">
+  <div class="shead"><div class="tag">PRICING BREAKDOWN</div><h2>报价明细 · 三档方案对比</h2><div class="sub">金额为价税合计，已含 13% 增值税专用发票。基础设施与第三方 API 按量部分以实际发生为准。</div></div>
+  <div class="tiers">
+    <!-- LITE -->
+    <div class="tier">
+      <div class="top"><div class="nm">精简启动版</div><div class="tot">¥118.93<small> 万</small></div></div>
+      <div class="bd">
+        <div class="li"><span>首页 & 品牌展示</span><span>12</span></div>
+        <div class="li"><span>房源搜索与筛选</span><span>16</span></div>
+        <div class="li"><span>房源详情页</span><span>12</span></div>
+        <div class="li off"><span>共享办公专区</span><span>—</span></div>
+        <div class="li"><span>资讯 + 找房指南</span><span>9</span></div>
+        <div class="li off"><span>委托找房 + CRM</span><span>—</span></div>
+        <div class="li off"><span>房源投放（B 端）</span><span>—</span></div>
+        <div class="li"><span>用户系统</span><span>7</span></div>
+        <div class="li"><span>后台 CMS</span><span>15</span></div>
+        <div class="li"><span>测试/部署/运维</span><span>12</span></div>
+        <div class="li off"><span>微信小程序</span><span>—</span></div>
+        <div class="li"><span>UI/UX 设计系统</span><span>18</span></div>
+        <div class="li off"><span>品牌视觉方向</span><span>—</span></div>
+        <div class="li"><span>项目管理</span><span>8</span></div>
+        <div class="li" style="font-weight:700;border-top:1px solid var(--ink);margin-top:3px"><span>开发合计</span><span>109 万</span></div>
+        <div class="li"><span>首年运营（云+API）</span><span>9.93</span></div>
+      </div>
+    </div>
+    <!-- FULL (recommended) -->
+    <div class="tier rec">
+      <div class="top"><div class="nm">正式运营版<span class="badge-rec">推荐</span></div><div class="tot">¥155.93<small> 万</small></div></div>
+      <div class="bd">
+        <div class="li"><span>首页 & 品牌展示</span><span>12</span></div>
+        <div class="li"><span>房源搜索与筛选</span><span>16</span></div>
+        <div class="li"><span>房源详情页</span><span>12</span></div>
+        <div class="li"><span>共享办公专区</span><span>10</span></div>
+        <div class="li"><span>资讯 + 找房指南</span><span>9</span></div>
+        <div class="li"><span>委托找房 + CRM</span><span>10</span></div>
+        <div class="li"><span>房源投放（B 端）</span><span>11</span></div>
+        <div class="li"><span>用户系统</span><span>7</span></div>
+        <div class="li"><span>后台 CMS</span><span>15</span></div>
+        <div class="li"><span>测试/部署/运维</span><span>12</span></div>
+        <div class="li off"><span>微信小程序</span><span>—</span></div>
+        <div class="li"><span>UI/UX 设计系统</span><span>18</span></div>
+        <div class="li"><span>品牌视觉方向</span><span>6</span></div>
+        <div class="li"><span>项目管理</span><span>8</span></div>
+        <div class="li" style="font-weight:700;border-top:1px solid var(--ink);margin-top:3px"><span>开发合计</span><span>146 万</span></div>
+        <div class="li"><span>首年运营（云+API）</span><span>9.93</span></div>
+      </div>
+    </div>
+    <!-- FLAG -->
+    <div class="tier">
+      <div class="top"><div class="nm">旗舰对标版</div><div class="tot">¥171.93<small> 万</small></div></div>
+      <div class="bd">
+        <div class="li"><span>首页 & 品牌展示</span><span>12</span></div>
+        <div class="li"><span>房源搜索与筛选</span><span>16</span></div>
+        <div class="li"><span>房源详情页</span><span>12</span></div>
+        <div class="li"><span>共享办公专区</span><span>10</span></div>
+        <div class="li"><span>资讯 + 找房指南</span><span>9</span></div>
+        <div class="li"><span>委托找房 + CRM</span><span>10</span></div>
+        <div class="li"><span>房源投放（B 端）</span><span>11</span></div>
+        <div class="li"><span>用户系统</span><span>7</span></div>
+        <div class="li"><span>后台 CMS</span><span>15</span></div>
+        <div class="li"><span>测试/部署/运维</span><span>12</span></div>
+        <div class="li"><span>微信小程序</span><span>16</span></div>
+        <div class="li"><span>UI/UX 设计系统</span><span>18</span></div>
+        <div class="li"><span>品牌视觉方向</span><span>6</span></div>
+        <div class="li"><span>项目管理</span><span>8</span></div>
+        <div class="li" style="font-weight:700;border-top:1px solid var(--ink);margin-top:3px"><span>开发合计</span><span>162 万</span></div>
+        <div class="li"><span>首年运营（云+API）</span><span>9.93</span></div>
+      </div>
+    </div>
+  </div>
+  <p class="note">单位：人民币万元。"开发合计"含产品开发（A）与设计管理（B），为一次性投入；"首年运营"为阿里云基础设施（7.80）+ 第三方 API（2.13）。年度维保包首年免费，次年起适用（见下方 TCO）。最终以确认需求后的详细清单为准。</p>
+</div>
+
+<!-- 3-YEAR TCO -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">3-YEAR TCO</div><h2>三年总持有成本</h2><div class="sub">以「正式运营版 146 万」为基准（单位：万元）</div></div>
+  <table class="tbl">
+    <thead><tr><th>成本项</th><th class="text-right">首年</th><th class="text-right">次年</th><th class="text-right">第三年</th><th class="text-right">三年累计</th></tr></thead>
+    <tbody>
+      <tr><td>一次性开发（价税合计）</td><td class="text-right">146.00</td><td class="text-right">—</td><td class="text-right">—</td><td class="text-right">146.00</td></tr>
+      <tr><td>云基础设施 + 第三方 API</td><td class="text-right">9.93</td><td class="text-right">9.93</td><td class="text-right">9.93</td><td class="text-right">29.79</td></tr>
+      <tr><td>年度维保包（首年免费）</td><td class="text-right">0.00</td><td class="text-right">18.00</td><td class="text-right">18.00</td><td class="text-right">36.00</td></tr>
+      <tr class="total"><td>年度合计</td><td class="text-right">155.93</td><td class="text-right">27.93</td><td class="text-right">27.93</td><td class="text-right">211.79</td></tr>
+    </tbody>
+  </table>
+  <p class="note">维保为可选项，也可按「月度维保包 ¥1.5 万/月」或「按需迭代 ¥800–1,200/小时」灵活替代。云与 API 按量部分以实际发生为准。</p>
+</div>
+<!-- OPS (new page) -->
+<div class="section pb">
+  <div class="shead"><div class="tag">OPERATIONS & MAINTENANCE</div><h2>运维保障方案</h2></div>
+  <div class="grid2">
+    <div class="card"><h4>标准运维服务 <span class="pill free">首年免费</span></h4>
+      <div class="li">· 7×24 小时系统监控告警</div>
+      <div class="li">· 每月安全漏洞扫描与修复</div>
+      <div class="li">· 每季度性能优化报告</div>
+      <div class="li">· 数据库每日自动备份（保留 30 天）</div>
+      <div class="li">· 重大故障 4 小时响应，24 小时恢复</div>
+    </div>
+    <div class="card"><h4>月度维保包 <span class="pill price">¥15,000 / 月</span></h4>
+      <div class="li">· 30 小时开发工时（迭代/优化）</div>
+      <div class="li">· 全量运维服务覆盖</div>
+      <div class="li">· 每月数据分析报告</div>
+      <div class="li">· 优先响应通道（2 小时内）</div>
+      <div class="li">· 专属技术顾问支持</div>
+    </div>
+    <div class="card"><h4>季度维保包 <span class="pill price">¥45,000 / 季</span></h4>
+      <div class="li">· 100 小时开发工时（享 9 折）</div>
+      <div class="li">· 全量运维服务覆盖</div>
+      <div class="li">· 季度产品迭代规划</div>
+      <div class="li">· 优先响应通道（2 小时内）</div>
+      <div class="li">· 专属技术顾问支持</div>
+    </div>
+    <div class="card"><h4>按需迭代 <span class="pill price">¥800–1,200 / 小时</span></h4>
+      <div class="li">· 按实际工时计费，灵活弹性</div>
+      <div class="li">· 需求变更单制度，透明计费</div>
+      <div class="li">· 超出 10% 工作量额外计费</div>
+      <div class="li">· 工时报告月度汇总</div>
+      <div class="li">· 适合低频迭代场景</div>
+    </div>
+  </div>
+</div>
+
+<!-- RISK -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">RISK MANAGEMENT</div><h2>风险说明与应对措施</h2></div>
+  <table class="tbl">
+    <thead><tr><th style="width:82px">风险类型</th><th>描述</th><th>应对措施</th></tr></thead>
+    <tbody>
+      <tr><td><span class="risk-tag risk-m">需求变更</span></td><td>开发过程中需求调整影响工期</td><td>变更需求单制度，超出 10% 工作量额外计费，变更需双方确认</td></tr>
+      <tr><td><span class="risk-tag risk-l">第三方 API</span></td><td>地图 API 调用限制或服务变更</td><td>预留腾讯地图备用方案，申请商业授权，监控 API 配额</td></tr>
+      <tr><td><span class="risk-tag risk-h">数据安全</span></td><td>用户数据泄露或隐私合规风险</td><td>HTTPS 全站加密、数据脱敏、定期安全审计、符合等保 2.0</td></tr>
+      <tr><td><span class="risk-tag risk-m">进度延误</span></td><td>关键节点延误影响上线计划</td><td>每周进度汇报，里程碑节点验收，预留 10% 缓冲工时</td></tr>
+      <tr><td><span class="risk-tag risk-l">性能瓶颈</span></td><td>高并发场景下系统性能问题</td><td>压力测试（目标 1000 并发），弹性扩容预案，CDN 加速</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- DELIVERY -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">DELIVERABLES</div><h2>交付物清单</h2><div class="sub">9 项完整交付物，确保甲方拥有全部知识产权与运营能力</div></div>
+  <div class="mods">
+    <div class="mod"><div class="id">01</div><h4>产品需求文档（PRD）</h4><p>完整功能需求说明、用户故事、业务流程图</p></div>
+    <div class="mod"><div class="id">02</div><h4>UI 设计稿</h4><p>Figma 源文件 + 设计规范文档 + 标注输出</p></div>
+    <div class="mod"><div class="id">03</div><h4>前端源代码</h4><p>含移动端适配、组件库、代码注释</p></div>
+    <div class="mod"><div class="id">04</div><h4>后端源代码</h4><p>含 Swagger API 接口文档、数据库脚本</p></div>
+    <div class="mod"><div class="id">05</div><h4>后台管理系统</h4><p>含权限管理、数据看板、操作手册</p></div>
+    <div class="mod"><div class="id">06</div><h4>数据库设计文档</h4><p>ER 图、表结构说明、索引设计</p></div>
+    <div class="mod"><div class="id">07</div><h4>部署文档 + 运维手册</h4><p>服务器配置、CI/CD 流程、监控告警说明</p></div>
+    <div class="mod"><div class="id">08</div><h4>测试报告</h4><p>功能测试用例、性能测试报告、安全测试报告</p></div>
+    <div class="mod"><div class="id">09</div><h4>用户操作手册</h4><p>C 端、B 端房东、后台管理员三类手册</p></div>
+  </div>
+</div>
+
+<!-- PAYMENT (new page) -->
+<div class="section pb">
+  <div class="shead"><div class="tag">PAYMENT SCHEDULE</div><h2>付款方式</h2><div class="sub">按开发投入分五期支付，各档金额（价税合计，元）如下</div></div>
+  <table class="tbl">
+    <thead><tr><th>付款阶段</th><th class="text-center" style="width:44px">比例</th><th class="text-right">精简版<br>（109 万）</th><th class="text-right">正式版<br>（146 万）</th><th class="text-right">旗舰版<br>（162 万）</th><th>触发条件</th></tr></thead>
+    <tbody>
+      <tr><td>合同签订款</td><td class="text-center">30%</td><td class="text-right">327,000</td><td class="text-right">438,000</td><td class="text-right">486,000</td><td>合同生效后 3 个工作日内</td></tr>
+      <tr><td>设计确认款</td><td class="text-center">20%</td><td class="text-right">218,000</td><td class="text-right">292,000</td><td class="text-right">324,000</td><td>UI 设计稿验收通过</td></tr>
+      <tr><td>开发完成款</td><td class="text-center">30%</td><td class="text-right">327,000</td><td class="text-right">438,000</td><td class="text-right">486,000</td><td>功能开发完成，测试通过</td></tr>
+      <tr><td>正式上线款</td><td class="text-center">15%</td><td class="text-right">163,500</td><td class="text-right">219,000</td><td class="text-right">243,000</td><td>网站正式上线验收通过</td></tr>
+      <tr><td>质保期满款</td><td class="text-center">5%</td><td class="text-right">54,500</td><td class="text-right">73,000</td><td class="text-right">81,000</td><td>上线后 3 个月质保期满</td></tr>
+      <tr class="total"><td>合计</td><td class="text-center">100%</td><td class="text-right">1,090,000</td><td class="text-right">1,460,000</td><td class="text-right">1,620,000</td><td>—</td></tr>
+    </tbody>
+  </table>
+  <p class="note">上表金额为开发投入价税合计（税前 + 13% 增值税专用发票），不含首年运营（云+API 9.93 万）及维保。基础设施费及第三方服务费按实际发生额另行结算。</p>
+</div>
+
+<!-- TERMS -->
+<div class="section avoid">
+  <div class="shead"><div class="tag">TERMS & CONDITIONS</div><h2>商务条款</h2></div>
+  <table class="tbl">
+    <tbody>
+      <tr><td style="width:96px"><strong>报价有效期</strong></td><td>本报价自 2026 年 07 月 08 日起 90 天内有效，逾期需重新确认。</td></tr>
+      <tr><td><strong>发票税费</strong></td><td>开发投入金额均为价税合计，含 13% 增值税专用发票；运营与第三方服务费按实际发生额结算并开票。</td></tr>
+      <tr><td><strong>知识产权</strong></td><td>项目验收付清全款后，甲方拥有定制开发部分的全部源代码及知识产权；第三方开源组件遵循其各自许可协议。</td></tr>
+      <tr><td><strong>质保期</strong></td><td>正式上线后提供 3 个月免费质保，覆盖非需求变更类的功能缺陷修复。</td></tr>
+      <tr><td><strong>验收标准</strong></td><td>以确认的 PRD 与设计稿为准，按里程碑节点分阶段验收；单阶段验收意见须在 5 个工作日内书面反馈。</td></tr>
+      <tr><td><strong>需求变更</strong></td><td>执行变更需求单制度，累计超出 10% 工作量的部分按 ¥800–1,200/小时另行计费，须双方书面确认。</td></tr>
+      <tr><td><strong>保密</strong></td><td>双方对项目过程中知悉的商业与技术信息负保密义务；本报价为保密文件，未经授权请勿外传。</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer">
+  <span>商办写字楼租赁平台 · 网站开发报价方案</span>
+  <span>本报价方案仅供参考，最终以合同为准 · © 2026 保密文件，请勿外传</span>
+</div></body>
+</html>

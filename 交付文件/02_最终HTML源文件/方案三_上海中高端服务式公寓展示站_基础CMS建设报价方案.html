@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>方案三_中高端商务办公租赁平台 · 基础 CMS 建设报价方案</title>
+<style>
+:root{
+  --ink:#18212B;
+  --muted:#66717E;
+  --line:#D9DEE5;
+  --paper:#FFFFFF;
+  --soft:#F4F6F8;
+  --tint:#EEF3F7;
+  --gold:#A98243;
+  --gold-2:#D7BE86;
+  --navy:#102033;
+  --green:#2F5E4E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+@page{size:A4;margin:15mm 14mm 16mm 14mm}
+html{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{
+  background:#fff;
+  color:var(--ink);
+  font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+  font-size:10.2px;
+  line-height:1.62;
+}
+a{color:inherit;text-decoration:none}
+a.ref{color:inherit;border-bottom:1px solid rgba(215,190,134,.75)}
+h1,h2,h3,h4{line-height:1.25;color:var(--ink)}
+p{color:#364352}
+strong{color:var(--ink)}
+table{border-collapse:collapse;width:100%}
+.page{page-break-after:always;position:relative}
+.page:last-child{page-break-after:auto}
+.avoid{page-break-inside:avoid}
+.text-right{text-align:right}
+.text-center{text-align:center}
+.muted{color:var(--muted)}
+.small{font-size:8.2px;color:var(--muted)}
+.cover{
+  height:265mm;
+  padding:26mm 8mm 0;
+  background:
+    linear-gradient(135deg,rgba(16,32,51,.96),rgba(24,33,43,.92)),
+    radial-gradient(circle at 82% 16%,rgba(215,190,134,.42),transparent 35%);
+  color:#fff;
+  overflow:hidden;
+}
+.cover:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.06) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.06) 1px,transparent 1px);
+  background-size:22mm 22mm;
+  opacity:.46;
+}
+.cover-inner{position:relative;z-index:1}
+.brand-row{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.24);padding-bottom:12px}
+.mark{font-size:10px;letter-spacing:.22em;color:var(--gold-2);font-weight:700}
+.conf{font-size:8.5px;color:rgba(255,255,255,.66);text-align:right}
+.cover h1{font-size:28px;color:#fff;margin-top:44mm;letter-spacing:.02em;font-weight:700;max-width:15em}
+.cover h1 span{display:block;color:var(--gold-2);font-weight:500;margin-top:7px}
+.cover .subtitle{margin-top:16px;color:rgba(255,255,255,.78);font-size:11px;max-width:42em}
+.cover-meta{display:grid;grid-template-columns:1fr 1fr;gap:8px 26px;margin-top:36mm;border-top:1px solid rgba(255,255,255,.22);padding-top:18px;max-width:135mm}
+.cover-meta .k{font-size:8px;letter-spacing:.18em;color:rgba(255,255,255,.48);text-transform:uppercase}
+.cover-meta .v{font-size:11px;color:#fff;margin-top:3px;font-weight:600}
+.cover-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:19mm}
+.cover-kpis .kpi{border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);padding:10px 11px;min-height:25mm}
+.cover-kpis .num{font-size:18px;color:var(--gold-2);font-weight:700}
+.cover-kpis .label{font-size:8.5px;color:rgba(255,255,255,.72);margin-top:3px}
+.doc-footer{position:absolute;left:8mm;right:8mm;bottom:0;display:flex;justify-content:space-between;border-top:1px solid rgba(255,255,255,.2);padding-top:8px;font-size:8px;color:rgba(255,255,255,.54)}
+.content{padding:0 1mm}
+.head{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:14px}
+.head .eyebrow{font-size:7.8px;letter-spacing:.22em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.head h2{font-size:18px;margin-top:4px}
+.head .page-no{font-size:8px;color:var(--muted)}
+.section{margin-top:16px}
+.shead{margin:15px 0 8px}
+.shead .tag{font-size:7.6px;letter-spacing:.18em;color:var(--gold);font-weight:700;text-transform:uppercase}
+.shead h3{font-size:13.2px;margin-top:3px;border-left:3px solid var(--gold);padding-left:7px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.card{border:1px solid var(--line);background:#fff;padding:8px 9px}
+.card.tint{background:var(--tint)}
+.card h4{font-size:10px;margin-bottom:4px;color:var(--navy)}
+.card p,.card li{font-size:8.7px;color:#3C4956}
+.card ul{list-style:none}
+.card li{padding:2px 0;border-top:1px dotted var(--line)}
+.card li:first-child{border-top:0}
+.metric-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}
+.metric{border:1px solid var(--line);background:var(--soft);padding:9px}
+.metric .n{font-size:17px;color:var(--gold);font-weight:800}
+.metric .l{font-size:8.5px;color:var(--muted);margin-top:2px}
+.tbl th{background:var(--navy);color:#fff;padding:6px 7px;font-size:8.4px;text-align:left;font-weight:600}
+.tbl td{border-bottom:1px solid var(--line);padding:5.6px 7px;font-size:8.7px;vertical-align:top}
+.tbl tr:nth-child(even) td{background:#F8FAFC}
+.tbl .total td{background:#EEF1F4;border-top:1.4px solid var(--navy);font-weight:700;color:var(--ink)}
+.tbl .sub td{background:#FBF7EC;color:#684D20;font-weight:700}
+.badge{display:inline-block;border-radius:999px;padding:1px 6px;font-size:7.5px;font-weight:700}
+.badge.gold{background:#F4E8CE;color:#765624}
+.badge.green{background:#E8F2EE;color:var(--green)}
+.tiers{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.tier{border:1px solid var(--line);background:#fff}
+.tier.rec{border:1.6px solid var(--gold)}
+.tier .top{background:var(--navy);color:#fff;padding:9px}
+.tier.rec .top{background:linear-gradient(135deg,var(--navy),#263F58)}
+.tier .name{font-size:10.5px;font-weight:700;color:#fff}
+.tier .price{font-size:18px;font-weight:800;color:var(--gold-2);margin-top:5px}
+.tier .body{padding:8px 9px}
+.tier .li{display:flex;justify-content:space-between;gap:8px;border-bottom:1px dotted var(--line);padding:2.6px 0;font-size:8.1px;color:#3D4A57}
+.tier .off{color:#A2AAB4;text-decoration:line-through}
+.note{font-size:8.2px;color:var(--muted);line-height:1.55;margin-top:6px}
+.module-name{font-weight:700;color:var(--ink)}
+.money{font-weight:800;color:var(--navy)}
+.phase{font-weight:700;color:var(--gold)}
+.terms td:first-child{width:25mm;font-weight:700;color:var(--navy)}
+.signature{display:grid;grid-template-columns:1fr 1fr;gap:20mm;margin-top:18mm}
+.sigbox{border-top:1px solid var(--ink);padding-top:7px;color:var(--muted);font-size:8.5px}
+</style>
+</head>
+<body>
+
+
+<section class="page cover">
+  <div class="cover-inner">
+    <div class="brand-row">
+      <div>
+        <div class="mark">COMMERCIAL PROPOSAL</div>
+        <div style="margin-top:7px;font-size:11px;color:rgba(255,255,255,.8)">基础 CMS 网站建设报价方案</div>
+      </div>
+      <div class="conf">CONFIDENTIAL<br>仅供商务评估使用</div>
+    </div>
+    <h1>中高端商务办公租赁平台<span>方案三：轻量展示站基础 CMS 建设报价方案</span></h1>
+    <p class="subtitle">本方案按 <a class="ref" href="http://www.lanapartments.com/">lanapartments.com</a> 当前偏轻量的展示型网站功能重新估算，仅保留基础内容管理与页面展示能力；不包含复杂导航系统、筛选搜索、预约咨询表单、SEO 专项和小程序。</p>
+    <div class="cover-meta">
+      <div><div class="k">Target</div><div class="v">服务式公寓基础展示站</div></div>
+      <div><div class="k">Reference</div><div class="v"><a class="ref" href="http://www.lanapartments.com/">lanapartments.com</a></div></div>
+      <div><div class="k">Quote Date</div><div class="v">2026 年 07 月 15 日</div></div>
+      <div><div class="k">Validity</div><div class="v">有效期至 2026 年 10 月 13 日</div></div>
+    </div>
+    <div class="cover-kpis">
+      <div class="kpi"><div class="num">14 万</div><div class="label">网站建设费<br>价税合计</div></div>
+      <div class="kpi"><div class="num">4 周</div><div class="label">项目周期<br>约 1 个月</div></div>
+      <div class="kpi"><div class="num">6 项</div><div class="label">核心建设内容<br>基础 CMS 范围</div></div>
+      <div class="kpi"><div class="num">3 人</div><div class="label">建议项目团队<br>设计/开发/交付</div></div>
+    </div>
+  </div>
+  <div class="doc-footer"><span>方案三：中高端商务办公租赁平台</span><span>Basic CMS Website Proposal</span></div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">EXECUTIVE SUMMARY</div><h2>项目范围与报价摘要</h2></div><div class="page-no">01</div></div>
+  <div class="grid2 avoid">
+    <div class="card tint">
+      <h4>项目定位</h4>
+      <p>建设一个基础服务式公寓展示站，主要用于展示品牌、公寓项目、房型图片、基础介绍、联系方式和静态内容。后台采用标准 CMS 内容管理系统，便于贵方自行维护页面、公寓内容、图片和文章。</p>
+    </div>
+    <div class="card tint">
+      <h4>范围原则</h4>
+      <p>本方案只保留基础 CMS 能力，不做复杂业务功能。明确不包含导航系统定制、筛选搜索、预约/咨询表单、线索 CRM、SEO 专项、小程序、多套餐选择和复杂地图找房。</p>
+    </div>
+  </div>
+  <div class="metric-row avoid">
+    <div class="metric"><div class="n">¥14 万</div><div class="l">网站建设费</div></div>
+    <div class="metric"><div class="n">¥1.8 万</div><div class="l">首年服务器预算</div></div>
+    <div class="metric"><div class="n">¥2.4 万</div><div class="l">年度基础运维</div></div>
+    <div class="metric"><div class="n">4 周</div><div class="l">预计建设周期</div></div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Scope</div><h3>本次包含范围</h3></div>
+    <div class="grid3">
+      <div class="card"><h4>前台展示</h4><ul><li>首页基础展示</li><li>公寓项目展示页</li><li>房型/图片展示</li><li>关于我们/联系方式</li><li>基础移动端适配</li></ul></div>
+      <div class="card"><h4>CMS 内容后台</h4><ul><li>公寓内容管理</li><li>图片上传管理</li><li>页面内容编辑</li><li>文章/资讯发布</li><li>管理员账号权限</li></ul></div>
+      <div class="card"><h4>交付支持</h4><ul><li>CMS 后台安装配置</li><li>模板样式调整</li><li>服务器部署</li><li>SSL 配置</li><li>后台操作培训</li></ul></div>
+    </div>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Excluded</div><h3>本次不包含范围</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:32mm"><strong>不包含功能</strong></td><td>不包含复杂导航系统、筛选/搜索、预约咨询表单、线索管理、会员系统、小程序、支付、地图找房、在线客服、复杂统计看板。</td></tr>
+        <tr><td><strong>不包含 SEO 专项</strong></td><td>不包含关键词策略、内容 SEO 规划、批量落地页、结构化数据专项、外链建设和长期 SEO 运营。仅保留页面标题等 CMS 基础字段。</td></tr>
+        <tr><td><strong>不包含内容生产</strong></td><td>不包含摄影、文案撰写、翻译、图片精修、批量资料录入和历史数据清洗。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">FUNCTION & PRICE</div><h2>功能清单与报价明细</h2></div><div class="page-no">02</div></div>
+  <p class="note" style="margin-bottom:8px">本报价按基础 CMS 展示站估算，后台采用成熟 CMS 内容管理系统进行配置与模板开发，非从零定制开发后台。</p>
+  <table class="tbl">
+    <thead><tr><th style="width:24mm">类别</th><th>建设内容</th><th>说明</th><th class="text-right" style="width:18mm">报价</th></tr></thead>
+    <tbody>
+      <tr><td>规划</td><td class="module-name">需求确认与站点结构</td><td>确认页面结构、内容字段、公寓展示字段、后台维护方式和交付边界。</td><td class="text-right money">1 万</td></tr>
+      <tr><td>设计</td><td class="module-name">基础页面视觉设计</td><td>提供首页、列表页、详情页和基础移动端页面的视觉方向、版式规范、色彩字体与关键组件样式。</td><td class="text-right money">2 万</td></tr>
+      <tr><td>设计落地</td><td class="module-name">CMS 模板样式落地</td><td>基于 CMS 模板进行品牌色、字体、列表、详情和基础移动端样式调整。</td><td class="text-right money">3 万</td></tr>
+      <tr><td>前台</td><td class="module-name">展示页面搭建</td><td>首页、公寓列表展示、详情展示、房型图片、关于我们、联系方式等基础页面。</td><td class="text-right money">3 万</td></tr>
+      <tr><td>后台</td><td class="module-name">CMS 后台安装与内容模型</td><td>部署 CMS 内容管理后台，配置公寓、房型、图片、文章、页面等基础内容模型和管理员账号。</td><td class="text-right money">3 万</td></tr>
+      <tr><td>交付</td><td class="module-name">部署、测试与培训</td><td>服务器部署、SSL 配置、基础兼容测试、后台操作培训和交付文档。</td><td class="text-right money">2 万</td></tr>
+      <tr class="total"><td colspan="3">网站建设费合计</td><td class="text-right">14 万</td></tr>
+    </tbody>
+  </table>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Infrastructure</div><h3>服务器与运维费用</h3></div>
+    <table class="tbl">
+      <thead><tr><th>成本项</th><th>说明</th><th class="text-right">年度预算</th></tr></thead>
+      <tbody>
+        <tr><td>云服务器</td><td>适合基础展示站的小型云服务器，含系统环境、Web 服务、数据库运行环境。</td><td class="text-right">¥9,600 / 年</td></tr>
+        <tr><td>对象存储 / 备份 / SSL</td><td>图片存储、基础备份、SSL 证书与少量云资源。</td><td class="text-right">¥4,800 / 年</td></tr>
+        <tr><td>第三方服务预留</td><td>短信、地图、CDN 或统计工具等轻量预算；如不启用则按实际减少。</td><td class="text-right">¥3,600 / 年</td></tr>
+        <tr class="total"><td colspan="2">服务器与第三方服务预算</td><td class="text-right">¥18,000 / 年</td></tr>
+        <tr><td>年度基础运维</td><td>系统巡检、备份检查、安全补丁、CMS 小版本升级、故障响应、少量内容配置支持。</td><td class="text-right">¥24,000 / 年</td></tr>
+      </tbody>
+    </table>
+    <p class="note">服务器与第三方服务费用为预算口径，最终以云厂商和第三方服务商实际账单为准。若贵方已有服务器或账号，可按实际情况抵扣或剔除。</p>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">TCO</div><h3>首年投入测算</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td>网站建设费</td><td class="text-right money">140,000 元</td></tr>
+        <tr><td>首年服务器与第三方服务预算</td><td class="text-right">18,000 元</td></tr>
+        <tr><td>年度基础运维服务</td><td class="text-right">24,000 元</td></tr>
+        <tr class="total"><td>首年合计</td><td class="text-right">182,000 元</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">TECH & DELIVERY</div><h2>技术方案、排期与交付</h2></div><div class="page-no">03</div></div>
+  <div class="grid2 avoid">
+    <div class="card"><h4>技术实现</h4><ul><li>CMS 内容管理系统</li><li>主题模板配置与少量样式定制</li><li>MySQL / PostgreSQL 数据库</li><li>基础图片上传与内容发布</li><li>响应式页面适配</li></ul></div>
+    <div class="card"><h4>部署环境</h4><ul><li>云服务器部署</li><li>Nginx / PHP 或 Node 环境，按 CMS 选型确定</li><li>数据库与文件备份</li><li>HTTPS / SSL 配置</li><li>基础监控与安全补丁</li></ul></div>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Schedule</div><h3>实施排期</h3></div>
+    <table class="tbl">
+      <thead><tr><th style="width:22mm">阶段</th><th>工作内容</th><th class="text-center" style="width:22mm">周期</th><th>阶段成果</th></tr></thead>
+      <tbody>
+        <tr><td class="phase">Phase 01</td><td>需求确认、CMS 后台方案确认、字段结构与页面结构确认。</td><td class="text-center">W1</td><td>页面清单、字段清单、实施确认。</td></tr>
+        <tr><td class="phase">Phase 02</td><td>主题样式调整、基础页面搭建、公寓内容模型配置。</td><td class="text-center">W2</td><td>可预览网站版本。</td></tr>
+        <tr><td class="phase">Phase 03</td><td>内容录入样例、移动端适配、后台权限、基础测试。</td><td class="text-center">W3</td><td>测试版本与后台账号。</td></tr>
+        <tr><td class="phase">Phase 04</td><td>上线部署、SSL、培训、交付文档。</td><td class="text-center">W4</td><td>正式上线与操作培训。</td></tr>
+        <tr class="total"><td colspan="2">合计</td><td class="text-center">4 周</td><td>约 1 个月，具体以资料到位和确认速度为准。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section avoid">
+    <div class="shead"><div class="tag">Deliverables</div><h3>交付物</h3></div>
+    <div class="grid3">
+      <div class="card"><h4>网站与后台</h4><ul><li>正式网站</li><li>CMS 内容后台</li><li>管理员账号</li><li>基础权限配置</li></ul></div>
+      <div class="card"><h4>资料与文档</h4><ul><li>页面清单</li><li>字段说明</li><li>部署说明</li><li>后台操作手册</li></ul></div>
+      <div class="card"><h4>培训与支持</h4><ul><li>后台操作培训</li><li>上线检查</li><li>3 个月缺陷质保</li><li>年度运维服务可选</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="page content">
+  <div class="head"><div><div class="eyebrow">PAYMENT & TERMS</div><h2>付款方式与商务条款</h2></div><div class="page-no">04</div></div>
+  <div class="section avoid" style="margin-top:0">
+    <div class="shead"><div class="tag">Payment</div><h3>付款计划</h3></div>
+    <table class="tbl">
+      <thead><tr><th>付款阶段</th><th class="text-center">比例</th><th class="text-right">金额</th><th>触发条件</th></tr></thead>
+      <tbody>
+        <tr><td>合同签订款</td><td class="text-center">40%</td><td class="text-right">56,000 元</td><td>合同签订并生效后 3 个工作日内。</td></tr>
+        <tr><td>页面与后台确认款</td><td class="text-center">40%</td><td class="text-right">56,000 元</td><td>页面样式和 CMS 后台配置确认后。</td></tr>
+        <tr><td>上线验收款</td><td class="text-center">20%</td><td class="text-right">28,000 元</td><td>网站上线并完成验收后。</td></tr>
+        <tr class="total"><td>合计</td><td class="text-center">100%</td><td class="text-right">140,000 元</td><td>-</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Acceptance</div><h3>验收标准</h3></div>
+    <table class="tbl">
+      <tbody>
+        <tr><td style="width:30mm"><strong>功能验收</strong></td><td>前台页面可正常访问，CMS 后台可完成内容新增、编辑、删除、图片上传和发布。</td></tr>
+        <tr><td><strong>兼容范围</strong></td><td>PC 端兼容 Chrome、Edge、Safari 当前主流版本；移动端适配 iOS Safari、Android Chrome/微信内置浏览器主流版本。</td></tr>
+        <tr><td><strong>性能范围</strong></td><td>满足基础展示站常规访问，不包含高并发压测和专项性能优化。</td></tr>
+        <tr><td><strong>质保范围</strong></td><td>上线后 3 个月内修复非需求变更类缺陷；新增页面、功能或大范围样式调整另行评估。</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section">
+    <div class="shead"><div class="tag">Terms</div><h3>商务条款</h3></div>
+    <table class="tbl terms">
+      <tbody>
+        <tr><td>报价有效期</td><td>本报价自 2026 年 07 月 15 日起 90 天内有效，有效期至 2026 年 10 月 13 日；逾期需重新确认。</td></tr>
+        <tr><td>后台系统</td><td>后台采用标准 CMS 内容管理系统搭建；定制模板、配置和项目交付内容按合同约定移交。</td></tr>
+        <tr><td>不包含项</td><td>不包含导航系统定制、筛选搜索、预约咨询、SEO 专项、小程序、复杂地图、在线客服、会员系统、支付、CRM、数据统计看板。</td></tr>
+        <tr><td>第三方费用</td><td>服务器、域名、短信、地图、SSL、CDN 等第三方费用按实际发生额结算。</td></tr>
+        <tr><td>合同优先</td><td>本方案用于商务报价与范围说明，最终权利义务以双方正式签署的合同及附件为准。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</body>
+</html>
